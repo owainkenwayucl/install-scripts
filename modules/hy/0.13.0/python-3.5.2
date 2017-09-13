@@ -25,7 +25,7 @@ prepend-path        CMAKE_PREFIX_PATH    $prefix
 prepend-path        PYTHONPATH           $prefix/lib/python3.5/site-packages
 
 # Fix issues with old paths.
-append-path         PYTHONPATH           /home/UCL/apps/python/bundles/python3-2.0.0/venv/lib/python3.5/site-packages
+append-path         PYTHONPATH           /shared/ucl/apps/python/bundles/python3-2.0.0/venv/lib/python3.5/site-packages
 
 if { [file isdirectory $prefix/bin] } then {
   prepend-path      PATH                 $prefix/bin
