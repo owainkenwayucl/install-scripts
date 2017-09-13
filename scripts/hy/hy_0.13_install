@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+###############################################
+# Installing hy
+#
+# by Owain Kenway, 2017
+#
+
+NAME=${NAME:-hy}
+PYTHONMAJOR=${PYTHONMAJOR:-3}
+PYTHONMINOR=`python${PYTHONMAJOR} -V | awk '{print $2}'`
+VERSION=${VERSION:-0.13}
+INSTALL_PREFIX=${INSTALL_PREFIX:-/home/uccaoke/Applications/$NAME/$VERSION/$PYTHONMINOR}
+
+set -e
+
+mkdir -p ${INSTALL_PREFIX}
+
+for a in appdirs rply astor clint "hy==$VERSION"
+do
+  pip${PYTHONMAJOR} install --install-option="--prefix=$INSTALL_PREFIX" $a
+done
+
