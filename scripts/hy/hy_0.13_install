@@ -16,6 +16,8 @@ set -e
 
 mkdir -p ${INSTALL_PREFIX}
 
+export PYTHONPATH=${INSTALL_PREFIX}/lib/python${PYTHONMINOR%.*}/site-packages:${PYTHONPATH}
+
 for a in appdirs rply astor clint "hy==$VERSION"
 do
   pip${PYTHONMAJOR} install --install-option="--prefix=$INSTALL_PREFIX" $a
