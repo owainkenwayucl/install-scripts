@@ -19,6 +19,6 @@ conflict test
    set test_var ::env(PYTHON_VERSION_TAG)
 #}
 
-#module load test/test-py$test_var
+module load test/test-py$test_var
 
 
