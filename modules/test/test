@@ -15,9 +15,9 @@ conflict test
 
 #set test_var 3.5
 
-#if { [info exists ::env(PYTHON_VERSION_TAG)] } {
+if { [info exists ::env(PYTHON_VERSION_TAG)] } {
    set test_var $::env(PYTHON_VERSION_TAG)
-#}
+}
 
 module load test/test-py$test_var
 
