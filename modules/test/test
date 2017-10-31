@@ -1,0 +1,26 @@
+#%Module -*- tcl -*-
+##
+
+proc ModulesHelp { } {
+
+  puts stderr {Test module}
+
+}
+
+module-whatis {Test module}
+
+module load python3/3.5
+
+prereq gcc-libs/4.9.2
+
+conflict test
+
+set test_var 3.5
+
+if { [info exists ::env(PYTHON_VERSION_TAG)] } {
+   set test_var ::env(PYTHON_VERSION_TAG)
+}
+
+module load test/test-py$test_var
+
+
