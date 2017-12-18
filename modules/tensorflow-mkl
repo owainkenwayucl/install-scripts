@@ -1,0 +1,40 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+## Built by O.K. on Legion on 2017-10-11
+
+proc ModulesHelp { } {
+  puts stderr "\tAdds tensorflow packages to your environment variables."
+  puts stderr ""
+
+}
+
+module-whatis "Adds tensorflow"
+
+prereq gcc-libs
+module load python/3.6.3
+conflict tensorflow
+
+if { [ file type /shared/ucl/apps ] == "link" } {
+   set           baselink          [ file readlink /shared/ucl/apps ]
+   set           base              $baselink/tensorflow/1.4.1/mkl
+} else {
+   set           base              /shared/ucl/apps/tensorflow/1.4.1/mkl
+}
+set              root              $base
+
+# Derefence venv location
+set              vname             [ file readlink $root ]  
+set              realroot          $base/$vname
+
+prepend-path     LD_RUN_PATH       $root/lib
+prepend-path     LD_LIBRARY_PATH   $root/lib
+
+prepend-path     LD_RUN_PATH       $root/lib64
+prepend-path     LD_LIBRARY_PATH   $root/lib64
+
+prepend-path     CPATH             $root/include
+prepend-path     INCLUDE_PATH      $root/include
+
+prepend-path CMAKE_PREFIX_PATH $root/venv
