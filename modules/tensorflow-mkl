@@ -27,6 +27,8 @@ set              root              $base
 prepend-path     LD_RUN_PATH       $root/lib
 prepend-path     LD_LIBRARY_PATH   $root/lib
 
+prepend-path     PYTHONPATH        $root/lib/python3.6/site-packages
+
 prepend-path     LD_RUN_PATH       $root/lib64
 prepend-path     LD_LIBRARY_PATH   $root/lib64
 
