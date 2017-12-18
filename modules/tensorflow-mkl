@@ -24,10 +24,6 @@ if { [ file type /shared/ucl/apps ] == "link" } {
 }
 set              root              $base
 
-# Derefence venv location
-set              vname             [ file readlink $root ]  
-set              realroot          $base/$vname
-
 prepend-path     LD_RUN_PATH       $root/lib
 prepend-path     LD_LIBRARY_PATH   $root/lib
 
