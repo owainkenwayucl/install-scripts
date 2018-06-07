@@ -1,0 +1,45 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+## This version of OpenMPI is distributed with the PGI compilers.
+
+lappend auto_path /shared/ucl/apps/modulelibs/UsefulModuleFunctions
+package require modulefunctions 1.0
+
+proc ModulesHelp { } {
+  global openmpiversion
+
+  puts stderr "\tAdds OpenMPI 1.10.1 for GCC 4.9.2 compilers to your environment variables,"
+}
+
+module-whatis "adds OpenMPI 1.10.1 for GCC 4.9.2 compilers to your environment variables"
+
+conflict mpi
+prereq gcc-libs/4.9.2
+prereq compilers/pgi/2017.3
+
+set              openmpiversion    1.10.1
+set              root              /shared/ucl/apps/PGI/17.3/linux86-64/17.3/mpi/openmpi
+
+prepend-path     PATH              $root/bin
+prepend-path     PATH              /shared/ucl/apps/openmpi/ucl-wrapper/bin
+append-path      MANPATH           $root/share/man
+setenv           MPI_HOME          $root
+setenv           MPI_RUN           $root/bin/mpirun
+
+prepend-path     LD_RUN_PATH       $root/lib
+prepend-path     LD_LIBRARY_PATH   $root/lib
+
+prepend-path     CPATH             $root/include
+prepend-path     INCLUDE_PATH      $root/include
+
+setenv           GERUN_LAUNCHER    openmpi
+
+prepend-path CMAKE_PREFIX_PATH  $root
+
+# Add compatibility library for MPI built for infiniband not omnipath
+if [modulefunctions::isCluster "Thomas"] {
+    prepend-path LD_LIBRARY_PATH   /usr/lib64/psm2-compat
+}
+
