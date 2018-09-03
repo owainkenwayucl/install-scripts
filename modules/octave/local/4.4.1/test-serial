@@ -64,5 +64,5 @@ if { [file isdirectory $prefix/include] } then {
 
 # This is necessary to stop Octave spawning too many OpenBLAS threads and 
 # exiting -- Owain Kenway
-setenv OPENBLAS_NUM_THREADS 1
+#setenv OPENBLAS_NUM_THREADS 1
 
