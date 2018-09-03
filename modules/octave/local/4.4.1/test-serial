@@ -25,6 +25,7 @@ prereq texlive/2015
 prereq bison/3.0.4/gnu-4.9.2
 prereq gnuplot/5.0.1 
 prereq texinfo/5.2/gnu-4.9.2
+prereq llvm/6.0.1
 
 set              prefix               /home/uccaoke/Applications/octave/4.4.1/gnu-4.9.2
 
