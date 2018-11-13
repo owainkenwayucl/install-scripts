@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+###############################################
+# Installing 
+#
+# by Owain Kenway, 2018
+#
+set -e
+
+NAME=${NAME:-ucblogo}
+VERSION=${VERSION:-5.6}
+INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications}
+SHA256=${SHA256:-c659e989e9284efc0f904ebd7de24b559c2d7434a98bb9c92c23e6c11b49cef3}
+
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://people.eecs.berkeley.edu/~bh/downloads/ucblogo.tar.gz}
+
+
+cd $INSTALL_PREFIX
+
+wget $SRC_ARCHIVE
+archive=$(basename "${SRC_ARCHIVE}")
+
+sha256sum -c <<< "$SHA256 $archive"
+
+tar -xvf $archive
+
+# UCBlogo 5.6 is version 6.0 without wx
+mv ucblogo-6.0 ucblogo-5.6
+
+cd ${NAME}-${VERSION}
+
+./configure
+make 
+
+cd ..
+rm $archive
