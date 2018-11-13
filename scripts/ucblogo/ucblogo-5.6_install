@@ -31,6 +31,7 @@ cd ${NAME}-${VERSION}
 
 ./configure
 make 
+ln -s logo ucblogo
 
 cd ..
 rm $archive

@@ -1,0 +1,16 @@
+#%Module -*- tcl -*-
+##
+## Test to see if we can get away with loading new GNU on top of old...
+
+proc ModulesHelp { } {
+
+  puts stderr {UCBLogo 5.6.  Version 5.6 is version 6.0 without WX.}
+
+}
+
+module-whatis {UCBLogo 5.6.  Version 5.6 is version 6.0 without WX.}
+
+conflict ucblogo
+
+prepend-path PATH /home/uccaoke/Applications/ucblogo-5.6
+
