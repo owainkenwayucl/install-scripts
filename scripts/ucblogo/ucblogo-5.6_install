@@ -14,6 +14,11 @@ SHA256=${SHA256:-c659e989e9284efc0f904ebd7de24b559c2d7434a98bb9c92c23e6c11b49cef
 
 SRC_ARCHIVE=${SRC_ARCHIVE:-https://people.eecs.berkeley.edu/~bh/downloads/ucblogo.tar.gz}
 
+NEWGCC=no
+
+ISDIR=`pwd`
+
+mkdir -p $INSTALL_PREFIX/ucblogo-5.6
 
 cd $INSTALL_PREFIX
 
@@ -25,12 +30,28 @@ sha256sum -c <<< "$SHA256 $archive"
 tar -xvf $archive
 
 # UCBlogo 5.6 is version 6.0 without wx
-mv ucblogo-6.0 ucblogo-5.6
+mv ucblogo-6.0 ucblogo-5.6/src
 
-cd ${NAME}-${VERSION}
+cd ucblogo-5.6/src
+
+if [ "$NEWGCC" == "yes" ]; then
+  cp $INSDIR/*.patch .
+  for a in *.patch
+  do
+    patch < $a
+  done
+fi
 
 ./configure
 make 
+
+mv logo ..
+mv logolib ..
+mv csls ..
+mv helpfiles ..
+
+cd ..
+
 ln -s logo ucblogo
 
 cd ..
