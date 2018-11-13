@@ -35,7 +35,7 @@ mv ucblogo-6.0 ucblogo-5.6/src
 cd ucblogo-5.6/src
 
 if [ "$NEWGCC" == "yes" ]; then
-  cp $INSDIR/*.patch .
+  cp $ISDIR/*.patch .
   for a in *.patch
   do
     patch < $a
