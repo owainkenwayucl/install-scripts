@@ -1,0 +1,13 @@
+--- graphics.c.orig	2018-11-13 15:15:07.227475820 +0000
++++ graphics.c	2018-11-13 15:12:30.389016850 +0000
+@@ -24,9 +24,9 @@
+ #endif /* WIN32 */
+  
+ #define WANT_EVAL_REGS 1
++#include <math.h>
+ #include "logo.h"
+ /*   #include "globals.h"   has been moved further down */
+-#include <math.h>
+ 
+ #ifdef HAVE_WX
+ #include "wxGraphics.h"
