@@ -12,5 +12,5 @@ module-whatis {Firefox, VS Code etc.}
 conflict desktop-apps
 prereq xorg-utils/X11R7.7
 
-prepend-path PATH /home/uccaoke/Applications/VS-Code-linux-x64
+prepend-path PATH /home/uccaoke/Applications/VSCode-linux-x64
 prepend-path PATH /home/uccaoke/Applications/firefox
