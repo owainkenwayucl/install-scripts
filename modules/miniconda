@@ -1,0 +1,146 @@
+#%Module -*- tcl -*-
+##
+
+proc ModulesHelp { } {
+
+  puts stderr {Adds Miniconda 4.5.11 to your environment variables. You should use this package only to create new conda environments in your home directory.}
+
+}
+
+module-whatis {Adds Miniconda 4.5.11 to your environment variables.}
+
+prereq gcc-libs
+
+conflict python
+
+set              prefix               /shared/ucl/apps/miniconda/4.5.11
+
+setenv              PYTHON_VERSION_TAG   3.7
+
+prepend-path        CMAKE_PREFIX_PATH    $prefix
+
+if { [file isdirectory $prefix/bin] } then {
+  prepend-path      PATH                 $prefix/bin
+}
+
+if { [file isdirectory $prefix/man] } then {
+  prepend-path      MANPATH              $prefix/man
+}
+
+if { [file isdirectory $prefix/share/man] } then {
+  prepend-path      MANPATH              $prefix/share/man
+}
+
+if { [file isdirectory $prefix/lib] } then {
+  prepend-path      LIBRARY_PATH         $prefix/lib
+  prepend-path      LD_LIBRARY_PATH      $prefix/lib
+}
+
+if { [file isdirectory $prefix/lib64] } then {
+  prepend-path      LIBRARY_PATH         $prefix/lib64
+  prepend-path      LD_LIBRARY_PATH      $prefix/lib64
+}
+
+if { [file isdirectory $prefix/lib/pkgconfig] } then {
+  prepend-path      PKG_CONFIG_PATH      $prefix/lib/pkgconfig
+}
+
+if { [file isdirectory $prefix/include] } then {
+  prepend-path      CPATH                $prefix/include
+  prepend-path      INCLUDE_PATH         $prefix/include
+}
+
+set-alias _conda_activate "
+{ 
+    if \[ -n \"\${CONDA_PS1_BACKUP:+x}\" \]; then
+        PS1=\"\$CONDA_PS1_BACKUP\";
+        \unset CONDA_PS1_BACKUP;
+    fi;
+    \local ask_conda;
+    ask_conda=\"\$(PS1=\"\$PS1\" \$_CONDA_EXE shell.posix activate \"\$@\")\" || \return \$?;
+    \eval \"\$ask_conda\";
+    _conda_hashr
+}'"
+set-alias _conda_deactivate " 
+{ 
+    \local ask_conda;
+    ask_conda=\"\$(PS1=\"\$PS1\" \$_CONDA_EXE shell.posix deactivate \"$@\")\" || \return \$?;
+    \eval \"\$ask_conda\";
+    _conda_hashr
+}"
+set-alias _conda_hashr "
+{ 
+    case \"\$_CONDA_SHELL_FLAVOR\" in 
+        zsh)
+            \rehash
+        ;;
+        posh)
+
+        ;;
+        *)
+            \hash -r
+        ;;
+    esac
+}"
+set-alias _conda_reactivate " 
+{ 
+    \local ask_conda;
+    ask_conda=\"\$(PS1=\"\$PS1\" \$_CONDA_EXE shell.posix reactivate)\" || \return \$?;
+    \eval \"\$ask_conda\";
+    _conda_hashr
+}"
+set-alias _conda_set_vars "
+{ 
+    if \[ -n \"\${BASH_VERSION:+x}\" \]; then
+        _CONDA_SHELL_FLAVOR=bash;
+    else
+        if \[ -n \"\${ZSH_VERSION:+x}\" \]; then
+            _CONDA_SHELL_FLAVOR=zsh;
+        else
+            if \[ -n \"\${KSH_VERSION:+x}\" \]; then
+                _CONDA_SHELL_FLAVOR=ksh;
+            else
+                if \[ -n \"\${POSH_VERSION:+x}\" \]; then
+                    _CONDA_SHELL_FLAVOR=posh;
+                else
+                    _CONDA_SHELL_FLAVOR=dash;
+                fi;
+            fi;
+        fi;
+    fi;
+    if \[ -z \"\${_CONDA_EXE+x}\" \]; then
+        if \[ -n \"\${_CONDA_ROOT:+x}\" \]; then
+            _CONDA_EXE=\"\$_CONDA_ROOT/conda/shell/bin/conda\";
+        fi;
+        if ! \[ -f \"\${_CONDA_EXE-x}\" \]; then
+            _CONDA_EXE=\"\$PWD/conda/shell/bin/conda\";
+        fi;
+    fi;
+    if \[ -z \"\${PS1+x}\" \]; then
+        PS1=;
+    fi
+}"
+set-alias conda " 
+{ 
+    if \[ \"\$#\" -lt 1 \]; then
+        \$_CONDA_EXE;
+    else
+        \local cmd=\"\$1\";
+        shift;
+        case \"\$cmd\" in 
+            activate)
+                _conda_activate \"$\@\"
+            ;;
+            deactivate)
+                _conda_deactivate \"\$@\"
+            ;;
+            install | update | uninstall | remove)
+                $_CONDA_EXE \"\$cmd\" \"$@\" && _conda_reactivate
+            ;;
+            *)
+                $_CONDA_EXE \"\$cmd" \"\$@"
+            ;;
+        esac;
+    fi
+}"
+
