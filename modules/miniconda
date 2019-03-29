@@ -52,7 +52,7 @@ if { [file isdirectory $prefix/include] } then {
 
 set-alias _conda_activate "
 \{ 
-    if \[ -n \"\${CONDA_PS1_BACKUP:+x}\" \]; then
+    if \[ -n \"\$\{CONDA_PS1_BACKUP:+x\}\" \]; then
         PS1=\"\$CONDA_PS1_BACKUP\";
         \unset CONDA_PS1_BACKUP;
     fi;
