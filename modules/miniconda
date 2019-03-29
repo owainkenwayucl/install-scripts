@@ -55,7 +55,6 @@ setenv _CONDA_SHELL_FLAVOUR bash
 setenv _CONDA_EXE $prefix/bin/conda
 
 set-alias _conda_activate "
-'\{ 
     if \[ -n \"\$\{CONDA_PS1_BACKUP:+x\}\" \]; then
         PS1=\"\$CONDA_PS1_BACKUP\";
         \unset CONDA_PS1_BACKUP;
@@ -64,16 +63,16 @@ set-alias _conda_activate "
     ask_conda=\"\$(PS1=\"\$PS1\" \$_CONDA_EXE shell.posix activate \"\$@\")\" || \return \$?;
     \eval \"\$ask_conda\";
     _conda_hashr
-\}'"
+"
 set-alias _conda_deactivate " 
-'\{ 
+ 
     \local ask_conda;
     ask_conda=\"\$(PS1=\"\$PS1\" \$_CONDA_EXE shell.posix deactivate \"\$@\")\" || \return \$?;
     \eval \"\$ask_conda\";
     _conda_hashr
-\}'"
+"
 set-alias _conda_hashr "
-'\{ 
+
     case \"\$_CONDA_SHELL_FLAVOR\" in 
         zsh)
             \rehash
@@ -85,16 +84,16 @@ set-alias _conda_hashr "
             \hash -r
         ;;
     esac
-\}'"
+"
 set-alias _conda_reactivate " 
-'\{ 
+ 
     \local ask_conda;
     ask_conda=\"\$(PS1=\"\$PS1\" \$_CONDA_EXE shell.posix reactivate)\" || \return \$?;
     \eval \"\$ask_conda\";
     _conda_hashr
-\}'"
+"
 set-alias _conda_set_vars "
-'\{ 
+ 
     if \[ -n \"\$\{BASH_VERSION:+x\}\" \]; then
         _CONDA_SHELL_FLAVOR=bash;
     else
@@ -123,9 +122,9 @@ set-alias _conda_set_vars "
     if \[ -z \"\$\{PS1+x\}\" \]; then
         PS1=;
     fi
-\}'"
+"
 set-alias conda " 
-'\{ 
+ 
     if \[ \"\$#\" -lt 1 \]; then
         \$_CONDA_EXE;
     else
@@ -146,5 +145,5 @@ set-alias conda "
             ;;
         esac;
     fi
-\}'"
+"
 
