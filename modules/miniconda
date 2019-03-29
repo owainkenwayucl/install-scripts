@@ -64,7 +64,7 @@ set-alias _conda_activate "
 set-alias _conda_deactivate " 
 \{ 
     \local ask_conda;
-    ask_conda=\"\$(PS1=\"\$PS1\" \$_CONDA_EXE shell.posix deactivate \"$@\")\" || \return \$?;
+    ask_conda=\"\$(PS1=\"\$PS1\" \$_CONDA_EXE shell.posix deactivate \"\$@\")\" || \return \$?;
     \eval \"\$ask_conda\";
     _conda_hashr
 \}"
