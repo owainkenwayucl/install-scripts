@@ -138,7 +138,7 @@ set-alias conda "
                 $_CONDA_EXE \"\$cmd\" \"$@\" && _conda_reactivate
             ;;
             *)
-                $_CONDA_EXE \"\$cmd" \"\$@"
+                $_CONDA_EXE \"\$cmd" \"\$@\"
             ;;
         esac;
     fi
