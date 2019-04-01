@@ -19,7 +19,7 @@ require  compilers/gnu
 
 make_build_env
 
-install_prefix=${HOME}/Applications/python${VERSION}-rpath
+install_prefix=${HOME}/Applications/python-${package_version}-rpath
 
 export PATH="$install_prefix/bin:$PATH"
 export LD_LIBRARY_PATH="$install_prefix/lib:$LD_LIBRARY_PATH"
@@ -34,7 +34,7 @@ manifest \
 tar -xf "Python-${package_version}.tar.xz"
 
 cd "Python-${package_version}"
-LDFLAGS="-Wl,-rpath=${install_prefix}/lib"
+export LDFLAGS="-Wl,-rpath=${install_prefix}/lib"
 ./configure --prefix="$install_prefix" \
             --enable-shared \
             --with-threads \
