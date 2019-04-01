@@ -92,10 +92,10 @@ sed -i.bak 's|"#  define HAVE_STROPTS_H 1",||g' third_party/curl.BUILD
 rm third_party/curl.BUILD.bak
 
 # Fix SWIG
-sed -i.bak 's|executable=ctx.executable._swig,|executable=ctx.executable._swig, use_default_shell_env=True,|g' tensorflow/tensorflow.bzl
+sed -i.bak 's|executable = ctx.executable._swig,|executable=ctx.executable._swig, use_default_shell_env=True,|g' tensorflow/tensorflow.bzl
 
 # Build our pip wheel
-bazel build --verbose_failures $CONFIG_OPTS //tensorflow/tools/pip_package:build_pip_package 
+bazel build --verbose_failures $CONFIG_OPTS //tensorflow/tools/pip_package:build_pip_package --action_env=LD_LIBRARY_PATH
 bazel-bin/tensorflow/tools/pip_package/build_pip_package $temp_dir/tf_pip
 
 cd $temp_dir
