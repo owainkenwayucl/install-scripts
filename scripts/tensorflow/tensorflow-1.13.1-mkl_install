@@ -31,7 +31,8 @@ initdir=`pwd`
 set -e
 
 dirname=$(dirname $0 2>/dev/null)
-INCLUDES_DIR=${INCLUDES_DIR:-${dirname}/includes}
+#INCLUDES_DIR=${INCLUDES_DIR:-${dirname}/includes}
+INCLUDES_DIR=${INCLUDES_DIR:-/shared/ucl/apps/build_scripts/includes}
 source ${INCLUDES_DIR}/require_inc.sh
 user_name=`whoami`
 
