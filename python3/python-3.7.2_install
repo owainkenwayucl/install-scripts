@@ -19,6 +19,8 @@ require  compilers/gnu
 
 make_build_env
 
+install_prefix=${HOME}/Applicatons/python3.7.3-rpath
+
 export PATH="$install_prefix/bin:$PATH"
 export LD_LIBRARY_PATH="$install_prefix/lib:$LD_LIBRARY_PATH"
 
