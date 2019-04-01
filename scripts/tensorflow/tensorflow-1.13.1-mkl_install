@@ -38,13 +38,15 @@ user_name=`whoami`
 
 require gcc-libs/4.9.2
 require compilers/gnu/4.9.2
-require python/3.7.2
+#require python/3.7.2
 require java/openjdk-11
-require bazel/0.21.0
+#require bazel/0.21.0
+export PATH=${HOME}/Applications/python-3.7.2-rpath/bin:${HOME}/Applications/bazel-0.21/bin:$PATH
 
 # Delete the old install, clear the bazel cache and any old builds in /dev/shm
 echo "Cleaning old install"
 rm -rf $INSTALL_PREFIX /dev/shm/${user_name}/tensorflow ~/.cache/bazel
+#rm -rf /dev/shm/${user_name}/tensorflow #~/.cache/bazel
 
 
 # Build in /dev/shm for speed and space.
@@ -84,6 +86,7 @@ export TF_NEED_MPI=0
 export TF_SET_ANDROID_WORKSPACE=0
 export TF_NEED_COMPUTECPP=0
 export CC_OPT_FLAGS=" -march=${MARCH} "
+export TF_NEED_ROCM=0
 
 ./configure
 
@@ -94,8 +97,14 @@ rm third_party/curl.BUILD.bak
 # Fix SWIG
 sed -i.bak 's|executable = ctx.executable._swig,|executable=ctx.executable._swig, use_default_shell_env=True,|g' tensorflow/tensorflow.bzl
 
+
+cp ~/Source/install-scripts/scripts/tensorflow/flatbuffers.BUILD.bazel third_party/flatbuffers/BUILD.bazel
+cp ~/Source/install-scripts/scripts/tensorflow/protobuf-owain.patch third_party/protobuf/
+cp ~/Source/install-scripts/scripts/tensorflow/tf.workspace.bzl tensorflow/workspace.bzl
+
+
 # Build our pip wheel
-bazel build --verbose_failures $CONFIG_OPTS //tensorflow/tools/pip_package:build_pip_package --action_env=LD_LIBRARY_PATH
+bazel build --verbose_failures --linkopt="-Wl,-rpath=/shared/ucl/apps/gcc/4.9.2/lib64" $CONFIG_OPTS //tensorflow/tools/pip_package:build_pip_package
 bazel-bin/tensorflow/tools/pip_package/build_pip_package $temp_dir/tf_pip
 
 cd $temp_dir

@@ -1,0 +1,11 @@
+--- /BUILD.old	2019-04-01 21:23:51.000000000 +0100
++++ /BUILD	2019-04-01 21:24:16.000000000 +0100
+@@ -54,7 +54,7 @@
+ LINK_OPTS = select({
+     ":android": [],
+     ":msvc": [],
+-    "//conditions:default": ["-lpthread", "-lm"],
++    "//conditions:default": ["-Wl,-rpath=/shared/ucl/apps/gcc/4.9.2/lib64","-lpthread", "-lm"],
+ })
+ 
+ load(
