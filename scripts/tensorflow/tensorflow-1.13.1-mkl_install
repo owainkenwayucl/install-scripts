@@ -126,5 +126,5 @@ pip3 install $base_builtname
 #rm -rf ${INSTALL_PREFIX}/bin/easy_install*
 
 echo "Cleaning install"
-rm -rf $INSTALL_PREFIX /dev/shm/${user_name}/tensorflow ~/.cache/bazel
+rm -rf /dev/shm/${user_name}/tensorflow ~/.cache/bazel
 
