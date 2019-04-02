@@ -41,7 +41,7 @@ require compilers/gnu/4.9.2
 #require python/3.7.2
 require java/openjdk-11
 #require bazel/0.21.0
-export PATH=${HOME}/Applications/python-3.7.2-rpath/bin:${HOME}/Applications/bazel-0.21/bin:$PATH
+export PATH=${HOME}/Applications/python-3.7.2-rpath/bin:${HOME}/Applications/bazel-0.19.2/bin:$PATH
 
 # Delete the old install, clear the bazel cache and any old builds in /dev/shm
 echo "Cleaning old install"
@@ -115,15 +115,15 @@ base_builtname=`basename $builtname`
 cd $temp_dir/tf_pip/
 
 # Backup copy
-cp $base_buildname $INSTALL_PREFIX
+cp $base_builtname $INSTALL_PREFIX
 
 pip3 install $base_builtname
 
 # De-venv it.
-rm -rf ${INSTALL_PREFIX}/bin/pip*
-rm -rf ${INSTALL_PREFIX}/bin/python*
-rm -rf ${INSTALL_PREFIX}/bin/activate*
-rm -rf ${INSTALL_PREFIX}/bin/easy_install*
+#rm -rf ${INSTALL_PREFIX}/bin/pip*
+#rm -rf ${INSTALL_PREFIX}/bin/python*
+#rm -rf ${INSTALL_PREFIX}/bin/activate*
+#rm -rf ${INSTALL_PREFIX}/bin/easy_install*
 
 echo "Cleaning install"
 rm -rf $INSTALL_PREFIX /dev/shm/${user_name}/tensorflow ~/.cache/bazel
