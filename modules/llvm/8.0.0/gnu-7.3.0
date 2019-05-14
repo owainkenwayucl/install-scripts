@@ -8,7 +8,7 @@ module-whatis {The LLVM Project is a collection of modular and reusable compiler
 conflict llvm
 prereq gcc-libs/7.3.0
 
-set prefix /home/uccaoke/Applications/f18/llvm/8.0
+set prefix /home/uccaoke/Applications/f18/llvm-8.0
 prepend-path CMAKE_PREFIX_PATH $prefix
 prepend-path PATH $prefix/bin
 prepend-path CPATH $prefix/include
