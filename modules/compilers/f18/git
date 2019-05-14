@@ -1,0 +1,27 @@
+#%Module -*- tcl -*-
+##
+## Test to see if we can get away with loading new GNU on top of old...
+
+proc ModulesHelp { } {
+
+  puts stderr {Prerelease F18.}
+
+}
+
+module-whatis {Prerelease F18.}
+
+prereq gcc-libs/7.3.0
+prereq llvm/8.8.0/gnu-7.3.0
+
+set              prefix               /home/uccaoke/Applications/f18/git
+
+prepend-path LIBRARY_PATH $prefix/lib
+prepend-path LD_LIBRARY_PATH $prefix/lib
+prepend-path PATH $prefix/bin
+
+setenv CC clang
+setenv CXX clang++
+setenv FC f18
+setenv F90 f18
+setenv F77 f18
+setenv COMPILER_TAG llvm-8.0.0-f18
