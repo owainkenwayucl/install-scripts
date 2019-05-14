@@ -11,6 +11,7 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 
 module purge
 require beta-modules
+require personal-modules
 require gcc-libs/7.3.0
 require compilers/gnu/7.3.0
 require llvm/8.0.0/gnu-7.3.0
