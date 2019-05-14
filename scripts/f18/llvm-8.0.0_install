@@ -11,6 +11,7 @@ package_description="The LLVM Project is a collection of modular and reusable co
 source includes/source_includes.sh
 
 module purge
+require beta-modules
 require gcc-libs/7.3.0
 require compilers/gnu/7.3.0
 require cmake/3.13.3
