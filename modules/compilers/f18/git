@@ -11,7 +11,7 @@ proc ModulesHelp { } {
 module-whatis {Prerelease F18.}
 
 prereq gcc-libs/7.3.0
-prereq llvm/8.8.0/gnu-7.3.0
+prereq llvm/8.0.0/gnu-7.3.0
 
 set              prefix               /home/uccaoke/Applications/f18/git
 
