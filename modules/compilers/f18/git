@@ -12,6 +12,7 @@ module-whatis {Prerelease F18.}
 
 prereq gcc-libs/7.3.0
 prereq llvm/8.0.0/gnu-7.3.0
+prereq compilers/pgi/2018.5-llvm
 
 set              prefix               /home/uccaoke/Applications/f18/git
 
@@ -19,8 +20,6 @@ prepend-path LIBRARY_PATH $prefix/lib
 prepend-path LD_LIBRARY_PATH $prefix/lib
 prepend-path PATH $prefix/bin
 
-setenv CC clang
-setenv CXX clang++
 setenv FC f18
 setenv F90 f18
 setenv F77 f18
