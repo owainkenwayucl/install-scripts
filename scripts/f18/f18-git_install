@@ -9,8 +9,8 @@ set -e
 
 for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
 
-require gcc-libs/4.9.2
-require llvm/8.0.0/gnu-4.9.2
+require compilers/gnu/7.30
+require llvm/8.0.0/gnu-7.3.0
 require cmake/3.13.3
 
 NAME=${NAME:-f18}
@@ -30,9 +30,8 @@ git clone $SRC_ARCHIVE
 cd ${NAME}
 mkdir build
 cd build
-export CXX=clang++
-ccmake -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -DBUILD_WITH_CLANG=/shared/ucl/apps/llvm/8.0.0/gnu-4.9.2 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-stdlib=libc++ ..
-make 
+ccmake -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -DCMAKE_BUILD_TYPE=Release ..
+make -j 8
 make install
 
 rm -rf $temp_dir
