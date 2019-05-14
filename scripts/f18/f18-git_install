@@ -9,7 +9,10 @@ set -e
 
 for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
 
-require compilers/gnu/7.30
+module purge
+require beta-modules
+require gcc-libs/7.3.0
+require compilers/gnu/7.3.0
 require llvm/8.0.0/gnu-7.3.0
 require cmake/3.13.3
 
