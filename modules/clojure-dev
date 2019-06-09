@@ -1,0 +1,16 @@
+#%Module -*- tcl -*-
+##
+## Test to see if we can get away with loading new GNU on top of old...
+
+proc ModulesHelp { } {
+
+  puts stderr {Clojure.}
+
+}
+
+module-whatis {Clojure.}
+
+module load java/openjdk-11/11.0.3u7/openj9
+module load clojure/1.10.0.411
+module load python/3.6.3
+module load clojure-wrappers
