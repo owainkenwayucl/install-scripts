@@ -1,0 +1,17 @@
+#%Module -*- tcl -*-
+##
+## Test to see if we can get away with loading new GNU on top of old...
+
+proc ModulesHelp { } {
+
+  puts stderr {Clojure wrappers.}
+
+}
+
+module-whatis {Clojure wrappers.}
+
+conflict clojure-wrappers
+prereq python/3.6.3
+prereq clojure/1.10.0.411
+
+prepend-path PATH /home/uccaoke/Source/clojure-wrappers
