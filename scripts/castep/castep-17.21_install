@@ -16,8 +16,8 @@ package_file="CASTEP-Releases-$package_version.tar.gz"
 _env_setup() {
     module purge
     require gcc-libs
-    require compilers/intel/2018
-    require mpi/intel/2018
+    require compilers/intel/2017/update1
+    require mpi/intel/2017/update1/intel
 
     # The CASTEP tests are about 2GB so we build in /dev/shm instead of /tmp (the default)
     make_build_env "castep" "/dev/shm"
