@@ -20,7 +20,7 @@ _env_setup() {
     require mpi/intel/2018
 
     # The CASTEP tests are about 2GB so we build in /dev/shm instead of /tmp (the default)
-    make_build_env "castep" "/dev/shm"
+    make_build_env --prefix=${HOME}/Applications/castep "castep" "/dev/shm"
 
     # Many tests fail on Legion when compiled with the 'fast' setting
     if [[ "$(facter domain)" == "data.legion.ucl.ac.uk" ]]; then
