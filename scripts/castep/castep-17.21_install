@@ -9,6 +9,9 @@ package_version="17.21"
 package_variant=""
 package_description="CASTEP is a program that uses density functional theory to calculate the properties of materials from first principles."
 
+arch="linux_x86_64_ifort17"
+parallel="MAX_PROCS=36 PARALLEL=\"--total-processors=36 --processors=36\""
+
 source includes/source_includes.sh
 
 package_file="CASTEP-Releases-$package_version.tar.gz"
@@ -16,8 +19,8 @@ package_file="CASTEP-Releases-$package_version.tar.gz"
 _env_setup() {
     module purge
     require gcc-libs
-    require compilers/intel/2017/update1
-    require mpi/intel/2017/update1/intel
+    require compilers/intel/2018
+    require mpi/intel/2018
 
     # The CASTEP tests are about 2GB so we build in /dev/shm instead of /tmp (the default)
     make_build_env "castep" "/dev/shm"
@@ -54,7 +57,8 @@ _build() {
         FFTLIBDIR= \
         MATHLIBDIR= \
         BUILD="$build_opt_level" \
-        INSTALL_DIR="$install_prefix/bin"
+        INSTALL_DIR="$install_prefix/bin" \
+        ARCH="$arch"
     make -l 10 -j \
         FFT=mkl \
         MATHLIBS=mkl10 \
@@ -62,7 +66,8 @@ _build() {
         MATHLIBDIR= \
         BUILD="$build_opt_level" \
         INSTALL_DIR="$install_prefix/bin" \
-        check
+        ARCH="$arch" \
+        check 
     make -l 10 -j \
         FFT=mkl \
         MATHLIBS=mkl10 \
@@ -70,6 +75,7 @@ _build() {
         MATHLIBDIR= \
         BUILD="$build_opt_level" \
         INSTALL_DIR="$install_prefix/bin" \
+        ARCH="$arch" \
         install 
 
     make -l 10 -j \
@@ -80,7 +86,9 @@ _build() {
         COMMS_ARCH=mpi \
         SUBARCH=mpi \
         BUILD="$build_opt_level" \
-        INSTALL_DIR="$install_prefix/bin" 
+        INSTALL_DIR="$install_prefix/bin" \
+        ARCH="$arch"
+
     make -l 10 -j \
         FFT=mkl \
         MATHLIBS=mkl10 \
@@ -90,7 +98,8 @@ _build() {
         SUBARCH=mpi \
         BUILD=fast \
         INSTALL_DIR="$install_prefix/bin" \
-        check
+        ARCH="$arch" \
+        check "$parallel"
     make -l 10 -j \
         FFT=mkl \
         MATHLIBS=mkl10 \
@@ -100,6 +109,7 @@ _build() {
         SUBARCH=mpi \
         BUILD=fast \
         INSTALL_DIR="$install_prefix/bin" \
+        ARCH="$arch" \
         install
     echo "Installed to: $install_prefix"
     echo "Unpacking pseudopotentials..."
