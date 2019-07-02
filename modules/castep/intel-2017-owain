@@ -13,12 +13,12 @@ proc ModulesHelp { } {
 module-whatis {Adds castep 17.21 to your environment. CASTEP is a program that uses density functional theory to calculate the properties of materials from first principles.}
 
 prereq gcc-libs
-prereq compilers/intel/2018
-prereq mpi/intel/2018
+prereq compilers/intel/2017/update4
+prereq mpi/intel/2017/update3/intel
 
 conflict castep
 
-set              prefix               /home/uccaoke/Applications/castep-17.21
+set              prefix               /home/uccaoke/Applications/castep-17.21-intel17.0.4
 
 setenv PSPOT_DIR $prefix/psps
 
