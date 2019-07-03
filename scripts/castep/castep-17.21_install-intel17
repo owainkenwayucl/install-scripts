@@ -25,12 +25,7 @@ _env_setup() {
     # The CASTEP tests are about 2GB so we build in /dev/shm instead of /tmp (the default)
     make_build_env "castep" "/dev/shm"
 
-    # Many tests fail on Legion when compiled with the 'fast' setting
-    if [[ "$(facter domain)" == "data.legion.ucl.ac.uk" ]]; then
-        build_opt_level="intermediate"
-    else
-        build_opt_level="fast"
-    fi
+    build_opt_level="fast"
 
 }
 
