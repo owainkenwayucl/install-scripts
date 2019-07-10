@@ -42,6 +42,9 @@ if [ "$NEWGCC" == "yes" ]; then
   done
 fi
 
+# Delete the Linux i386 binary that comes in the tar.gz
+rm -f logo
+
 ./configure
 make 
 
