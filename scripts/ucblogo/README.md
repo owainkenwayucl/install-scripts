@@ -1,4 +1,5 @@
-#Patches for UCBLogo
+Patches for UCBLogo
+===================
 
 UCBLogo is an old (but good package) and so as time goes by it gets harder and harder to build on modern systems.  This directory contains patches to help.
 
