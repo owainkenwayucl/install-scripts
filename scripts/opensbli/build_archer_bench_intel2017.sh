@@ -5,7 +5,7 @@ set -e
 for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
 
 require gcc-libs/4.9.2
-require compilers/intel/2017/update2
+require compilers/intel/2017/update1
 require mpi/intel/2017/update1/intel
 require hdf/5-1.8.15-p1-impi/intel-2015-update2
 
