@@ -90,7 +90,7 @@ make
 make install
 rm -rf *
 
-if [ "TYPE" == "cuda" ];
+if [ "$TYPE" == "cuda" ];
 then
 echo "Building and installing full, GPU, single precision GROMACS with gmx view"
 cmake .. \
