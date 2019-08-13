@@ -42,6 +42,7 @@ cd build
 
 echo "Building and installing full, serial, single precision GROMACS with gmx view"
 cmake .. \
+    -DGMX_GPU=OFF \
     -DGMX_FFT_LIBRARY=mkl \
     -DGMX_X11=ON \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
@@ -53,6 +54,7 @@ rm -rf *
  
 echo "Building and installing full, serial, double precision GROMACS with gmx view"
 cmake .. \
+    -DGMX_GPU=OFF \
     -DGMX_DOUBLE=on \
     -DGMX_FFT_LIBRARY=mkl \
     -DGMX_X11=ON \
@@ -64,6 +66,7 @@ rm -rf *
   
 echo "Building and installing mdrun-only, MPI, single precision GROMACS"
 cmake .. \
+    -DGMX_GPU=OFF \
     -DGMX_DOUBLE=off \
     -DGMX_MPI=on \
     -DGMX_BUILD_MDRUN_ONLY=ON \
@@ -76,6 +79,7 @@ rm -rf *
 
 echo "Building and installing mdrun-only, MPI, double precision GROMACS"
 cmake .. \
+    -DGMX_GPU=OFF \
     -DGMX_DOUBLE=on \
     -DGMX_MPI=on \
     -DGMX_BUILD_MDRUN_ONLY=ON \
