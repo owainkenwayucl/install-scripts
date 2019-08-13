@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+
+###############################################
+
+package_name="gromacs"
+package_version="2019.3"
+package_description="GROMACS is a package for performing molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles."
+SRC_ARCHIVE=${SRC_ARCHIVE:-ftp://ftp.gromacs.org/pub/gromacs/gromacs-$package_version.tar.gz}
+
+TYPE=cuda
+
+source includes/source_includes.sh
+module purge
+require gcc-libs
+require cmake
+require compilers/intel/2018/update3
+require mpi/intel/2018/update3/intel
+require cuda/10.0.130
+
+make_build_env ""
+
+set -e
+
+cd "$build_dir"
+
+INSTALL_PREFIX=${HOME}/Applications/GROMACS/2019.3
+
+rm -rf ${INSTALL_PREFIX}
+mkdir -p ${INSTALL_PREFIX}
+
+wget "$SRC_ARCHIVE"
+tarfile=$(basename "${SRC_ARCHIVE}")
+
+manifest md5:88ef44802f4e1b1749d8953e8d11a679 ${tarfile}
+
+tar -xf "$tarfile"
+
+cd "${package_name}-${package_version}"
+
+mkdir build
+cd build
+
+echo "Building and installing full, serial, single precision GROMACS with gmx view"
+cmake .. \
+    -DGMX_FFT_LIBRARY=mkl \
+    -DGMX_X11=ON \
+    -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
+    $CMAKE_FLAGS
+make
+make install
+  
+echo "Building and installing full, serial, double precision GROMACS with gmx view"
+cmake .. \
+    -DGMX_DOUBLE=on \
+    -DGMX_FFT_LIBRARY=mkl \
+    -DGMX_X11=ON \
+    -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
+    $CMAKE_FLAGS
+make
+make install
+  
+echo "Building and installing mdrun-only, MPI, single precision GROMACS"
+cmake .. \
+    -DGMX_DOUBLE=off \
+    -DGMX_MPI=on \
+    -DGMX_BUILD_MDRUN_ONLY=ON \
+    -DGMX_FFT_LIBRARY=mkl \
+    -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
+    $CMAKE_FLAGS
+make
+make install
+
+echo "Building and installing mdrun-only, MPI, double precision GROMACS"
+cmake .. \
+    -DGMX_DOUBLE=on \
+    -DGMX_MPI=on \
+    -DGMX_BUILD_MDRUN_ONLY=ON \
+    -DGMX_FFT_LIBRARY=mkl \
+    -DCMAKE_INSTALL_PREFIX=$install_prefix \
+    $CMAKE_FLAGS
+make
+make install
+
+if [ "TYPE" == "cuda" ];
+then
+echo "Building and installing full, GPU, single precision GROMACS with gmx view"
+cmake .. \
+    -DGMX_GPU=ON \
+    -DCUDA_TOOLKIT_ROOT_DIR=/shared/ucl/apps/cuda/10.0.130/gnu-4.9.2 \
+    -DGMX_FFT_LIBRARY=mkl \
+    -DGMX_X11=ON \
+    -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
+    $CMAKE_FLAGS
+make
+make install
+  
+echo "Building and installing full, GPU, double precision GROMACS with gmx view"
+cmake .. \
+    -DGMX_GPU=ON \
+    -DCUDA_TOOLKIT_ROOT_DIR=/shared/ucl/apps/cuda/10.0.130/gnu-4.9.2 \
+    -DGMX_DOUBLE=on \
+    -DGMX_FFT_LIBRARY=mkl \
+    -DGMX_X11=ON \
+    -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
+    $CMAKE_FLAGS
+make
+make install
+
+
+
+fi
