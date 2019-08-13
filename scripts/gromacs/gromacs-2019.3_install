@@ -15,7 +15,6 @@ require gcc-libs
 require cmake
 require compilers/intel/2018/update3
 require mpi/intel/2018/update3/intel
-require cuda/10.0.130
 
 make_build_env ""
 
@@ -92,6 +91,13 @@ rm -rf *
 
 if [ "$TYPE" == "cuda" ];
 then
+module purge
+require gcc-libs
+require cmake
+require compilers/gnu/4.9.3
+require cuda/10.0.130
+INSTALL_PREFIX=${INSTALL_PREFIX}/gpu
+
 echo "Building and installing full, GPU, single precision GROMACS with gmx view"
 cmake .. \
     -DGMX_GPU=ON \
