@@ -101,6 +101,9 @@ cmake .. \
     -DGMX_BUILD_MDRUN_ONLY=ON \
     -DGMX_X11=ON \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
+    -DGMX_DEFAULT_SUFFIX=OFF \
+    -DGMX_BINARY_SUFFIX=_cuda \
+    -DGMX_LIBS_SUFFIX=_cuda \
     $CMAKE_FLAGS
 make
 make install
@@ -116,6 +119,9 @@ cmake .. \
     -DGMX_BUILD_MDRUN_ONLY=ON \
     -DGMX_X11=ON \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
+    -DGMX_DEFAULT_SUFFIX=OFF \
+    -DGMX_BINARY_SUFFIX=_cuda_d \
+    -DGMX_LIBS_SUFFIX=_cuda_d \
     $CMAKE_FLAGS
 make
 make install
