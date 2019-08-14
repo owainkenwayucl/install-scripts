@@ -83,6 +83,9 @@ cmake .. \
     -DGMX_MPI=on \
     -DGMX_BUILD_MDRUN_ONLY=ON \
     -DGMX_FFT_LIBRARY=mkl \
+    -DGMX_DEFAULT_SUFFIX=OFF \
+    -DGMX_BINARY_SUFFIX=_mpi_d \
+    -DGMX_LIBS_SUFFIX=_mpi_d \
     -DCMAKE_INSTALL_PREFIX=$install_prefix \
     $CMAKE_FLAGS
 make
