@@ -92,7 +92,7 @@ make
 make install
 rm -rf *
 
-if [ "$TYPE" == "cuda" ];
+if [ "$TYPE" == "cuda" ]
 then
 module purge
 require gcc-libs
@@ -114,25 +114,6 @@ cmake .. \
     -DGMX_DEFAULT_SUFFIX=OFF \
     -DGMX_BINARY_SUFFIX=_cuda \
     -DGMX_LIBS_SUFFIX=_cuda \
-    $CMAKE_FLAGS
-make
-make install
-rm -rf *
-  
-echo "Building and installing full, GPU, double precision GROMACS with gmx view"
-cmake .. \
-    -DGMX_GPU=ON \
-    -DCUDA_TOOLKIT_ROOT_DIR=/shared/ucl/apps/cuda/10.0.130/gnu-4.9.2 \
-    -DGMX_CUDA_TARGET_SM=60 \
-    -DGMX_DOUBLE=on \
-    -DGMX_FFT_LIBRARY=fftw3 \
-    -DGMX_BUILD_OWN_FFTW=ON \
-    -DGMX_SIMD=AVX2_256 \
-    -DGMX_X11=ON \
-    -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
-    -DGMX_DEFAULT_SUFFIX=OFF \
-    -DGMX_BINARY_SUFFIX=_cuda_d \
-    -DGMX_LIBS_SUFFIX=_cuda_d \
     $CMAKE_FLAGS
 make
 make install
