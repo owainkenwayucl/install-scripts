@@ -86,7 +86,7 @@ cmake .. \
     -DGMX_DEFAULT_SUFFIX=OFF \
     -DGMX_BINARY_SUFFIX=_mpi_d \
     -DGMX_LIBS_SUFFIX=_mpi_d \
-    -DCMAKE_INSTALL_PREFIX=$install_prefix \
+    -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
     $CMAKE_FLAGS
 make
 make install
