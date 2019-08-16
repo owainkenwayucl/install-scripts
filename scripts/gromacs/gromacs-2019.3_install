@@ -7,7 +7,7 @@ package_version="2019.3"
 package_description="GROMACS is a package for performing molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles."
 SRC_ARCHIVE=${SRC_ARCHIVE:-ftp://ftp.gromacs.org/pub/gromacs/gromacs-$package_version.tar.gz}
 
-TYPE=cuda
+TYPE=${TYPE:-cuda}
 
 source includes/source_includes.sh
 module purge
@@ -118,6 +118,8 @@ cmake .. \
 make
 make install
 rm -rf *
+
+require mpi/openmpi/3.1.4/gnu-4.9.2
 
 echo "Building and installing mdrun-only, MPI GPU, single precision GROMACS"
 cmake .. \
