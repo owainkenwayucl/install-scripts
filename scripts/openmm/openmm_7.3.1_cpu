@@ -29,7 +29,7 @@ VERSION=${VERSION:-7.3.1}
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/OpenMM/${VERSION}}
 VENV_PREFIX=${VENV_PREFIX:-${HOME}/Applications/OpenMM}
 
-SRC_ARCHIVE=${SRC_ARCHIVE:-}
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://github.com/openmm/openmm.git}
 
 rm -rf ${VENV_PREFIX}/venv
 virtualenv ${VENV_PREFIX}/venv
@@ -43,7 +43,7 @@ temp_dir=$(mktemp -d -p /dev/shm/$(whoami)/${NAME})
 
 cd $temp_dir
 
-wget $SRC_ARCHIVE
+git clone $SRC_ARCHIVE
 
 cd ${NAME}
 git checkout ${VERSION}
