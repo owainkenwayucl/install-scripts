@@ -11,5 +11,5 @@ module-whatis "Adds system clash modules to your environment."
 
 set myusername $::tcl_platform(user)
 
-module           use --prepend /home/${myusername}/Source/install-scripts/system-clash
+module           use /home/${myusername}/Source/install-scripts/system-clash
 
