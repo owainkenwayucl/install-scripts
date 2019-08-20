@@ -35,6 +35,11 @@ git checkout ${VERSION}
 
 python3 setup.py install
 
+# For some reason setup.py don't create this!?
+cd ${INSTALL_PREFIX}/lib/python3.6/site-packages
+ln -s ParmEd-${VERSION}-py3.6-linux-x86_64.egg/parmed .
+cd -
+
 rm -rf $temp_dir
 
 # De-venv it.
