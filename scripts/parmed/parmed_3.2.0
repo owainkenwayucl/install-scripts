@@ -30,7 +30,7 @@ cd $temp_dir
 
 git clone $SRC_ARCHIVE
 
-cd ${NAME}
+cd ParmEd
 git checkout ${VERSION}
 
 python3 setup.py install
