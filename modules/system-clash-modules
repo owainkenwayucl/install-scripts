@@ -1,0 +1,15 @@
+#%Module
+#
+
+proc ModulesHelp { } {
+
+    puts stderr "This module adds modules that clash with system modules to your environment."
+    puts stderr ""
+}
+
+module-whatis "Adds system clash modules to your environment."
+
+set myusername $::tcl_platform(user)
+
+module           use --append /home/${myusername}/Source/install-scripts/system-clash
+
