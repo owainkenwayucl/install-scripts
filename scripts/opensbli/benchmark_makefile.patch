@@ -1,0 +1,11 @@
+--- Makefile.old	2019-09-04 11:14:26.000000000 +0100
++++ Makefile	2019-09-04 11:16:16.000000000 +0100
+@@ -35,7 +35,7 @@
+   CCFLAGS = -O0 -g -no-prec-div $(HDF5_LIB) -openmp -fp-model strict -fp-model source -prec-div -prec-sqrt -DMPICH_IGNORE_CXX_SEEK #-DOPS_DEBUG
+ else
+   #CCFLAGS  = -O3 -ipo -no-prec-div -fp-model strict -fp-model source -prec-div -prec-sqrt -vec-report2 -xSSE4.2 -parallel #-DCOMM_PERF #-DDEBUG
+-  CCFLAGS = -O3 -ipo -no-prec-div -restrict -fno-alias -fp-model strict -fp-model source -prec-div -prec-sqrt -DMPICH_IGNORE_CXX_SEEK#-vec-report
++  CCFLAGS = -O3 -ipo -xHOST -no-prec-div -restrict -fno-alias -DMPICH_IGNORE_CXX_SEEK#-vec-report
+ endif
+   CPPFLAGS  = $(CCFLAGS)
+   OMPFLAGS  = $(HDF5_LIB) -openmp $(HDF5_LIB) -openmp-report2

@@ -1,0 +1,11 @@
+--- Makefile.old	2019-09-04 11:13:41.000000000 +0100
++++ Makefile	2019-09-04 11:14:09.000000000 +0100
+@@ -49,7 +49,7 @@
+ ifdef DEBUG
+   CCFLAGS 	:= -O0 -g
+ else
+-  CCFLAGS 	:= -O3 -xCORE_AVX2 #vec-report -xAVX
++  CCFLAGS 	:= -O3 -xHOST #vec-report -xAVX
+ endif
+   CXX 		:= icpc
+   CXXFLAGS 	:= $(CCFLAGS)
