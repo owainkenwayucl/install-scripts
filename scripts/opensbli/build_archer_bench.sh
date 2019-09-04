@@ -20,9 +20,9 @@ export HDF5_INSTALL_PATH=/home/uccaoke/Applications/hdf5/1.8.15-p1-impi/intel-20
 cd ${OPS_INSTALL_PATH}/c
 
 make clean
-make mpi
+make -f Makefile.ucl mpi
 
 cd ../../../Benchmark
 
 make clean
-make OpenSBLI_mpi
+make -f Makefile.ucl OpenSBLI_mpi

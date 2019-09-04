@@ -9,8 +9,6 @@ require compilers/intel/2017/update1
 require mpi/intel/2017/update1/intel
 require hdf/5-1.8.15-p1-impi/intel-2015-update2
 
-owd=$(pwd)
-
 export OPS_INSTALL_PATH=$HOME/Source/archer-benchmarks/apps/OpenSBLI/source/OPS/ops
 
 export MPICC_CC=icc
@@ -21,17 +19,10 @@ export HDF5_INSTALL_PATH=/shared/ucl/apps/hdf5/1.8.15-p1-impi/intel-2015-update2
 
 cd ${OPS_INSTALL_PATH}/c
 
-cp ${owd}/c_makefile.patch Makefile.patch
-patch < Makefile.patch
-
-
 make clean
-make mpi
+make -f Makefile.ucl mpi
 
 cd ../../../Benchmark
 
-cp ${owd}/benchmark_makefile.patch Makefile.patch
-patch < Makefile.patch
-
 make clean
-make OpenSBLI_mpi
+make -f Makefile.ucl OpenSBLI_mpi
