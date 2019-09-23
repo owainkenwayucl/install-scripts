@@ -10,4 +10,4 @@ prereq gcc-libs
 module load rlwrap/0.43
 module load sbcl/1.3.19
 
-set-alias cl-repl "rlwrap sbcl --noinform --eval (setf *read-default-float-format* \'double-float)"
+set-alias cl-repl "rlwrap sbcl --noinform --eval '(setf *read-default-float-format* \'double-float)'"
