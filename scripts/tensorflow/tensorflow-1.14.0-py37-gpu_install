@@ -40,6 +40,8 @@ mkdir -p /dev/shm/${NAME}
 temp_dir=`mktemp -d -p /dev/shm/${NAME}`
 cd $temp_dir
 
+export TMP=$tmp_dir
+
 # Set up our environment.
 # This is a cludge, I know.
 virtualenv $INSTALL_PREFIX
@@ -48,6 +50,8 @@ pip3 install numpy==1.16.4 keras
 
 export PYTHON_BIN_PATH=`which python3`
 export PYTHON_LIB_PATH=${INSTALL_PREFIX}/lib/python3.7/site-packages
+
+export TF_CUDA_PATHS=/shared/ucl/apps/cuda/10.0.130/gnu-4.9.2,/shared/ucl/apps/cudnn/7.4.2.24/10.0/cuda
 
 # Checkout the version of tensorflow we want.
 git clone $SRC_ARCHIVE
