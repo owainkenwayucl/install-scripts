@@ -60,6 +60,8 @@ git checkout v$VERSION
 
 echo ">>> Answer yes to all defaults <<<"
 
+cp $initdir/configure.py.patch-1.14.0 .
+
 patch < configure.py.patch-1.14.0
 
 ./configure
