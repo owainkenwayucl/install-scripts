@@ -15,7 +15,7 @@ proc ModulesHelp { } {
 module-whatis "Adds Tensorflow 2.0.0 to your environment."
 
 prereq gcc-libs
-module require python/3.7.4
+prereq python/3.7.4
 prereq cuda/10.0.130/gnu-4.9.2
 prereq cudnn/7.4.2.24/cuda-10.0
 conflict tensorflow
