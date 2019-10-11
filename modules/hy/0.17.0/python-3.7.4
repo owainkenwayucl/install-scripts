@@ -20,7 +20,7 @@ set              prefix               /home/uccaoke/Applications/hy/0.17.0/3.7.4
 
 prepend-path        CMAKE_PREFIX_PATH    $prefix
 
-prepend-path        PYTHONPATH           $prefix/lib/python3.5/site-packages
+prepend-path        PYTHONPATH           $prefix
 
 if { [file isdirectory $prefix/bin] } then {
   prepend-path      PATH                 $prefix/bin
