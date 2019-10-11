@@ -14,12 +14,12 @@ INSTALL_PREFIX=${INSTALL_PREFIX:-/home/uccaoke/Applications/$NAME/$VERSION/$PYTH
 
 set -e
 
-mkdir -p ${INSTALL_PREFIX}
+rm -rf ${INSTALL_PREFIX}
 
-export PYTHONPATH=${INSTALL_PREFIX}/lib/python${PYTHONMINOR%.*}/site-packages:${PYTHONPATH}
+mkdir -p ${INSTALL_PREFIX}
 
 for a in appdirs rply astor clint "hy==$VERSION"
 do
-  pip${PYTHONMAJOR} install --install-option="--prefix=$INSTALL_PREFIX" $a
+  pip${PYTHONMAJOR} install --target=$INSTALL_PREFIX $a
 done
 
