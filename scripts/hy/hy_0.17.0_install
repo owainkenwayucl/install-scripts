@@ -18,7 +18,7 @@ rm -rf ${INSTALL_PREFIX}
 
 mkdir -p ${INSTALL_PREFIX}
 
-for a in appdirs rply astor clint "hy==$VERSION"
+for a in "hy==$VERSION"
 do
   pip${PYTHONMAJOR} install --target=$INSTALL_PREFIX $a
 done
