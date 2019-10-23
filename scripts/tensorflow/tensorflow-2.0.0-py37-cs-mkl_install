@@ -76,6 +76,12 @@ cd $temp_dir/tf_pip/
 
 pip3 install $base_builtname
 
+cp  $base_builtname $initdir
+
+cd
+
+rm -rf /dev/shm/tensorflow
+
 # De-venv it.
 rm -rf ${INSTALL_PREFIX}/bin/pip*
 rm -rf ${INSTALL_PREFIX}/bin/python*
