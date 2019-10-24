@@ -19,6 +19,7 @@ SRC_ARCHIVE=${SRC_ARCHIVE:-https://github.com/tensorflow/tensorflow}
 initdir=`pwd`
 
 set -e
+export PATH=${HOME}/Applications/bazel-0.24.1/bin:${PATH}
 
 module load cuda-10.0.130-gcc-4.8.5-asayvnq
 module load cudnn-7.4.2-10.0-gcc-4.8.5-a4i5rkx
