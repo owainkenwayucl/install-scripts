@@ -28,8 +28,8 @@ echo "Cleaning old install"
 rm -rf $INSTALL_PREFIX /dev/shm/tensorflow ~/.cache/bazel
 
 # Build in /dev/shm for speed and space.
-mkdir -p /tmp/okenway/${NAME}
-temp_dir=`mktemp -d -p /tmp/okenway/${NAME}`
+mkdir -p ${TMPDIR}/${NAME}
+temp_dir=`mktemp -d -p ${TMPDIR}/${NAME}`
 cd $temp_dir
 
 # Set up our environment.
@@ -68,7 +68,7 @@ cp  $base_builtname $initdir
 
 cd
 
-rm -rf /tmp/okenway/tensorflow
+rm -rf $temp_dir
 
 # De-venv it.
 rm -rf ${INSTALL_PREFIX}/bin/pip*
