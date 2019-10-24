@@ -16,7 +16,7 @@ module-whatis "Adds Tensorflow 1.14.0 to your environment."
 
 conflict tensorflow
 
-set           base                 /home/uccaoke/Applications/tensorflow/1.14.0-37/mkl/
+set           base                 /home/okenway/Applications/tensorflow/1.14.0-37/mkl/
 set              root              $base
 
 prepend-path     LD_RUN_PATH       $root/lib
