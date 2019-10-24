@@ -26,9 +26,8 @@ export PATH=${HOME}/Applications/bazel-0.24.1/bin:${PATH}
 echo "Cleaning old install"
 rm -rf $INSTALL_PREFIX /dev/shm/tensorflow ~/.cache/bazel
 
-# Build in /dev/shm for speed and space.
-mkdir -p /dev/shm/${NAME}
-temp_dir=`mktemp -d -p /dev/shm/${NAME}`
+mkdir -p ${TMPDIR}/${NAME}
+temp_dir=`mktemp -d -p ${TMPDIR}/${NAME}`
 cd $temp_dir
 
 # Set up our environment.
@@ -80,7 +79,7 @@ cp  $base_builtname $initdir
 
 cd
 
-rm -rf /dev/shm/tensorflow
+rm -rf $temp_dir
 
 # De-venv it.
 rm -rf ${INSTALL_PREFIX}/bin/pip*
