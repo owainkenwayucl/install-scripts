@@ -22,4 +22,4 @@ SRC_ARCHIVE=${SRC_ARCHIVE:-$HOME/Installers/aocc-compiler-2.1.0.tar}
 md5sum -c <<< "$MD5 $SRC_ARCHIVE"
 
 cd $INSTALL_PREFIX
-tar zxvf $SRC_ARCHIVE
+tar xvf $SRC_ARCHIVE
