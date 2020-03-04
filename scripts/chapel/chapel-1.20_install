@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+###############################################
+# Installing 
+#
+# by Owain Kenway, 2018
+#
+set -e
+
+for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
+
+require gcc-libs/4.9.2
+require compilers/intel/2019/update4
+require mpi/intel/2019/update4/intel
+
+NAME=${NAME:-chapel}
+VERSION=${VERSION:-1.20.0}
+INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/$NAME/$VERSION/$COMPILER_TAG}
+MD5=${MD5:-341d4155fd5b4da198f034af96d928a6}
+SHA1=${SHA1:-3de3ccdb3218ee4b9d597e734af83cf3d5de652a}
+SHA256=${SHA256:-08bc86df13e4ad56d0447f52628b0f8e36b0476db4e19a90eeb2bd5f260baece}
+SHA512=${SHA512:-b632a5e128511b580d93028b4afc0084de55538f3d59c6a702069adc9954efbda77776b3f09d352b11d17ae17ccc6049606d1f0f321df05867583e81ceda935b}
+
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://github.com/chapel-lang/chapel/releases/download/${VERSION}/chapel-${VERSION}.tar.gz}
+
+
+rm -rf ${INSTALL_PREFIX}
+
+mkdir -p ${INSTALL_PREFIX}
+cd ${INSTALL_PREFIX}
+
+wget $SRC_ARCHIVE
+archive=$(basename "${SRC_ARCHIVE}")
+
+md5sum -c <<< "$MD5 $archive"
+sha1sum -c <<< "$SHA1 $archive"
+sha256sum -c <<< "$SHA256 $archive"
+sha512sum -c <<< "$SHA512 $archive"
+
+tar -xvf $archive
+
+cd ${NAME}-${VERSION}
+
+source util/setchplenv.bash
+
+export CHPL_COMM='gasnet'
+export CHPL_LAUNCHER='gasnetrun_psm'
+export CHPL_COMM_SUBSTRATE='psm'
+export CHPL_GASNET_SEGMENT='everything'
+export CHPL_TARGET_CPU='native'
+
+make 
+make check
+chpl -o hello examples/hello.chpl
+./hello
+
+
