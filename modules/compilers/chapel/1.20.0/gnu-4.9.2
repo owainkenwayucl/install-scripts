@@ -1,0 +1,20 @@
+#%Module -*- tcl -*-
+##
+## Test to see if we can get away with loading new GNU on top of old...
+
+proc ModulesHelp { } {
+
+  puts stderr {Chapel 1.20.0 for GCC}
+
+}
+
+module-whatis {Chapel 1.20.0 for GCC}
+
+prereq gcc-libs/4.9.2
+
+set              prefix               /home/uccaoke/Applications/chapel/1.20.0/gnu-4.9.2/chapel-1.20.0
+
+prepend-path PATH $prefix/bin/linux64-x86_64
+prepend-path PATH $prefix/util
+prepend-path MANPATH $prefix/man
+setenv CHPL_HOME $prefix
