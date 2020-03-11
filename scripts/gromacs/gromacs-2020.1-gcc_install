@@ -6,6 +6,7 @@ package_name="gromacs"
 package_version="2020.1"
 package_description="GROMACS is a package for performing molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles."
 SRC_ARCHIVE=${SRC_ARCHIVE:-ftp://ftp.gromacs.org/pub/gromacs/gromacs-$package_version.tar.gz}
+PARAMAKE=${PARAMAKE:-1}
 
 TYPE=${TYPE:-cpu}
 
@@ -44,7 +45,7 @@ cmake .. \
     -DGMX_X11=ON \
     -DCMAKE_INSTALL_PREFIX=$install_prefix \
     $CMAKE_FLAGS
-make
+make -j ${PARAMAKE}
 make install
 
 rm -rf *
@@ -58,7 +59,7 @@ cmake .. \
     -DGMX_X11=ON \
     -DCMAKE_INSTALL_PREFIX=$install_prefix \
     $CMAKE_FLAGS
-make
+make -j ${PARAMAKE}
 make install
 rm -rf *
   
@@ -72,7 +73,7 @@ cmake .. \
     -DGMX_BUILD_MDRUN_ONLY=ON \
     -DCMAKE_INSTALL_PREFIX=$install_prefix \
     $CMAKE_FLAGS
-make
+make -j ${PARAMAKE}
 make install
 rm -rf *
 
@@ -89,7 +90,7 @@ cmake .. \
     -DGMX_LIBS_SUFFIX=_mpi_d \
     -DCMAKE_INSTALL_PREFIX=$install_prefix \
     $CMAKE_FLAGS
-make
+make -j ${PARAMAKE}
 make install
 rm -rf *
 
