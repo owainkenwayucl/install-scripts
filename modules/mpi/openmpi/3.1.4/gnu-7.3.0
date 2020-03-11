@@ -12,8 +12,6 @@ proc ModulesHelp { } {
 
 module-whatis {Adds openmpi 3.1.4 to your environment. The Open MPI Project is an open source Message Passing Interface implementation.}
 
-prereq beta-modules
-prereq gcc-libs/7.3.0
 prereq compilers/gnu/7.3.0
 
 conflict mpi
