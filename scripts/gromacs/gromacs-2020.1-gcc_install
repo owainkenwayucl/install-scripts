@@ -20,7 +20,7 @@ make_build_env ""
 
 set -e
 
-install_prefix=${HOME}/Applications/gromacs/2020.1/gnu
+install_prefix=${HOME}/Applications/GROMACS/2020.1-gnu
 
 cd "$build_dir"
 
