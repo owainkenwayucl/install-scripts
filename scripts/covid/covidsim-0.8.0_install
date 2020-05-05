@@ -14,7 +14,7 @@ require compilers/intel/2020
 require python3/3.7
 
 NAME=${NAME:-covid-19-spatial-sim}
-VERSION=${VERSION:-0.7.0}
+VERSION=${VERSION:-0.8.0}
 #INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/$NAME/$VERSION/$COMPILER_TAG}
 INSTALL_PREFIX=${INSTALL_PREFIX:-$HOME/Applications/$NAME/$VERSION/$COMPILER_TAG}
 ARCH_EXT=${ARCH_EXT:-zip}
