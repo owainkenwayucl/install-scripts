@@ -1,0 +1,23 @@
+#%Module -*- tcl -*-
+##
+## Test to see if we can get away with loading new GNU on top of old...
+
+proc ModulesHelp { } {
+
+  puts stderr {FreePascal 3.0.4.}
+
+}
+
+module-whatis {FreePascal 3.0.4}
+
+conflict compilers/freepascal
+
+prereq gcc-libs/4.9.2
+
+
+set              prefix               /home/uccaoke/Applications/fpc-3.0.4
+
+prepend-path LIBRARY_PATH $prefix/lib
+prepend-path LD_LIBRARY_PATH $prefix/lib
+prepend-path PATH $prefix/bin
+prepend-path MANPATH $prefix/man
