@@ -10,7 +10,6 @@ proc ModulesHelp { } {
 module-whatis {SpatialSim COVID-19 pandemic modelling tool from Imperial College.}
 
 prereq gcc-libs
-prereq compilers/intel/2020/release
 prereq python3/3.7
 
 conflict covid-19-spatial-sim
