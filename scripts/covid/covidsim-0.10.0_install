@@ -60,6 +60,8 @@ fi
 
 cd ${NAME}-${VERSION}
 
+export CXXFLAGS=-std=gnu++11
+
 mkdir build
 cd build
 cmake ../src
