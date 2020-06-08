@@ -27,7 +27,8 @@ VERSION=${VERSION:-2.13}
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/namd/${COMPILER_TAG}-opt-avx512-mkl-icccharm++}
 
 NANAME=${NANAME:-NAMD_${VERSION}_Source}
-SRC_ARCHIVE=${SRC_ARCHIVE:-/shared/ucl/apps/namd/source/NAMD_${VERSION}_Source.tar.gz}
+#SRC_ARCHIVE=${SRC_ARCHIVE:-/shared/ucl/apps/namd/source/NAMD_${VERSION}_Source.tar.gz}
+SRC_ARCHIVE=${SRC_ARCHIVE:-${HOME}/tar/NAMD_${VERSION}_Source.tar.gz}
 
 CHARMVER=${CHARMVER:-6.8.2}
 CHARMARC=${CHARMARC:-"mpi-linux-x86_64"}
