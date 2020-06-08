@@ -24,7 +24,7 @@ require mpi/intel/2018/update3/intel
 COMPILER_TAG=${COMPILER_TAG:-gnu-4.9.2}
 VERSION=${VERSION:-2.13}
 #INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/namd/${COMPILER_TAG}-opt}
-INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/namd/${COMPILER_TAG}-opt-avx512-mkl-icccharm++-O3}
+INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/namd/${COMPILER_TAG}-opt-avx512-mkl-icccharm++}
 
 NANAME=${NANAME:-NAMD_${VERSION}_Source}
 #SRC_ARCHIVE=${SRC_ARCHIVE:-/shared/ucl/apps/namd/source/NAMD_${VERSION}_Source.tar.gz}
@@ -61,7 +61,7 @@ tar xvf charm-${CHARMVER}.tar
 export MPICXX=mpicxx
 
 cd charm-${CHARMVER}
-./build charm++ ${CHARMARC} iccstatic --no-build-shared --with-production -xHost -DCMK_OPTIMIZE -O3
+./build charm++ ${CHARMARC} iccstatic --no-build-shared --with-production -xHost -DCMK_OPTIMIZE
 
 cd ..
 
@@ -75,7 +75,6 @@ patch < Linux-x86_64.fftw.patch
 cp /shared/ucl/apps/build_scripts/namd-patches/*.fftw3 .
 
 sed -i.bak 's|-axAVX|-xHost -qopenmp-simd|g' Linux-x86_64-icc.arch
-sed -i.bak 's|-O2|-O3|g' Linux-x86_64-icc.arch
 
 cd ..
 ./config Linux-x86_64-icc --with-fftw3 --charm-arch ${CHARMARC}-iccstatic
