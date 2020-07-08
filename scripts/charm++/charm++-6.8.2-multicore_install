@@ -28,7 +28,7 @@ mkdir -p $INSTALL_PREFIX
 
 cd $INSTALL_PREFIX
 
-tar zxvf $SRC_ARCHIVE
+tar xvf $SRC_ARCHIVE
 
 cd charm-${CHARMVER}
 ./build LIBS charm++ ${CHARMARC} gcc gfortran -j16 --with-production
