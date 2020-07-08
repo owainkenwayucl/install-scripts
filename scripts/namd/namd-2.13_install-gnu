@@ -74,12 +74,12 @@ patch < Linux-x86_64.tcl.patch
 patch < Linux-x86_64.fftw-gnu.patch
 
 cd ..
-./config Linux-x86_64 --charm-arch ${CHARMARC}
+./config Linux-x86_64-g++ --charm-arch ${CHARMARC}
 
-cd Linux-x86_64
+cd Linux-x86_64-g++
 make
 
-cd ${temp_dir}/${NANAME}/Linux-x86_64
+cd ${temp_dir}/${NANAME}/Linux-x86_64-g++
 rm ${INSTALL_PREFIX}/${NANAME}
 mkdir -p ${INSTALL_PREFIX}/${NANAME}/bin
 for a in flipbinpdb flipdcd namd2 psfgen sortreplicas
