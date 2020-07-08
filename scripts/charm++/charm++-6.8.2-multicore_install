@@ -19,7 +19,7 @@ CHARMVER=${CHARMVER:-6.8.2}
 CHARMARC=${CHARMARC:-"multicore-linux-x86_64"}
 
 SRC_ARCHIVE=${SRC_ARCHIVE:-${HOME}/tar/charm-${VERSION}.tar}
-
+ORIG=`pwd`
 
 set -e
 rm -rf $INSTALL_PREFIX
@@ -32,3 +32,9 @@ tar xvf $SRC_ARCHIVE
 
 cd charm-${CHARMVER}
 ./build charm++ ${CHARMARC} gcc gfortran -j16 --with-production
+
+cd bin
+mv charmc charmc-real
+mv charmrun charmrun-real
+cp $ORIG/wrappers/* .
+

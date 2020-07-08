@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+charmrun-real +isomalloc_sync"$@"
