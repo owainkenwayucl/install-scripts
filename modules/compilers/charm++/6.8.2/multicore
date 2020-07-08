@@ -1,0 +1,25 @@
+#%Module -*- tcl -*-
+##
+## Test to see if we can get away with loading new GNU on top of old...
+
+proc ModulesHelp { } {
+
+  puts stderr {Charm++}
+
+}
+
+module-whatis {Charm++}
+
+conflict compilers/charm++
+
+prereq gcc-libs/4.9.2
+
+
+set              prefix               /home/uccaoke/Applications/charm++/6.8.2-multicore/gnu-4.9.2/charm-6.8.2
+
+prepend-path LIBRARY_PATH $prefix/lib
+prepend-path LD_LIBRARY_PATH $prefix/lib
+prepend-path LIBRARY_PATH $prefix/lib_so
+prepend-path LD_LIBRARY_PATH $prefix/lib_so
+prepend-path PATH $prefix/bin
+prepend-path MANPATH $prefix/man
