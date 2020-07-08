@@ -18,7 +18,7 @@ INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/charm++/${VERSION}-multico
 CHARMVER=${CHARMVER:-6.8.2}
 CHARMARC=${CHARMARC:-"multicore-linux-x86_64"}
 
-SRC_ARCHIVE=${SRC_ARCHIVE:-${HOME}/tar/charm-${VERSION}tar}
+SRC_ARCHIVE=${SRC_ARCHIVE:-${HOME}/tar/charm-${VERSION}.tar}
 
 
 set -e
