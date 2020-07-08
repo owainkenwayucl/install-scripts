@@ -27,4 +27,4 @@ setenv CXX g++
 setenv FC gfortran
 setenv F90 gfortran
 setenv F77 gfortran
-setenv COMPILER_TAG gnu-7.3.0
+setenv COMPILER_TAG gnu-9.2.0
