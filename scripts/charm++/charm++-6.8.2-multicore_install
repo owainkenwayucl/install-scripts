@@ -31,4 +31,4 @@ cd $INSTALL_PREFIX
 tar xvf $SRC_ARCHIVE
 
 cd charm-${CHARMVER}
-./build LIBS charm++ ${CHARMARC} gcc gfortran -j16 --with-production
+./build LIBS ${CHARMARC} gcc gfortran -j16 --with-production
