@@ -9,5 +9,6 @@ module-whatis "Adds Spack modules to your environment."
 
 set myusername $::tcl_platform(user)
 
-module           use --append /home/${myusername}/Applications/spack/share/spack/modules/linux-rhel7-x86_64
+#module           use --append /home/${myusername}/Applications/spack/share/spack/modules/linux-rhel7-x86_64
+module           use --append /home/${myusername}/Source/spack-master/share/spack/modules/linux-rhel7-broadwell
 
