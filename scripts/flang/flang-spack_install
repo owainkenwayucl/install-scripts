@@ -39,10 +39,10 @@ cd bin
 ./spack install gcc@9.3.0
 cd ..
 modulesdir=`ls share/spack/modules`
-module use --append ${INSTALL_PREFIX}/$modulesdir
+module use --append ${INSTALL_PREFIX}/spack/share/spack/modules/$modulesdir
 cd $modulesdir
 gccmod=`ls gcc*`
-cd $INSTALL_PREFIX
+cd $INSTALL_PREFIX/spack
 
 cd bin
 module load $gccmod
