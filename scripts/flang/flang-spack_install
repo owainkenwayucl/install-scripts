@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+###############################################
+# Installing 
+#
+# by Owain Kenway, 2018
+#
+set -e
+
+if [ ! -f ./includes ]; then
+  ln -s /shared/ucl/apps/build_scripts/includes .
+fi
+
+for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
+
+require gcc-libs/4.9.2
+
+NAME=${NAME:-flang}
+VERSION=${VERSION:-spack}
+INSTALL_PREFIX=${INSTALL_PREFIX:-$HOME/Applications$NAME/$VERSION}
+
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://github.com/owainkenwayucl/spack}
+
+rm -rf $INSTALL_PREFIX
+mkdir -p $INSTALL_PREFIX
+cd $INSTALL_PREFIX
+
+git clone $SRC_ARCHIVE
+cd spack
+git checkout flang-libstdc++fix-pullrequest
+
+restorecompilers=no
+if [ -f $HOME/.spack/linux/compilers.yaml ]; then
+  echo ">>> Backing up compilers.yaml..."
+  mv $HOME/.spack/linux/compilers.yaml $HOME/.spack/linux/compilers.yaml.bak
+  restorecompilers=yes
+fi
+
+cd bin
+./spack install gcc@9.3.0
+./spack install flang%gcc@9.3.0
+
+cd ..
+flangmod=`ls ls share/spack/modules/linux-rhel7*/flang*`
+llvmmod=`ls ls share/spack/modules/linux-rhel7*/llvm-flang*`
+mkdir -p share/spack/modules/ucl-linux/deps
+ln -s $flangmod share/spack/modules/ucl-linux/deps/flang
+ln -s $llvmmod share/spack/modules/ucl-linux/deps/llvm-flang
+
+if [ "$restorecompilers" = "yes" ]; then
+  echo ">>> Restoring compilers.yaml..."
+  mv $HOME/.spack/linux/compilers.yaml.bak $HOME/.spack/linux/compilers.yaml
+fi
+
+
