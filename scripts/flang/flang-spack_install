@@ -17,7 +17,7 @@ require gcc-libs/4.9.2
 
 NAME=${NAME:-flang}
 VERSION=${VERSION:-spack}
-INSTALL_PREFIX=${INSTALL_PREFIX:-$HOME/Applications$NAME/$VERSION}
+INSTALL_PREFIX=${INSTALL_PREFIX:-$HOME/Applications/$NAME}
 
 SRC_ARCHIVE=${SRC_ARCHIVE:-https://github.com/owainkenwayucl/spack}
 
@@ -38,11 +38,22 @@ fi
 
 cd bin
 ./spack install gcc@9.3.0
+cd ..
+modulesdir=`ls share/spack/modules`
+module use --append ${INSTALL_PREFIX}/$modulesdir
+cd $modulesdir
+gccmod=`ls gcc*`
+cd $INSTALL_PREFIX
+
+cd bin
+module load $gccmod
+./spack compiler find
+module remove $gccmod
 ./spack install flang%gcc@9.3.0
 
 cd ..
-flangmod=`ls ls share/spack/modules/linux-rhel7*/flang*`
-llvmmod=`ls ls share/spack/modules/linux-rhel7*/llvm-flang*`
+flangmod=`ls share/spack/modules/linux-rhel7*/flang*`
+llvmmod=`ls share/spack/modules/linux-rhel7*/llvm-flang*`
 mkdir -p share/spack/modules/ucl-linux/deps
 ln -s $flangmod share/spack/modules/ucl-linux/deps/flang
 ln -s $llvmmod share/spack/modules/ucl-linux/deps/llvm-flang
