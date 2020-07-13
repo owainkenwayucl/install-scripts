@@ -40,7 +40,7 @@ cd bin
 cd ..
 modulesdir=`ls share/spack/modules`
 module use --append ${INSTALL_PREFIX}/spack/share/spack/modules/$modulesdir
-cd $modulesdir
+cd share/spack/modules/$modulesdir
 gccmod=`ls gcc*`
 cd $INSTALL_PREFIX/spack
 
