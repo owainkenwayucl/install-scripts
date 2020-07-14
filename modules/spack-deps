@@ -8,9 +8,6 @@ proc ModulesHelp { } {
 module-whatis "Adds flang modules to your environment."
 
 set myusername $::tcl_platform(user)
-prereq spack-deps
 
-module add deps/llvm-flang
-module add deps/flang
-setenv CC clang
-setenv CXX clang++
+module           use --append /home/${myusername}/Applications/flang/spack/share/spack/modules/ucl-linux
+
