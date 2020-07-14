@@ -1,0 +1,16 @@
+#%Module
+#
+
+proc ModulesHelp { } {
+
+    puts stderr "This module adds flang spack modules to your environment."
+}
+module-whatis "Adds flang modules to your environment."
+
+set myusername $::tcl_platform(user)
+
+module           use --append /home/${myusername}/Applications/flang/spack/share/spack/modules/ucl-linux
+
+module add deps/llvm-flang
+module add deps/flang
+
