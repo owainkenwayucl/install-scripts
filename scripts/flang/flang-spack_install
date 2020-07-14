@@ -54,8 +54,8 @@ cd ..
 flangmod=`ls share/spack/modules/linux-rhel7*/flang*`
 llvmmod=`ls share/spack/modules/linux-rhel7*/llvm-flang*`
 mkdir -p share/spack/modules/ucl-linux/deps
-ln -s $flangmod share/spack/modules/ucl-linux/deps/flang
-ln -s $llvmmod share/spack/modules/ucl-linux/deps/llvm-flang
+ln -s `pwd`/$flangmod share/spack/modules/ucl-linux/deps/flang
+ln -s `pwd`/$llvmmod share/spack/modules/ucl-linux/deps/llvm-flang
 
 if [ "$restorecompilers" = "yes" ]; then
   echo ">>> Restoring compilers.yaml..."
