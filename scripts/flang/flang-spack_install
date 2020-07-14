@@ -61,5 +61,7 @@ if [ "$restorecompilers" = "yes" ]; then
   echo ">>> Restoring compilers.yaml..."
   mv $HOME/.spack/linux/compilers.yaml.bak $HOME/.spack/linux/compilers.yaml
 fi
-
+echo ">>> Cleaning up staging area..."
+cd $INSTALL_PREFIX/spack/bin
+./spack clean
 
