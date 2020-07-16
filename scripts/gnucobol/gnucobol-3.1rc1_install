@@ -10,7 +10,7 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 require gcc-libs/4.9.2
 
 NAME=${NAME:-gnucobol}
-VERSION=${VERSION:-3.1rc1}
+VERSION=${VERSION:-3.1-rc1}
 #INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/$NAME/$VERSION/$COMPILER_TAG}
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION/$COMPILER_TAG}
 SHA256=${SHA256:-c2e41c2ba520681a67c570d7246d25c31f7f55c8a145aaec3f6273a500a93a76}
