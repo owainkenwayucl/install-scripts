@@ -15,7 +15,7 @@ VERSION=${VERSION:-3.1rc1}
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION/$COMPILER_TAG}
 SHA256=${SHA256:-c2e41c2ba520681a67c570d7246d25c31f7f55c8a145aaec3f6273a500a93a76}
 
-SRC_ARCHIVE=${SRC_ARCHIVE:-https://sourceforge.net/projects/open-cobol/files/gnucobol/3.1/gnucobol-3.1-rc1.tar.gz/download}
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://sourceforge.net/projects/open-cobol/files/gnucobol/3.1/gnucobol-3.1-rc1.tar.xz/download}
 
 
 mkdir -p /dev/shm/$(whoami)/${NAME}
