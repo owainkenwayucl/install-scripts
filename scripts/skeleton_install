@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-###############################################
-# Installing 
-#
-# by Owain Kenway, 2018
-#
 set -e
+
+
+ln -fs /shared/ucl/apps/build_scripts/includes .
 
 for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
 
