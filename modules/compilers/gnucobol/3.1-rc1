@@ -15,7 +15,7 @@ conflict compilers/freepascal
 prereq gcc-libs/4.9.2
 
 
-set              prefix               /home/uccaoke/Applications/gnucobol-3.1-rc1
+set              prefix               /home/uccaoke/Applications/gnucobol/3.1-rc1
 
 
 prepend-path        CMAKE_PREFIX_PATH    $prefix
