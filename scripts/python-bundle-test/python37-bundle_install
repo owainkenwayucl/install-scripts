@@ -40,7 +40,7 @@ virtualenv --system-site-packages venv
 
 source venv/bin/activate
 
-pip3 install $PIP_OPTS --upgrade pip
+pip3 install --upgrade pip
 
 old_IFS="$IFS"
 IFS=$'\n'
