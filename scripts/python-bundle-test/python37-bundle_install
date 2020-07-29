@@ -34,9 +34,9 @@ cd $TIME_STAMP-$PYTHON_VERSION
 
 pip3 install --upgrade setuptools virtualenv pip
 
-virtualenv --system-site-packages venv
-
 export PATH=$HOME/.local/bin:$PATH
+
+virtualenv --system-site-packages venv
 
 source venv/bin/activate
 
