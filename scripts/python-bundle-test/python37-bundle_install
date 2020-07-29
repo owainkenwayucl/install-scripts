@@ -36,6 +36,8 @@ pip3 install --upgrade setuptools virtualenv pip
 
 virtualenv --system-site-packages venv
 
+export PATH=$HOME/.local/bin:$PATH
+
 source venv/bin/activate
 
 pip3 install $PIP_OPTS --upgrade pip
