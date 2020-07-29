@@ -49,7 +49,7 @@ do
    # Ignore blank and comment lines in the lists
    if [[ -n "$entry" ]] && [[ ! "${entry// /}" =~ ^\# ]];
    then
-       pip3 install $PIP_OPTS --no-cache-dir $entry
+       pip3 install --no-cache-dir $entry $PIP_OPTS
    fi
 done
 
@@ -58,7 +58,7 @@ do
    # Ignore blank and comment lines in the lists
    if [[ -n "$entry" ]] && [[ ! "${entry// /}" =~ ^\# ]];
    then
-       pip3 install $PIP_OPTS --no-cache-dir $entry
+       pip3 install --no-cache-dir $entry $PIP_OPTS
    fi
 done
 IFS="$old_IFS"
