@@ -32,7 +32,10 @@ md5sum -c <<< "$MD5 $archive"
 
 tar -xvf $archive
 
-export NVHPC_INSTALL_DIR=$INSTALL_PREFIX
+export NVHPC_INSTALL_DIR=${INSTALL_PREFIX}
+export NVHPC_SILENT=true
+
 echo $NVHPC_INSTALL_DIR
+
 cd ${NAME}_${VERSION}_Linux_x86_64_cuda_multi
 ./install
