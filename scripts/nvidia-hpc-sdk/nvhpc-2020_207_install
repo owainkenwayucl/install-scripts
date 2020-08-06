@@ -39,3 +39,5 @@ echo $NVHPC_INSTALL_DIR
 
 cd ${NAME}_${VERSION}_Linux_x86_64_cuda_multi
 ./install
+
+rm -rf $temp_dir
