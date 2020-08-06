@@ -29,7 +29,10 @@ archive=$(basename "${SRC_ARCHIVE}")
 
 md5sum -c <<< "$MD5 $archive"
 
+
 tar -xvf $archive
+
+export NVHPC_INSTALL_DIR=$INSTALL_PREFIX
 
 cd ${NAME}_${VERSION}_Linux_x86_64_cuda_multi
 ./install
