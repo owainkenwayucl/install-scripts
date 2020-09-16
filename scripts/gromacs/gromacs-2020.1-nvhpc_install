@@ -9,6 +9,9 @@ SRC_ARCHIVE=${SRC_ARCHIVE:-ftp://ftp.gromacs.org/pub/gromacs/gromacs-$package_ve
 PARAMAKE=${PARAMAKE:-1}
 
 TYPE=${TYPE:-cpu}
+set -e
+
+export CXX="${CXX} --c++14"
 
 source includes/source_includes.sh
 module purge
@@ -18,7 +21,6 @@ require compilers/nvhpc/20.7
 
 make_build_env ""
 
-set -e
 
 install_prefix=${HOME}/Applications/GROMACS/2020.1-nvhpc
 
