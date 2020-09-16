@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+
+###############################################
+
+package_name="gromacs"
+package_version="2020.1"
+package_description="GROMACS is a package for performing molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles."
+SRC_ARCHIVE=${SRC_ARCHIVE:-ftp://ftp.gromacs.org/pub/gromacs/gromacs-$package_version.tar.gz}
+PARAMAKE=${PARAMAKE:-1}
+
+TYPE=${TYPE:-cpu}
+
+source includes/source_includes.sh
+module purge
+require personal-modules
+require rcps-core
+require compilers/nvhpc/20.7
+
+make_build_env ""
+
+set -e
+
+install_prefix=${HOME}/Applications/GROMACS/2020.1-nvhpc
+
+cd "$build_dir"
+
+wget "$SRC_ARCHIVE"
+tarfile=$(basename "${SRC_ARCHIVE}")
+
+manifest md5:1c1b5c0f904d4eac7e3515bc01ce3781 ${tarfile}
+
+tar -xf "$tarfile"
+
+cd "${package_name}-${package_version}"
+
+mkdir build
+cd build
+
+echo "Building and installing full, serial, single precision GROMACS with gmx view"
+cmake .. \
+    -DGMX_GPU=OFF \
+    -DGMX_FFT_LIBRARY=fftw3 \
+    -DGMX_BUILD_OWN_FFTW=ON \
+    -DGMX_X11=ON \
+    -DCMAKE_INSTALL_PREFIX=$install_prefix \
+    $CMAKE_FLAGS
+make -j ${PARAMAKE}
+make install
+
+rm -rf *
+ 
+echo "Building and installing full, serial, double precision GROMACS with gmx view"
+cmake .. \
+    -DGMX_GPU=OFF \
+    -DGMX_DOUBLE=on \
+    -DGMX_FFT_LIBRARY=fftw3 \
+    -DGMX_BUILD_OWN_FFTW=ON \
+    -DGMX_X11=ON \
+    -DCMAKE_INSTALL_PREFIX=$install_prefix \
+    $CMAKE_FLAGS
+make -j ${PARAMAKE}
+make install
+rm -rf *
+  
+echo "Building and installing mdrun-only, MPI, single precision GROMACS"
+cmake .. \
+    -DGMX_GPU=OFF \
+    -DGMX_DOUBLE=off \
+    -DGMX_FFT_LIBRARY=fftw3 \
+    -DGMX_BUILD_OWN_FFTW=ON \
+    -DGMX_MPI=on \
+    -DGMX_BUILD_MDRUN_ONLY=ON \
+    -DCMAKE_INSTALL_PREFIX=$install_prefix \
+    $CMAKE_FLAGS
+make -j ${PARAMAKE}
+make install
+rm -rf *
+
+echo "Building and installing mdrun-only, MPI, double precision GROMACS"
+cmake .. \
+    -DGMX_GPU=OFF \
+    -DGMX_DOUBLE=on \
+    -DGMX_MPI=on \
+    -DGMX_FFT_LIBRARY=fftw3 \
+    -DGMX_BUILD_OWN_FFTW=ON \
+    -DGMX_BUILD_MDRUN_ONLY=ON \
+    -DGMX_DEFAULT_SUFFIX=OFF \
+    -DGMX_BINARY_SUFFIX=_mpi_d \
+    -DGMX_LIBS_SUFFIX=_mpi_d \
+    -DCMAKE_INSTALL_PREFIX=$install_prefix \
+    $CMAKE_FLAGS
+make -j ${PARAMAKE}
+make install
+rm -rf *
+
