@@ -10,12 +10,12 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 require gcc-libs/4.9.2
 
 YEAR=${YEAR:-2020}
-RELEASE=${RELEASE:-20.7}
+RELEASE=${RELEASE:-20.9}
 RELEASE_=$(echo $RELEASE | sed 's|\.||g')
 NAME=${NAME:-nvhpc}
 VERSION=${VERSION:-$YEAR_$RELEASE_}
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION/$COMPILER_TAG}
-MD5=${MD5:-71ef81910ae00d2749a23bc1ca6e4a66}
+SHA256=${SHA256:-fe665ab611b03846a90bd70ca4e08c1e59ab527364b971ed0304e0ae73c778d8}
 
 SRC_ARCHIVE=${SRC_ARCHIVE:-https://developer.download.nvidia.com/hpc-sdk/${RELEASE}/${NAME}_${VERSION}_Linux_x86_64_cuda_multi.tar.gz}
 
@@ -29,7 +29,7 @@ cd $temp_dir
 wget $SRC_ARCHIVE
 archive=$(basename "${SRC_ARCHIVE}")
 
-md5sum -c <<< "$MD5 $archive"
+sha256sum -c <<< "$SHA256 $archive"
 
 
 tar -xvf $archive
