@@ -9,14 +9,15 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 
 require gcc-libs/4.9.2
 
+YEAR=${YEAR:-2020}
+RELEASE=${RELEASE:-20.7}
+RELEASE_=$(echo $RELEASE | | sed 's|\.||g')
 NAME=${NAME:-nvhpc}
-VERSION=${VERSION:-2020_207}
-#INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/$NAME/$VERSION/$COMPILER_TAG}
+VERSION=${VERSION:-$YEAR_$RELEASE_}
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION/$COMPILER_TAG}
-#MD5=${MD5:-80b629653121c521317249c7cdb7bb30}
 MD5=${MD5:-71ef81910ae00d2749a23bc1ca6e4a66}
 
-SRC_ARCHIVE=${SRC_ARCHIVE:-https://developer.download.nvidia.com/hpc-sdk/${NAME}_${VERSION}_Linux_x86_64_cuda_multi.tar.gz}
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://developer.download.nvidia.com/hpc-sdk/${RELEASE}/${NAME}_${VERSION}_Linux_x86_64_cuda_multi.tar.gz}
 
 
 mkdir -p /dev/shm/$(whoami)/${NAME}
