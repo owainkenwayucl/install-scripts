@@ -1,0 +1,16 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+
+proc ModulesHelp { } {
+  puts stderr "Development version of GERun"
+}
+
+module-whatis "Development version of GERun"
+
+conflict gerun
+
+# GERun
+setenv           GERUN_PATH           /home/uccaoke/Source/GERun-fork
+prepend-path     PATH                 /home/uccaoke/Source/GERun-fork
+
