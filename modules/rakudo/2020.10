@@ -1,0 +1,15 @@
+#%Module -*- tcl -*-
+##
+## Test to see if we can get away with loading new GNU on top of old...
+
+proc ModulesHelp { } {
+
+  puts stderr {Rakudo 2020.10.}
+
+}
+
+module-whatis {Rakudo 2020.10.}
+
+conflict rakudo
+
+prepend-path PATH /home/uccaoke/Applications/rakudo/2020.10/bin
