@@ -8,6 +8,7 @@ ln -fs /shared/ucl/apps/build_scripts/includes .
 for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
 
 require gcc-libs/4.9.2
+require perl/5.22.0
 
 NAME=${NAME:-rakudo}
 VERSION=${VERSION:-2020.10}
@@ -33,7 +34,7 @@ tar -xvf $archive
 
 cd ${NAME}-${VERSION}
 
-perl Configure.pl --prefix=${INSTALL_PREFIX} --backends=moar
+perl Configure.pl --gen-moar --gen-nqp --prefix=${INSTALL_PREFIX} --backends=moar
 
 make 
 make install
