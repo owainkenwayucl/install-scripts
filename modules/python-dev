@@ -7,5 +7,5 @@ proc ModulesHelp { } {
 module-whatis "Tools for Stats++ etc."
 
 prereq gcc-libs
-module load python3/3.8
-module load mysql-connector-python/2.0.4/python-3.8.0
+module load python3/3.9
+module load mysql-connector-python/8.0.22/python-3.9.0
