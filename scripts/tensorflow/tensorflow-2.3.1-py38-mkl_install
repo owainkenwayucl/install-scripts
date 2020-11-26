@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 ###############################################
-# Installing Tensorflow 1.14.0 with MKL
+# Installing Tensorflow 2.3.1 with MKL
 #
-# by Owain Kenway, 2019
+# by Owain Kenway, 2020
 #
 
 NAME=${NAME:-tensorflow}
