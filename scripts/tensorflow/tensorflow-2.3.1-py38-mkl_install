@@ -62,7 +62,7 @@ export TF_CUDA_CLANG=0
 export TF_NEED_MPI=0
 export TF_SET_ANDROID_WORKSPACE=0
 export TF_NEED_COMPUTECPP=0
-export CC_OPT_FLAGS=" -march=${MARCH} "
+export CC_OPT_FLAGS=" -march=${MARCH} -std=gnu11"
 export TF_NEED_ROCM=0
 
 echo ">>> Answer yes to all defaults <<<"
