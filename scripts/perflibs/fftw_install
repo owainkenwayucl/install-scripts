@@ -32,7 +32,7 @@ archive=$(basename "${SRC_ARCHIVE}")
 
 md5sum -c <<< "$MD5 $archive"
 
-for i in --enable-float ""
+for i in --enable-float --enable-long-double ""
 do
   echo "building $i version"
   tar -xvf $archive
