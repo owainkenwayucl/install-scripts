@@ -1,0 +1,33 @@
+#%Module -*- tcl -*-
+##
+## modulefile
+##
+## 
+
+proc ModulesHelp { } {
+  puts stderr "\tAdds FFTW 3.3.8 for NV compilers to your environment variables. Includes single and double precision plus long-double."
+}
+
+module-whatis "Adds FFTW 3.3.8 for NV compilers to your environment variables. Includes single and double precision plus long-double."
+
+conflict fftw
+prereq gcc-libs
+prereq compilers/nvhpc/20.9
+
+set              root              /home/uccaoke/Applications/fftw/3.3.8/nvidia-2020-20.9
+
+prepend-path     PATH              $root/bin
+prepend-path     MANPATH           $root/share/man
+prepend-path     LD_RUN_PATH       $root/lib
+prepend-path     LD_LIBRARY_PATH   $root/lib
+prepend-path        LIBRARY_PATH   $root/lib
+prepend-path     CPATH             $root/include
+prepend-path     INCLUDE_PATH      $root/include
+
+setenv           FFTWLIBDIR        $root/lib
+setenv           FFTWINCLUDE       $root/include
+setenv           FFTWLIB           fftw
+
+prepend-path PKG_CONFIG_PATH	$root/lib/pkgconfig
+prepend-path CMAKE_PREFIX_PATH  $root
+
