@@ -5,7 +5,7 @@ set -e
 
 ln -fs /shared/ucl/apps/build_scripts/includes .
 
-for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
+for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require,tools}_inc.sh; do . $i; done
 
 require gcc-libs/4.9.2
 require compilers/nvhpc/20.9
