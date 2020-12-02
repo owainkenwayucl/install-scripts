@@ -5,7 +5,7 @@ set -e
 
 ln -fs /shared/ucl/apps/build_scripts/includes .
 
-for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require,tools}_inc.sh; do . $i; done
+for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
 
 require gcc-libs/4.9.2
 require compilers/nvhpc/20.9
@@ -29,6 +29,10 @@ wget $SRC_ARCHIVE
 archive=$(basename "${SRC_ARCHIVE}")
 
 sha512sum -c <<< "$SHA512 $archive"
+
+install_prefix=${INSTALL_PREFIX}
+package_version=${VERSION}
+package_name=${NAME}
 
 owd="$(pwd -P)"
 for package_variant in "serial" "native-threads" "openmp"; do
