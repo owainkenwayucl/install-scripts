@@ -16,7 +16,7 @@ PERFLIBSVER=${PERFLIBSVER:-1.0}
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/perflibs/$PERFLIBSVER/$NAME/$VERSION/$COMPILER_TAG}
 SHA512=${SHA512:-9c4898301c675471bbce2bb99b6bbe7c90724784fac06504416d4bd5da3cd4488f727b0a118c9a38ea342daac2af9e32597a847004241cc57de693b58b856262}
 
-SRC_ARCHIVE=${SRC_ARCHIVE:-https://github.com/xianyi/OpenBLAS/archive/v$package_version.tar.gz}
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://github.com/xianyi/OpenBLAS/archive/v$VERSION.tar.gz}
 
 
 mkdir -p /dev/shm/$(whoami)/${NAME}
