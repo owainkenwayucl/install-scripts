@@ -1,0 +1,30 @@
+#%Module -*- tcl -*-
+##
+## Test to see if we can get away with loading new GNU on top of old...
+
+proc ModulesHelp { } {
+
+  puts stderr {The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go, as well as libraries for these languages (libstdc++,...).}
+
+}
+
+module-whatis {The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go, as well as libraries for these languages (libstdc++,...).}
+
+conflict compilers
+conflict gcc
+
+set              prefix               /shared/ucl/apps/gcc/10.2.0
+
+prepend-path LIBRARY_PATH /shared/ucl/apps/gcc/10.2.0/lib
+prepend-path LIBRARY_PATH /shared/ucl/apps/gcc/10.2.0/lib64
+prepend-path LD_LIBRARY_PATH /shared/ucl/apps/gcc/10.2.0/lib
+prepend-path LD_LIBRARY_PATH /shared/ucl/apps/gcc/10.2.0/lib64
+prepend-path PATH /shared/ucl/apps/gcc/10.2.0/bin
+prepend-path MANPATH /shared/ucl/apps/gcc/10.2.0/man
+
+setenv CC gcc
+setenv CXX g++
+setenv FC gfortran
+setenv F90 gfortran
+setenv F77 gfortran
+setenv COMPILER_TAG gnu-10.2.0
