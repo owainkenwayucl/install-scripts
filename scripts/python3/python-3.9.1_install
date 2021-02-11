@@ -15,6 +15,7 @@ source includes/source_includes.sh
  
 module purge
 require  gcc-libs
+require  personal-modules
 require  compilers/gnu/10.2.0
 
 make_build_env
