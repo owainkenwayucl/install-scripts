@@ -14,7 +14,7 @@ set -e
 source includes/source_includes.sh
  
 module purge
-require  gcc-libs
+require  gcc-libs/10.2.0
 require  compilers/intel/2020
 
 make_build_env
@@ -34,7 +34,7 @@ manifest \
 tar -xf "Python-${package_version}.tar.xz"
 
 cd "Python-${package_version}"
-./configure --prefix="$install_prefix" \
+./configure CFLAGS=-fwrapv --prefix="$install_prefix" \
             --enable-shared \
             --with-threads \
             --enable-ipv6 \
