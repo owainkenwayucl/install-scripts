@@ -14,7 +14,7 @@ prereq compilers/intel/2020
 
 conflict python
 
-set              prefix               /home/uccaoke/Applications/python-3.9.1-intel-2020
+set              prefix               /home/uccaoke/Applications/python-3.9.1-intel2020
 
 setenv              PYTHON_VERSION_TAG   3.9
 
