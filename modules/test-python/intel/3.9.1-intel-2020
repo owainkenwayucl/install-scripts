@@ -9,7 +9,7 @@ proc ModulesHelp { } {
 
 module-whatis {Adds Python 3.9.1 with pip and virtualenv to your environment variables.}
 
-prereq gcc-libs/10.2.0
+prereq gcc-overlay/10.2.0
 prereq compilers/intel/2020
 
 conflict python
