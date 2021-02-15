@@ -37,7 +37,7 @@ if [ -f $HOME/.spack/linux/compilers.yaml ]; then
 fi
 
 cd bin
-./spack install gcc@10.2+nvptx
+./spack install gcc@10.2.0+nvptx
 cd ..
 
 if [ "$restorecompilers" = "yes" ]; then
