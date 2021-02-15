@@ -29,6 +29,9 @@ git clone $SRC_ARCHIVE
 cd spack
 #git checkout flang-libstdc++fix-pullrequest
 
+# fix cuda
+sed -i.bak "s|'--silent',|'--silent','--tmpdir=/dev/shm/'|g" var/spack/repos/builtin/packages/cuda/package.py
+
 restorecompilers=no
 if [ -f $HOME/.spack/linux/compilers.yaml ]; then
   echo ">>> Backing up compilers.yaml..."
