@@ -21,12 +21,12 @@ require  gcc-libs/10.2.0
 require  compilers/gnu/10.2.0
 require  cmake
 
-rm -rf $install_prefix
+rm -rf $INSTALL_PREFIX
 
 make_build_env
 
-export PATH="$install_prefix/bin:$PATH"
-export LD_LIBRARY_PATH="$install_prefix/lib:$LD_LIBRARY_PATH"
+export PATH="$INSTALL_PREFIX/bin:$PATH"
+export LD_LIBRARY_PATH="$INSTALL_PREFIX/lib:$LD_LIBRARY_PATH"
 
 cd "$build_dir"
 
@@ -38,7 +38,7 @@ manifest \
 tar -xf "Python-3.7.4.tar.xz"
 
 cd "Python-3.7.4"
-./configure --prefix="$install_prefix" \
+./configure --prefix="$INSTALL_PREFIX" \
             --enable-shared \
             --with-threads \
             --enable-ipv6 \
