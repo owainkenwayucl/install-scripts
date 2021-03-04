@@ -9,6 +9,8 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 
 require gcc-libs/4.9.2
 require python/3.9.0
+require cmake
+
 NAME=${NAME:-lfortran}
 VERSION=${VERSION:-0.3.0}
 #INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/$NAME/$VERSION/$COMPILER_TAG}
@@ -16,5 +18,5 @@ INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION/$COMPILER_T
 
 virtualenv --system-site-packages ${INSTALL_PREFIX}
 source ${INSTALL_PREFIX}/bin/activate
-
+pip3 install scikit-build
 pip3 install lfortran==${VERSION}
