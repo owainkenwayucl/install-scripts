@@ -15,7 +15,9 @@ source includes/source_includes.sh
  
 module purge
 require  personal-modules
-require  compilers/gnu/9.2.0
+require  beta-modules
+require  gcc-libs/10.2.0
+require  compilers/gnu/10.2.0
 require  cmake
 
 rm -rf $install_prefix
