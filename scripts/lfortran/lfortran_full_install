@@ -3,9 +3,11 @@
 ###############################################
 # Installing Python
 #
+NAME=${NAME:-lfortran}
+VERSION=${VERSION:-0.3.0}
 
-package_name="lfortran"
-package_version="0.3.0"
+package_name=${NAME}
+package_version=${VERSION}
 SHA=${SHA:-71f64668c259f3ed07bd4aa239dbba6cc1b6b0a84d50bbff160664845d7986f757e4d65fca327e62a2d12ba593742ca83a22f7cb6093aff8715ec916c2ba9416}
 SRC_ARCHIVE=${SRC_ARCHIVE:-https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz}
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION/$COMPILER_TAG}
