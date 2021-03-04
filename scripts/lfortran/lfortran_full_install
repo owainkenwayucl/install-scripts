@@ -49,5 +49,5 @@ pip3 install virtualenv
 
 pip3 install --upgrade pip
 pip3 install scikit-build
-pip3 install lfortran==${VERSION}
+pip3 install lfortran==$package_version
 
