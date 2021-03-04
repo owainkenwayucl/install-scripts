@@ -15,9 +15,10 @@ source includes/source_includes.sh
  
 module purge
 require  personal-modules
-require  gcc-libs/9.2.0
 require  compilers/gnu/9.2.0
 require  cmake
+
+rm -rf $install_prefix
 
 make_build_env
 
