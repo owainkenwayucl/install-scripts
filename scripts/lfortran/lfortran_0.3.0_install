@@ -51,6 +51,7 @@ pip3 install --upgrade pip
 pip3 install virtualenv
 
 pip3 install --upgrade pip
+pip3 install antlr4-python3-runtime==4.7.2
 pip3 install scikit-build
 pip3 install lfortran==$package_version
 
