@@ -61,5 +61,6 @@ pip3 install antlr4-python3-runtime==4.7.2
 pip3 install scikit-build
 
 cd ..
-pip3 install lfortran-${VERSION}.tar.gz
-
+tar zxvf lfortran-${VERSION}.tar.gz
+cd lfortran-${VERSION}
+pip3 install .
