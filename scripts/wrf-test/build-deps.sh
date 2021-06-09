@@ -5,7 +5,7 @@ set -e
 module purge
 module load rcps-core
 module load python/3.8.6
-
+module load compilers/gnu/9.2.0
 
 rm -Rf ~/Source/wrf/deps
 mkdir -p ~/Source/wrf/deps
@@ -16,10 +16,5 @@ git clone https://github.com/spack/spack
 
 
 cd spack
-module use --append $(pwd)/share/spack/modules/linux-rhel7-cascadelake
-bin/spack install gcc@11.1.0
-
-bin/spack compiler find
-
-bin/spack install wrf@4.2%gcc@11.1.0
+bin/spack install wrf@4.2
 
