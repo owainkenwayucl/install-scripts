@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/bash -l
+
+set -e
 
 rm -Rf ~/Source/wrf/deps
 mkdir -p ~/Source/wrf/deps
