@@ -1,6 +1,10 @@
 #!/bin/bash -l
 
+
 set -e
+module purge
+module load rcps-core
+
 
 rm -Rf ~/Source/wrf/deps
 mkdir -p ~/Source/wrf/deps
