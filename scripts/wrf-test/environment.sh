@@ -1,7 +1,5 @@
 #!/bin/bash -l
 
-set -e
-
 module purge
 module load beta-modules
 module load gcc-libs/9.2.0
