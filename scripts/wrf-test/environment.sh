@@ -9,7 +9,7 @@ module load python/3.8.6
 oldpwd=$(pwd)
 cd ~/Source/wrf/deps/spack/share/spack/modules
 spackarch=$(ls rhel*)
-cd $(spackarch)/gcc-9.2.0
+cd $spackarch/gcc-9.2.0
 
 modopenmpi=$(ls openmpi*)
 modnetcdfp=$(ls parallel-netcdf*)
@@ -37,9 +37,9 @@ echo "Libtool module:         $modlt"
 
 cd $oldpwd
 
-module use --append ~/Source/wrf/deps/spack/share/spack/modules/$(spackarch)
+module use --append ~/Source/wrf/deps/spack/share/spack/modules/$spackarch
 
 module load $modopenmpi $modnetcdfp $modnetcdfc $modnetcdff $modjasp $modpng $modz $modperl $modhdf $modm4 $modlt
 
-export NETCDF=$HOME/Source/wrf/deps/spack/optspack/$(spackarch)/gcc-9.2.0/netcdf-fortran-*
+export NETCDF=$HOME/Source/wrf/deps/spack/optspack/$spackarch/gcc-9.2.0/netcdf-fortran-*
 export NETCDF_classic=1
