@@ -9,7 +9,7 @@ module load python/3.8.6
 oldpwd=$(pwd)
 cd ~/Source/wrf/deps/spack/share/spack/modules
 spackarch=$(ls | grep linux-rhel)
-cd $spackarch/gcc-9.2.0
+cd $spackarch
 
 modopenmpi=$(ls | grep openmpi)
 modnetcdfp=$(ls | grep parallel-netcdf)
