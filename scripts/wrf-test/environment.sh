@@ -8,20 +8,20 @@ module load python/3.8.6
 
 oldpwd=$(pwd)
 cd ~/Source/wrf/deps/spack/share/spack/modules
-spackarch=$(ls linux-rhel*)
+spackarch=$(ls | grep linux-rhel)
 cd $spackarch/gcc-9.2.0
 
-modopenmpi=$(ls openmpi*)
-modnetcdfp=$(ls parallel-netcdf*)
-modnetcdfc=$(ls netcdf-c*)
-modnetcdff=$(ls netcdf-fortran*)
-modjasp=$(ls jasper*)
-modpng=$(ls libpng*)
-modz=$(ls zlib*)
-modperl=$(ls perl*)
-modhdf=$(ls hdf5*)
-modm4=$(ls m4*)
-modlt=$(ls libtool*)
+modopenmpi=$(ls | grep openmpi)
+modnetcdfp=$(ls | grep parallel-netcdf)
+modnetcdfc=$(ls | grep netcdf-c)
+modnetcdff=$(ls | grep netcdf-fortran)
+modjasp=$(ls | grep jasper)
+modpng=$(ls | grep libpng)
+modz=$(ls | grep zlib)
+modperl=$(ls | grep perl)
+modhdf=$(ls | grep hdf5)
+modm4=$(ls | grep m4)
+modlt=$(ls | grep libtool)
 
 echo "OpenMPI module:         $modopenmpi"
 echo "NetCDF parallel module: $modnetcdfp"
