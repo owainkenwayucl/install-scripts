@@ -23,5 +23,5 @@ cd $VERSION
 git checkout v$VERSION
 
 ./configure
-make -j 4
+./compile -j 4 em_real
 
