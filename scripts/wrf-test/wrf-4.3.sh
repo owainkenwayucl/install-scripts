@@ -19,7 +19,7 @@ mkdir -p $INSTALL_PREFIX
 
 cd $INSTALL_PREFIX
 git clone $SRC_ARCHIVE $VERSION
-cd WRF
+cd $VERSION
 git checkout v$VERSION
 
 ./configure
