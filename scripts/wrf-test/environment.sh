@@ -45,4 +45,4 @@ cd ~/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0
 ncdir=$(ls | grep netcdf-fortran-*)
 export NETCDF="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir"
 export NETCDF_classic=1
-cd $olddir
+cd $oldpwd
