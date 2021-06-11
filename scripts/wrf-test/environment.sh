@@ -1,5 +1,7 @@
 #!/bin/bash -l
 
+set -e
+
 module purge
 module load beta-modules
 module load gcc-libs/9.2.0
@@ -8,7 +10,7 @@ module load python/3.8.6
 
 oldpwd=$(pwd)
 cd ~/Source/wrf/deps/spack/share/spack/modules
-spackarch=$(ls rhel*)
+spackarch=$(ls linux-rhel*)
 cd $spackarch/gcc-9.2.0
 
 modopenmpi=$(ls openmpi*)
