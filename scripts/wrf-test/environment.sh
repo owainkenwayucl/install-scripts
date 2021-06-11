@@ -35,12 +35,12 @@ echo "HDF5 module:            $modhdf"
 echo "M4 module:              $modm4"
 echo "Libtool module:         $modlt"
 
-cd $oldpwd
-
 module use --append ~/Source/wrf/deps/spack/share/spack/modules/$spackarch
 
 module load $modopenmpi $modnetcdfp $modnetcdfc $modnetcdff $modjasp $modpng $modz $modperl $modhdf $modm4 $modlt
 
-
-export NETCDF="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/netcdf-fortran-*"
+cd ~/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0
+ncdir=$(ls | grep netcdf-fortran-*)
+export NETCDF="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir"
 export NETCDF_classic=1
+cd $olddir
