@@ -12,9 +12,9 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 require gcc-libs/4.9.2
 
 NAME=${NAME:-bazel}
-VERSION=${VERSION:-0.24.1}
+VERSION=${VERSION:-3.7.0}
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/bazel-${VERSION}}
-SHA512=${SHA512:-cb402caf333731c168e83eac4ef6a9198ea08ca7d25401661404bf2303384d12afb0e6a65024852c318d352e5fca3a40dcc261e692487abb21d03b667dbae52f}
+SHA512=${SHA512:-d7775194747de1184b3baaa07c1aded0653eb4cae055552fbb8b367b280caf11078242b46005e9973f28046d19ad7ff80223f2b9f0505a7e95346cb660896b32}
 
 SRC_ARCHIVE=${SRC_ARCHIVE:-https://github.com/bazelbuild/bazel/releases/download/${VERSION}/bazel-${VERSION}-installer-linux-x86_64.sh}
 
