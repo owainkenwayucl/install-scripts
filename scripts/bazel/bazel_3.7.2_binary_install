@@ -14,7 +14,7 @@ require gcc-libs/4.9.2
 NAME=${NAME:-bazel}
 VERSION=${VERSION:-3.7.2}
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/bazel-${VERSION}}
-SHA512=${SHA512:-05e1dc24e169efab90d2b71ed061ba32ef436dd62f0016503f5400950cc87da60de033bc9cd2d138d484c0b1366c38e9ff495926ef1b02cbbeaac58ca9660faa}
+SHA512=${SHA512:-5ab998b467db2adc34f693a585f3810ced00ee0ad1ad5ed6a8341999ecbbcde99eb5de906943c4e4a395ac21cb995ee1e7e42400d397c941cb6737fc8c1fb71c}
 
 SRC_ARCHIVE=${SRC_ARCHIVE:-https://github.com/bazelbuild/bazel/releases/download/${VERSION}/bazel-${VERSION}-installer-linux-x86_64.sh}
 
