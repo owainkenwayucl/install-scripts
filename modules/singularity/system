@@ -1,0 +1,25 @@
+#%Module -*- tcl -*-
+##
+lappend auto_path /shared/ucl/apps/modulelibs/UsefulModuleFunctions
+package require modulefunctions 1.0
+
+set module_name {System Singularity}
+
+proc ModulesHelp { } {
+
+  puts stderr {Sets up environment variables for Singularity}
+
+}
+
+module-whatis {Sets up environment variables for Singluarity}
+
+conflict singularity
+
+set slocation /home/uccaoke/Scratch/singularity
+
+setenv SINGULARITY_CACHEDIR $slocation
+setenv SINGULARITY_TMPDIR $slocation/tmp
+setenv SINGULARITY_LOCALCACHEDIR $slocation/localcache
+setenv SINGULARITY_PULLFOLDER $slocation/pull
+
+setenv SINGULARITY_BINDPATH=/scratch/scratch/uccaoke,/tmpdir
