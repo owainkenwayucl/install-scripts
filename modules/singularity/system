@@ -22,4 +22,4 @@ setenv SINGULARITY_TMPDIR $slocation/tmp
 setenv SINGULARITY_LOCALCACHEDIR $slocation/localcache
 setenv SINGULARITY_PULLFOLDER $slocation/pull
 
-setenv SINGULARITY_BINDPATH=/scratch/scratch/uccaoke,/tmpdir
+setenv SINGULARITY_BINDPATH /scratch/scratch/uccaoke,/tmpdir
