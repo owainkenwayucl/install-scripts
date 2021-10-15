@@ -1,0 +1,12 @@
+#%Module -*- tcl -*-
+proc ModulesHelp { } {
+  puts stderr "Development version of GEPY."
+
+}
+
+module-whatis "Development version of GEPY"
+
+prereq python/3.9.6
+
+prepend-path PYTHONPATH /home/uccaoke/Source/gepy/python
+
