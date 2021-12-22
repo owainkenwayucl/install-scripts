@@ -1,0 +1,15 @@
+#%Module
+#
+
+proc ModulesHelp { } {
+
+    puts stderr "This module adds testing modules to your environment."
+    puts stderr ""
+}
+
+module-whatis "Adds testing modules to your environment."
+
+set myusername $::tcl_platform(user)
+
+module           use /home/${myusername}/Source/install-scripts/modules-testing
+
