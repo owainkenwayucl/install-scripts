@@ -1,0 +1,23 @@
+#%Module -*- tcl -*-
+##
+## Test to see if we can get away with loading new GNU on top of old...
+
+proc ModulesHelp { } {
+
+  puts stderr {Rust 1.58.1}
+
+}
+
+module-whatis {Rust 1.58.1}
+
+conflict compilers/rust
+
+prereq gcc-libs/4.9.2
+
+
+set              prefix               /home/uccaoke/Applications/rust/1.58.1
+
+prepend-path LIBRARY_PATH $prefix/lib
+prepend-path LD_LIBRARY_PATH $prefix/lib
+prepend-path PATH $prefix/bin
+prepend-path MANPATH $prefix/man
