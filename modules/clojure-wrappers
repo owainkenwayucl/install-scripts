@@ -11,7 +11,7 @@ proc ModulesHelp { } {
 module-whatis {Clojure wrappers.}
 
 conflict clojure-wrappers
-prereq python/3.6.3
-prereq clojure/1.10.0.411
+prereq python/3.9.6
+prereq clojure/1.10.3.1069
 
 prepend-path PATH /home/uccaoke/Source/clojure-wrappers

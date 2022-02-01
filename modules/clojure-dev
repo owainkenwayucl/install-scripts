@@ -11,7 +11,7 @@ proc ModulesHelp { } {
 module-whatis {Clojure.}
 
 # Testing shows that for clojure Hotspot is faster.
-module load java/openjdk-11/11.0.3u7/hotspot
-module load clojure/1.10.0.411
-module load python/3.6.3
+module load java/temurin-17/
+module load clojure/1.10.3.1069
+module load python/3.9.6
 module load clojure-wrappers
