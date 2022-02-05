@@ -1,0 +1,11 @@
+#%Module -*- tcl -*-
+proc ModulesHelp { } {
+  puts stderr "Tools for Scala2 etc."
+
+}
+
+module-whatis "Tools for Scala2 etc."
+
+prereq gcc-libs
+module load java/temurin-17
+module load scala/2.13.8

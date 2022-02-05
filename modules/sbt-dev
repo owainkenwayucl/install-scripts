@@ -1,0 +1,11 @@
+#%Module -*- tcl -*-
+proc ModulesHelp { } {
+  puts stderr "Tools for Scala builds with SBT etc."
+
+}
+
+module-whatis "Tools for Scala builds with SBT etc."
+
+prereq gcc-libs
+module load java/temurin-17
+module load sbt
