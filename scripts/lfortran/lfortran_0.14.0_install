@@ -146,8 +146,6 @@ cmake \
 #  that made load spike to >100 using that
 make -j 8
 
-make check
-
 make install
 
 cd ..
