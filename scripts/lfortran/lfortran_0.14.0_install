@@ -151,7 +151,7 @@ make install
 cd ..
 
 
-cd ..
+cd $temp_dir
 
 tar zxvf lfortran-${VERSION}.tar.gz
 cd lfortran-${VERSION}
