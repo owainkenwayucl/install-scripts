@@ -32,6 +32,7 @@ require  beta-modules
 require  gcc-libs/10.2.0
 require  compilers/gnu/10.2.0
 require  cmake
+require  swig/3.0.7/gnu-4.9.2
 
 rm -rf $INSTALL_PREFIX
 
@@ -46,12 +47,16 @@ wget "$SRC_ARCHIVE"
 wget "$LF_ARCHIVE"
 wget "$ZL_ARCHIVE"
 
+#https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/llvm-11.0.1.src.tar.xz
+
+
 manifest \
     "md5:$MD5" "Python-${PYVER}.tar.xz" 
 
 manifest "sha512:$LFHASH" "lfortran-${VERSION}.tar.gz"
 
 manifest "sha256:$ZLHASH" "zlib-${ZLVER}.tar.xz"
+
 
 tar xvf zlib-${ZLVER}.tar.xz
 
@@ -80,6 +85,73 @@ pip3 install antlr4-python3-runtime==4.7.2
 pip3 install scikit-build
 
 cd ..
+
+mkdir llvm
+cd llvm
+wget https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/llvm-11.0.1.src.tar.xz \
+     https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/clang-11.0.1.src.tar.xz \
+     https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/compiler-rt-11.0.1.src.tar.xz \
+     https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/libcxx-11.0.1.src.tar.xz \
+     https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/libcxxabi-11.0.1.src.tar.xz \
+     https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/libunwind-11.0.1.src.tar.xz \
+     https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/lld-11.0.1.src.tar.xz \
+     https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/lldb-11.0.1.src.tar.xz \
+     https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/openmp-11.0.1.src.tar.xz \
+     https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/polly-11.0.1.src.tar.xz \
+     https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/clang-tools-extra-11.0.1.src.tar.xz \
+     https://github.com/llvm/llvm-project/releases/download/llvmorg-11.0.1/test-suite-11.0.1.src.tar.xz
+
+manifest \
+73f572c2eefc5a155e01bcd84815751d722a4d3925f53c144acfb93eeb274b4d  clang-11.0.1.src.tar.xz \
+2ca211dd8cc396a919709a9bc35af11b7d425df0c608d85ba6629242893516c9  clang-tools-extra-11.0.1.src.tar.xz \
+087be3f1116e861cd969c9b0b0903c27028b52eaf45157276f50a9c2500687fc  compiler-rt-11.0.1.src.tar.xz \
+9fd5f669621ffea88a2b93e3d99f3a958b5defb954f71bf754709b63275f5e3d  libcxx-11.0.1.src.tar.xz \
+4a697056a5c08621a8380dcaf3836525835aa76b3008d9e8f27abf9270bf683f  libcxxabi-11.0.1.src.tar.xz \
+6db3b173d872911c9ce1f2779ea4463b3b7e582b4e5fda9d3a005c1ed5ec517f  libunwind-11.0.1.src.tar.xz \
+60ba0da01a391078dcc437fee629f3bf7e30e06467a3a060b4a2a3aa661308b7  lld-11.0.1.src.tar.xz \
+e8d38917d079356fc1200676dfb370e16f3ee9cbdd092dd31e59d080ac5ef2fb  lldb-11.0.1.src.tar.xz \
+ccd87c254b6aebc5077e4e6977d08d4be888e7eb672c6630a26a15d58b59b528  llvm-11.0.1.src.tar.xz \
+4d15a21b90e7de2f01296503f6e4b16c50197fbe9c82e7e81f9c07e28bd82ca7  openmp-11.0.1.src.tar.xz \
+08dfce0e7b168d621f6c64b6b60a25300acb9337345ab0014c4f64a053c5b9ea  polly-11.0.1.src.tar.xz \
+f4d7b89817f1ae66684423d6c4273f0b812ff6f533e607d5742e4684d753b5ba  test-suite-11.0.1.src.tar.xz 
+     
+for i in *.tar.xz; do
+    tar -xf "$i"
+    mv "${i%\.tar\.xz}" "${i%-11\.0\.1\.src\.tar\.xz}"
+done
+
+cd llvm
+
+mkdir build
+cd build
+
+cmake \
+    -DCMAKE_INSTALL_PREFIX="$INSTALL_PREFIX" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp" \
+    -DLLVM_TOOL_OPENMP_BUILD=True \
+    -DLLVM_INSTALL_BINUTILS_SYMLINKS=True \
+    -DLLVM_INSTALL_UTILS=True \
+    -DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN=True \
+    -DCLANG_ENABLE_BOOTSTRAP=On \
+    -DLLVM_BUILD_LLVM_DYLIB=True \
+    -DCLANG_BOOTSTRAP_PASSTHROUGH="CMAKE_INSTALL_PREFIX;CMAKE_BUILD_TYPE;LLVM_BUILD_LLVM_DYLIB;LLVM_ENABLE_PROJECTS;LLVM_TOOL_OPENMP_BUILD;LLVM_INSTALL_BINUTILS_SYMLINKS;LLVM_INSTALL_UTILS;LLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN" \
+    ../
+
+# Normally I use -l to keep build load manageable, but
+#  LLVM's builds *seem* to have problems somewhere
+#  that made load spike to >100 using that
+make -j 8
+
+make check
+
+make install
+
+cd ..
+
+
+cd ..
+
 tar zxvf lfortran-${VERSION}.tar.gz
 cd lfortran-${VERSION}
 cmake -DWITH_LLVM=yes -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX .
