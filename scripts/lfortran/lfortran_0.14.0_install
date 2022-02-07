@@ -11,13 +11,17 @@ ln -fs /shared/ucl/apps/build_scripts/includes .
 NAME=${NAME:-lfortran}
 VERSION=${VERSION:-0.14.0}
 PYVER=${PYVER:-3.9.6}
+ZLVER=${ZLVER:-1.2.11}
 
 package_name=${NAME}
 package_version=${VERSION}
 MD5=${MD5:-ecc29a7688f86e550d29dba2ee66cf80}
 LFHASH=${LFHASH:-d150e74f89abe935d95b946663f9afac6037a9df47fbc65b3797b567b81b3ae629e5ced093a9ce1ca472d1901ae0c870a1d2e336ab4af0862b177f7cb33e188c}
+ZLHASG=${ZLHASH:-4ff941449631ace0d4d203e3483be9dbc9da454084111f97ea0a2114e19bf066}
 SRC_ARCHIVE=${SRC_ARCHIVE:-https://www.python.org/ftp/python/${PYVER}/Python-${PYVER}.tar.xz}
 LF_ARCHIVE=${LF_ARCHIVE:-https://lfortran.github.io/tarballs/release/lfortran-${VERSION}.tar.gz}
+ZL_ARCHIVE=${ZL_ARCHIVE:-https://www.zlib.net/zlib-${ZLVER}.tar.xz}
+
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION}
 
 source includes/source_includes.sh
@@ -40,12 +44,24 @@ cd "$build_dir"
 
 wget "$SRC_ARCHIVE"
 wget "$LF_ARCHIVE"
+wget "$ZL_ARCHIVE"
 
 manifest \
     "md5:$MD5" "Python-${PYVER}.tar.xz" 
 
 manifest "sha512:$LFHASH" "lfortran-${VERSION}.tar.gz"
 
+manfiest "sha256:$ZLHASH" "zlib-${ZLVER}.tar.xz"
+
+tar xvf zlib-${ZLVER}.tar.xz
+
+cd  zlib-${ZLVER}
+
+./configure --prefix=$INSTALL_PREFIX
+make
+make install
+
+cd ..
 tar -xf "Python-${PYVER}.tar.xz"
 
 cd "Python-${PYVER}"
