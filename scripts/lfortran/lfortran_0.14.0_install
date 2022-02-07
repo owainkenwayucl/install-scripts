@@ -160,3 +160,5 @@ cd lfortran-${VERSION}
 cmake -DWITH_LLVM=yes -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX .
 make -j8
 make install
+
+rm -rf $temp_dir
