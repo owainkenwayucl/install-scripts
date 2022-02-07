@@ -51,7 +51,7 @@ manifest \
 
 manifest "sha512:$LFHASH" "lfortran-${VERSION}.tar.gz"
 
-manfiest "sha256:$ZLHASH" "zlib-${ZLVER}.tar.xz"
+manifest "sha256:$ZLHASH" "zlib-${ZLVER}.tar.xz"
 
 tar xvf zlib-${ZLVER}.tar.xz
 
