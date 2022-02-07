@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+###############################################
+# Installing lfortran
+#
+NAME=${NAME:-lfortran}
+VERSION=${VERSION:-0.14.0}
+PYVER=${PYVER:-3.9.6}
+
+package_name=${NAME}
+package_version=${VERSION}
+MD5=${MD5:--ecc29a7688f86e550d29dba2ee66cf80}
+LFHASH=${LFHASH:-d150e74f89abe935d95b946663f9afac6037a9df47fbc65b3797b567b81b3ae629e5ced093a9ce1ca472d1901ae0c870a1d2e336ab4af0862b177f7cb33e188c}
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://www.python.org/ftp/python/${PYVER}/Python-${PYVER}.tar.xz}
+LF_ARCHIVE=${LF_ARCHIVE:-https://lfortran.github.io/tarballs/release/lfortran-${VERSION}.tar.gz}
+INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION}
+
+set -e
+
+source includes/source_includes.sh
+ 
+module purge
+require  personal-modules
+require  beta-modules
+require  gcc-libs/10.2.0
+require  compilers/gnu/10.2.0
+require  cmake
+
+rm -rf $INSTALL_PREFIX
+
+make_build_env
+
+export PATH="$INSTALL_PREFIX/bin:$PATH"
+export LD_LIBRARY_PATH="$INSTALL_PREFIX/lib:$LD_LIBRARY_PATH"
+
+cd "$build_dir"
+
+wget "$SRC_ARCHIVE"
+wget "$LF_ARCHIVE"
+
+manifest \
+    "md5:$MD5" "Python-${PYVER}.tar.xz" 
+
+manifest "sha512:$LFHASH" "lfortran-${VERSION}.tar.gz"
+
+tar -xf "Python-${PYVER}.tar.xz"
+
+cd "Python-${PYVER}"
+./configure --prefix="$INSTALL_PREFIX" \
+            --enable-shared \
+            --with-threads \
+            --enable-ipv6 \
+            --with-ensurepip
+
+make -l "$(nproc)" -j && make install
+pip3 install --upgrade pip
+pip3 install virtualenv
+
+pip3 install --upgrade pip
+pip3 install antlr4-python3-runtime==4.7.2
+pip3 install scikit-build
+
+cd ..
+tar zxvf lfortran-${VERSION}.tar.gz
+cd lfortran-${VERSION}
+cmake -DWITH_LLVM=yes -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX .
+make -j8
+make install
