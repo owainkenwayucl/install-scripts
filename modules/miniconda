@@ -3,19 +3,19 @@
 
 proc ModulesHelp { } {
 
-  puts stderr {Adds Miniconda 4.5.11 to your environment variables. You should use this package only to create new conda environments in your home directory.}
+  puts stderr {Adds Miniconda 4.10.3 to your environment variables. You should use this package only to create new conda environments in your home directory.}
 
 }
 
-module-whatis {Adds Miniconda 4.5.11 to your environment variables.}
+module-whatis {Adds Miniconda 4.10.3 to your environment variables.}
 
 prereq gcc-libs
 
 conflict python
 
-set              prefix               /shared/ucl/apps/miniconda/4.5.11
+set              prefix               /home/uccaoke/Applications/miniconda/4.10.3
 
-setenv              PYTHON_VERSION_TAG   3.7
+setenv              PYTHON_VERSION_TAG   3.9
 
 prepend-path        CMAKE_PREFIX_PATH    $prefix
 
