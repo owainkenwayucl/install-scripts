@@ -19,7 +19,7 @@ INSTALL_PREFIX=${INSTALL_PREFIX:-$HOME/Applications/$NAME/$VERSION}
 #INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/$NAME/$VERSION/$COMPILER_TAG}
 SHA256=${SHA256:-1ea2f885b4dbc3098662845560bc64271eb17085387a70c2ba3f29fff6f8d52f}
 
-SRC_ARCHIVE=${SRC_ARCHIVE:-https://repo.anaconda.com/miniconda/Miniconda3-${VERSION}-Linux-x86_64.sh}
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://repo.anaconda.com/miniconda/Miniconda3-py39_${VERSION}-Linux-x86_64.sh}
 
 
 mkdir -p /dev/shm/$(whoami)/${NAME}
