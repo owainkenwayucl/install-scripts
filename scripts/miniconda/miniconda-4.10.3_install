@@ -33,7 +33,6 @@ archive=$(basename "${SRC_ARCHIVE}")
 
 sha256sum -c <<< "$SHA256 $archive"
 
-bash Miniconda3-${VERSION}-Linux-x86_64.sh -b -p ${INSTALL_PREFIX} -f
-cd 
+bash Miniconda3-py39_${VERSION}-Linux-x86_64.sh -b -p ${INSTALL_PREFIX} -f
 
 rm -rf $temp_dir
