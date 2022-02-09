@@ -8,4 +8,4 @@ module-whatis "Tools for Stats++ etc."
 
 prereq gcc-libs
 module load python3/3.9
-module load mysql-connector-python/8.0.22/python-3.9.6
+module load mysql-connector-python/8.0.28/python-3.9.10
