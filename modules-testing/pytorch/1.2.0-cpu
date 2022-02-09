@@ -19,12 +19,8 @@ prereq python/3.7.4
 
 conflict pytorch
 
-if { [ file type /shared/ucl/apps ] == "link" } {
-   set           baselink          [ file readlink /shared/ucl/apps ]
-   set           base              $baselink/pytorch/1.2.0/python3.7.4/cpu
-} else {
-   set           base              /shared/ucl/apps/pytorch/1.2.0/python3.7.4/cpu
-}
+   set           base              /home/uccaoke/Applications/pytorch/1.2.0//python3.7.4/cpu
+
 set              root              $base
 
 prepend-path     LD_RUN_PATH       $root/lib
