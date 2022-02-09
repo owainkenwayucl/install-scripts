@@ -6,7 +6,7 @@ proc ModulesHelp { } {
 
 module-whatis "Development version of GEPY"
 
-prereq python/3.9.6
+prereq python/3.9.10
 
 prepend-path PYTHONPATH /home/uccaoke/Source/gepy/python
 
