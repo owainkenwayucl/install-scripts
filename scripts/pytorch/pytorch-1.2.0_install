@@ -48,6 +48,7 @@ echo
 pip3 install torch==${VERSION}${buildext} torchvision==${TORCHVISION_VERSION}${buildext} $SRC_ARCHIVE
 
 # De-venv it.
+pip3 uninstall pip easy_install
 rm -rf ${INSTALL_PREFIX}/bin/pip*
 rm -rf ${INSTALL_PREFIX}/bin/python*
 rm -rf ${INSTALL_PREFIX}/bin/activate*
