@@ -37,4 +37,7 @@ sha256sum -c <<< "$SHA256 $archive"
 
 unzip $archive
 
+cd ${INSTALL_PREFIX}/gatk-${VERSION}
+sed -i.bak 's|name: gatk|#name: gatk|g' gatkcondaenv.yml
+
 conda env create -p ${INSTALL_PREFIX}/gatk-${VERSION}/conda -f ${INSTALL_PREFIX}/gatk-${VERSION}/gatkcondaenv.yml
