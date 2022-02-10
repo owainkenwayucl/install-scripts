@@ -25,7 +25,7 @@ INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/${APPNAME}-bsd/${VERSION}}
 SRC_ARCHIVE=${SRC_ARCHIVE:-https://github.com/broadinstitute/gatk/releases/download/${VERSION}/gatk-${VERSION}.zip}
 SHA256=${SHA256:-203f17868f0a73a8322d2f8bd568b9f7b4bb81e36d37db5b6a142d8050ef049f}
 
-
+rm -rf ${INSTALL_PREFIX}
 
 mkdir -p ${INSTALL_PREFIX}
 cd ${INSTALL_PREFIX}
@@ -36,3 +36,5 @@ archive=$(basename "${SRC_ARCHIVE}")
 sha256sum -c <<< "$SHA256 $archive"
 
 unzip $archive
+
+conda create -p ${INSTALL_PREFIX}/gatk-${VERSION}/conda -f ${INSTALL_PREFIX}/gatk-${VERSION}/gatkcondaenv.yml
