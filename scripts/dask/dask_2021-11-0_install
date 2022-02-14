@@ -9,6 +9,8 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 
 require gcc-libs/4.9.2
 require python/3.9.10
+require compilers/gnu/4.9.2
+require mpi/openmpi/3.1.4/gnu-4.9.2
 
 NAME=${NAME:-dask-mpi}
 VERSION=${VERSION:-2021.11.0}
@@ -29,6 +31,6 @@ cd ${NAME}
 
 git checkout ${VERSION}
 rm -rf ${INSTALL_PREFIX}
-pip3 install --target=${INSTALL_PREFIX} .
+pip3 install --target=${INSTALL_PREFIX} dask distributed mpi4py jupyter-server-proxy .
 
 rm -rf $temp_dir
