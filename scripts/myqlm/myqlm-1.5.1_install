@@ -21,7 +21,7 @@ rm -rf ${INSTALL_PREFIX}
 virtualenv ${INSTALL_PREFIX}
 source ${INSTALL_PREFIX}/bin/activate
 
-pip3 install jupyter
+pip3 install jupyterlab
 pip3 install Wand
 pip3 install myqlm=${VERSION}
 python3 -m qat.magics.install
