@@ -23,5 +23,5 @@ source ${INSTALL_PREFIX}/bin/activate
 
 pip3 install jupyterlab
 pip3 install Wand
-pip3 install myqlm==${VERSION}
+pip3 install myqlm==${VERSION} --no-binary :all:
 python3 -m qat.magics.install
