@@ -10,6 +10,7 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 require gcc-libs/4.9.2
 require python/3.9.10
 require imagemagick/7.1.0-23
+require compilers/gnu/10.2.0
 
 NAME=${NAME:-myqlm}
 VERSION=${VERSION:-1.5.1}
@@ -23,5 +24,5 @@ source ${INSTALL_PREFIX}/bin/activate
 
 pip3 install jupyterlab
 pip3 install Wand
-pip3 install myqlm==${VERSION} --no-binary :all:
+pip3 install myqlm==${VERSION} 
 python3 -m qat.magics.install
