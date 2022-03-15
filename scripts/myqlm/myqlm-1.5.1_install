@@ -9,6 +9,7 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 
 require gcc-libs/4.9.2
 require python/3.9.10
+require imagemagick/7.1.0-23
 
 NAME=${NAME:-myqlm}
 VERSION=${VERSION:-1.5.1}
