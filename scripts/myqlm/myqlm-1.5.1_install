@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -e
+
+
+ln -fs /shared/ucl/apps/build_scripts/includes .
+
+for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
+
+require gcc-libs/4.9.2
+require python/3.9.10
+
+NAME=${NAME:-myqlm}
+VERSION=${VERSION:-1.5.1}
+#INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/$NAME/$VERSION/$COMPILER_TAG}
+INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION/$COMPILER_TAG}
+
+rm -rf ${INSTALL_PREFIX}
+
+virtualenv ${INSTALL_PREFIX}
+source ${INSTALL_PREFIX}/bin/activate
+
+pip3 install jupyter
+pip3 install myqlm=${VERSION}
+python3 -m qat.magics.install
