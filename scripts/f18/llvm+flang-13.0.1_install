@@ -47,7 +47,7 @@ cmake \
   -DLLVM_TARGETS_TO_BUILD=host \
   -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
   -DLLVM_LIT_ARGS=-v \
-  -DLLVM_ENABLE_PROJECTS="clang;mlir;flang;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp" \
+  -DLLVM_ENABLE_PROJECTS="clang;mlir;flang;libcxx;libcxxabi;libunwind;lldb;lld;polly;openmp" \
   -DLLVM_TOOL_OPENMP_BUILD=True \
   -DLLVM_INSTALL_BINUTILS_SYMLINKS=True \
   -DLLVM_INSTALL_UTILS=True \
