@@ -14,7 +14,7 @@ require beta-modules
 require personal-modules
 require gcc-libs/7.3.0
 require compilers/gnu/7.3.0
-require cmake/3.13.3
+require cmake/3.21.1
 
 NAME=${NAME:-llvm}
 VERSION=${VERSION:-13.0.1}
