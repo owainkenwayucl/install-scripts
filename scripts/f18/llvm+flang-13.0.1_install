@@ -21,7 +21,7 @@ NAME=${NAME:-llvm}
 VERSION=${VERSION:-13.0.1}
 INSTALL_PREFIX=${INSTALL_PREFIX:-$HOME/Applications/$NAME/$VERSION}
 
-SRC_ARCHIVE=${SRC_ARCHIVE:-https://github.com/llvm/llvm-project}
+SRC_ARCHIVE=${SRC_ARCHIVE:-$(pwd)/llvm-${VERSION}.tar}
 
 
 mkdir -p /dev/shm/$(whoami)/${NAME}
@@ -30,7 +30,9 @@ temp_dir=$(mktemp -d -p /dev/shm/$(whoami)/${NAME})
 
 cd $temp_dir
 
-git clone $SRC_ARCHIVE llvm
+cp $SRC_ARCHIVE .
+tar xvf $SRC_ARCHIVE
+
 cd llvm
 git checkout llvmorg-${VERSION}
 rm -rf build
