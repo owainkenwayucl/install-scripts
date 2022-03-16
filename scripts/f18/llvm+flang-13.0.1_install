@@ -45,7 +45,7 @@ cmake \
   -DFLANG_ENABLE_WERROR=On \
   -DLLVM_ENABLE_ASSERTIONS=ON \
   -DLLVM_TARGETS_TO_BUILD=host \
-  -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX
+  -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
   -DLLVM_LIT_ARGS=-v \
   -DLLVM_ENABLE_PROJECTS="clang;mlir;flang;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly;openmp" \
   -DLLVM_TOOL_OPENMP_BUILD=True \
