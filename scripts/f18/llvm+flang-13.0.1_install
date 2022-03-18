@@ -12,7 +12,7 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 module purge
 require beta-modules
 require personal-modules
-require gcc-libs/4.9.2
+require gcc-libs/7.3.0
 require testing-modules
 require compilers/llvm/8.0.0
 require cmake/3.21.1
