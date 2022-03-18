@@ -35,7 +35,7 @@ cmake --build build-cmake
 
 rm -rf $INSTALL_PREFIX
 mkdir -p $INSTAL_PREFIX/bin
-cp build-cmake/ninja $INSTAL_PREFIX/bin
+cp build-cmake/ninja $INSTALL_PREFIX/bin
 
 
 rm -rf $temp_dir
