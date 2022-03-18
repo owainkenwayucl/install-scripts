@@ -11,10 +11,18 @@ conflict compilers/pgi
 conflict compilers/clang
 prereq gcc-libs
 
-set prefix /home/uccaoke/f18/llvm-8.0/
+set prefix /home/uccaoke/Applications/f18/llvm-8.0/
+prepend-path CMAKE_PREFIX_PATH $prefix
+prepend-path PATH $prefix/bin
+prepend-path CPATH $prefix/include
+prepend-path INCLUDE_PATH $prefix/include
+prepend-path LIBRARY_PATH $prefix/lib
+prepend-path LD_LIBRARY_PATH $prefix/lib
+prepend-path MANPATH $prefix/share/man
+
 
 setenv CC clang
-setenv CXX clang
+setenv CXX clang++
 
 prepend-path CMAKE_PREFIX_PATH $prefix
 
