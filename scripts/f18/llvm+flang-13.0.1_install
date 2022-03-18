@@ -54,8 +54,8 @@ ccmake \
   -DLLVM_INSTALL_UTILS=True \
   -DLLVM_BUILD_LLVM_DYLIB=True \
   -DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN=True \
-  -DLLVM_ENABLE_RUNTIMES="compiler-rt" \
-  -DCMAKE_CXX_LINK_FLAGS="-Wl,-rpath,/shared/ucl/apps/gcc/10.2.0/lib64 -L/shared/ucl/apps/gcc/10.2.0/lib64" 
+  -DLLVM_ENABLE_RUNTIMES="compiler-rt" 
+#  -DCMAKE_CXX_LINK_FLAGS="-Wl,-rpath,/shared/ucl/apps/gcc/10.2.0/lib64 -L/shared/ucl/apps/gcc/10.2.0/lib64" 
 
 
 make -j 30
