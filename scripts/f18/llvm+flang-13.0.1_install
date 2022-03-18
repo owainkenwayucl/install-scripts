@@ -13,7 +13,8 @@ module purge
 require beta-modules
 require personal-modules
 require gcc-libs/4.9.2
-require compilers/clang/8.0.0
+require testing-modules
+require compilers/llvm/8.0.0
 require cmake/3.21.1
 require python/3.9.10
 
