@@ -1,0 +1,15 @@
+#%Module -*- tcl -*-
+##
+## Test to see if we can get away with loading new GNU on top of old...
+
+proc ModulesHelp { } {
+
+  puts stderr {ninja}
+
+}
+
+module-whatis {ninja}
+
+conflict ninja
+
+prepend-path PATH /home/uccaoke/Applications/ninja/1.10.2/bin
