@@ -61,4 +61,6 @@ cmake \
 
 cmake --build . 
 
+ninja install
+
 rm -rf $temp_dir
