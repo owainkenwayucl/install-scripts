@@ -35,4 +35,4 @@ cd $temp_dir
 
 git clone --recursive $SRC_ARCHIVE
 
-tar -cf $loc/flang-fir-${VERSION}.tar llvm
+tar -cf $loc/flang-fir-${VERSION}.tar f18-llvm-project
