@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+# Massive thanks to Jeff Hammond (@jeffhammond) for the example:
+# https://github.com/jeffhammond/HPCInfo/blob/master/buildscripts/llvm-git.sh
+
+set -e
+
+ln -fs /shared/ucl/apps/build_scripts/includes .
+
+for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
+
+module purge
+require beta-modules
+require personal-modules
+require gcc-libs/10.2.0
+require compilers/gnu/10.2.0
+require cmake/3.21.1
+require python/3.9.10
+require ninja
+
+NAME=${NAME:-llvm-flang-fir}
+VERSION=${VERSION:-testing}
+#INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/$NAME/$VERSION/$COMPILER_TAG}
+INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION}
+
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://github.com/flang-compiler/f18-llvm-project.git}
+
+rm -Rf ${INSTALL_PREFIX}
+
+mkdir -p /dev/shm/$(whoami)/${NAME}
+
+temp_dir=$(mktemp -d -p /dev/shm/$(whoami)/${NAME})
+
+cd $temp_dir
+
+git clone --recursive $SRC_ARCHIVE
+
+cd f18-llvm-project
+rm -rf build
+mkdir build
+cd build
+
+export CC=$(which gcc)
+export CXX=$(which g++)
+
+cmake \
+      -G Ninja \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DLLVM_TARGETS_TO_BUILD=X86 \
+      -DLLVM_ENABLE_RUNTIMES="libcxxabi;libcxx" \
+      -DLLVM_ENABLE_PROJECTS="lld;mlir;clang;flang;openmp;pstl;polly" \
+      -DPYTHON_EXECUTABLE=`which python3` \
+      -DCMAKE_C_COMPILER=$CC \
+      -DCMAKE_CXX_COMPILER=$CXX \
+      -DLLVM_USE_LINKER=gold \
+      -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
+      ../llvm
+
+cmake --build . 
+
+rm -rf $temp_dir
