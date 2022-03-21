@@ -18,9 +18,9 @@ prepend-path LIBRARY_PATH $prefix/lib
 prepend-path LD_LIBRARY_PATH $prefix/lib
 prepend-path PATH $prefix/bin
 
-setenv FC f18
-setenv F90 f18
-setenv F77 f18
+setenv FC flang-new
+setenv F90 flang-new
+setenv F77 flang-new
 setenv CC clang
 setenv CXX clang++
-setenv COMPILER_TAG llvm-13.0.1-f18-min
+setenv COMPILER_TAG llvm-f18-fir-test
