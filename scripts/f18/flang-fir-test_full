@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+mv flang-fir-testing.tar flang-fir-testing.tar.old
+./flang-fir-test_clone
+rm -rf /dev/shm/uccaoke
+./flang-fir-test_install
