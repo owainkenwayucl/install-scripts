@@ -32,5 +32,5 @@ sha256sum -c <<< "$SHA256 $archive"
 tar -xvf $archive
 
 cd ${NAME}-${VERSION}
-sed "s|\$(HOME)/hpl|$(pwd)|g" setup/Make.Linux_Intel64 > Make.Linux_Intel64 
+sed "s|\$(HOME)/hpl|$(pwd)|g;s|-openmp|-qopenmp|g" setup/Make.Linux_Intel64 > Make.Linux_Intel64 
 make arch=Linux_Intel64
