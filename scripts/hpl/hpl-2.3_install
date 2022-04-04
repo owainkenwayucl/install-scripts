@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -e
+
+
+ln -fs /shared/ucl/apps/build_scripts/includes .
+
+for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
+
+require gcc-libs/4.9.2
+require compilers/intel/2018/update3
+mpi/intel/2018/update3/intel
+
+NAME=${NAME:-hpl}
+VERSION=${VERSION:-2.3}
+#INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/$NAME/$VERSION/$COMPILER_TAG}
+INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION/$COMPILER_TAG}
+SHA256=${SHA256:-32c5c17d22330e6f2337b681aded51637fb6008d3f0eb7c277b163fadd612830}
+
+SRC_ARCHIVE=${SRC_ARCHIVE:-http://www.netlib.org/benchmark/hpl/hpl-${VERSION}.tar.gz}
+
+rm -Rf ${INSTALL_PREFIX}
+mkdir -p ${INSTALL_PREFIX}
+
+cd ${INSTALL_PREFIX}
+
+wget $SRC_ARCHIVE
+archive=$(basename "${SRC_ARCHIVE}")
+
+sha256sum -c <<< "$SHA256 $archive"
+
+tar -xvf $archive
+
+cd ${NAME}-${VERSION}
+sed "s|\$(HOME)/hpl|$(pwd)|g" setup/Make.Linux_Intel64 > Make.Linux_Intel64 
+make arch=Linux_Intel64
