@@ -9,7 +9,7 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 
 require gcc-libs/4.9.2
 require compilers/intel/2018/update3
-mpi/intel/2018/update3/intel
+require mpi/intel/2018/update3/intel
 
 NAME=${NAME:-hpl}
 VERSION=${VERSION:-2.3}
