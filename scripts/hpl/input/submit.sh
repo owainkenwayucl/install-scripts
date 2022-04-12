@@ -4,7 +4,8 @@
 
 #$ -l mem=5300M
 
-#$ -wd /home/uccaoke/Scratch
+##$ -wd /home/uccaoke/Scratch
+#$ -cwd
 
 #$ -pe mpi 80
 
