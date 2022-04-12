@@ -2,7 +2,7 @@
 
 #$ -l h_rt=24:00:00
 
-#$ -l mem=5300M
+#$ -l mem=2G
 
 ##$ -wd /home/uccaoke/Scratch
 #$ -cwd
