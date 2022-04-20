@@ -24,6 +24,6 @@ setenv CHPL_COMM gasnet
 setenv CHPL_LAUNCHER gasnetrun_mpi
 setenv CHPL_COMM_SUBSTRATE mpi
 setenv CHPL_GASNET_SEGMENT everything
-setenve CHPL_TARGET_CPU native 
+setenv CHPL_TARGET_CPU native 
 
 
