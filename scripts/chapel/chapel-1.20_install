@@ -9,8 +9,10 @@ set -e
 
 for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
 
-require gcc-libs/4.9.2
-require compilers/gnu/4.9.2
+module purge
+require personal-modules
+require compilers/gnu/9.2.0
+require mpi/openmpi/3.1.5/gnu-9.2.0
 #require compilers/intel/2019/update4
 #require mpi/intel/2019/update4/intel
 
@@ -46,8 +48,9 @@ cd ${NAME}-${VERSION}
 source util/setchplenv.bash
 
 export CHPL_COMM='gasnet'
-export CHPL_LAUNCHER='gasnetrun_psm'
-export CHPL_COMM_SUBSTRATE='psm'
+export CHPL_LAUNCHER='gasnetrun_mpi'
+#export CHPL_COMM_SUBSTRATE='psm'
+export CHPL_COMM_SUBSTRATE='mpi'
 export CHPL_GASNET_SEGMENT='everything'
 export CHPL_TARGET_CPU='native'
 
