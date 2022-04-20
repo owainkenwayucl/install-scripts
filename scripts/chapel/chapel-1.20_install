@@ -55,7 +55,7 @@ export CHPL_GASNET_SEGMENT='everything'
 export CHPL_TARGET_CPU='native'
 
 make 
-make check
+#make check
 chpl -o hello examples/hello.chpl
 ./hello
 
