@@ -49,7 +49,7 @@ cd ${NAME}-${VERSION}
 source util/setchplenv.bash
 
 arch=smp
-
+export CHPL_LLVM=bundled
 
 echo "Detecting location"
 location=$(whereami)
