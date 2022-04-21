@@ -10,7 +10,7 @@ proc ModulesHelp { } {
 
 module-whatis {The GNU Compiler Collection includes front ends for C, C++, Objective-C, Fortran, Ada, and Go, as well as libraries for these languages (libstdc++,...).}
 
-conflict compilers
+#conflict compilers
 conflict gcc
 
 set              prefix               /shared/ucl/apps/gcc/9.2.0
