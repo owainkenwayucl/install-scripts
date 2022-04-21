@@ -47,10 +47,32 @@ cd ${NAME}-${VERSION}
 
 source util/setchplenv.bash
 
+arch=smp
+echo "Detecting location"
+location=$(whereami)
+
+case $location in
+myriad)
+arch=ibv
+;;
+kathleen)
+arch=psm
+;;
+young)
+arch=psm
+;;
+thomas)
+arch=psm
+;;
+michael)
+arch=psm
+;;
+esac
+
 export CHPL_COMM='gasnet'
-export CHPL_LAUNCHER='gasnetrun_mpi'
+export CHPL_LAUNCHER="gasnetrun_${arch}"
 #export CHPL_COMM_SUBSTRATE='psm'
-export CHPL_COMM_SUBSTRATE='mpi'
+export CHPL_COMM_SUBSTRATE="${arch}"
 export CHPL_GASNET_SEGMENT='everything'
 export CHPL_TARGET_CPU='native'
 
