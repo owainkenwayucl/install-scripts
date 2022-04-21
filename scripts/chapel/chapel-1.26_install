@@ -11,6 +11,7 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 
 module purge
 require gcc-libs/4.9.2
+require python/3.9.10
 require userscripts/1.4.0
 require personal-modules
 require compilers/gnu/9.2.0
