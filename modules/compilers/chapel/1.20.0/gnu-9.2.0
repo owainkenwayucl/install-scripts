@@ -27,16 +27,16 @@ setenv CHPL_HOME $prefix
 
 # Myriad is SMP only, others use OFI on OPA
 if [modulefunctions::isCluster Myriad] {
-  setenv CHPL_COMM 'gasnet'
-  setenv CHPL_LAUNCHER 'smp'
-  setenv CHPL_COMM_SUBSTRATE 'smp'
-  setenv CHPL_TARGET_CPU 'native'
-  setenv CHPL_GASNET_SEGMENT 'fast'
+  setenv CHPL_COMM gasnet
+  setenv CHPL_LAUNCHER smp
+  setenv CHPL_COMM_SUBSTRATE smp
+  setenv CHPL_TARGET_CPU native
+  setenv CHPL_GASNET_SEGMENT fast
 } else {
-  setenv CHPL_COMM 'ofi'
-  setenv CHPL_LAUNCHER 'mpirun4ofi'
-  setenv CHPL_TARGET_CPU 'native'
-  setenv CHPL_LIBFABRIC 'bundled'
-  setenv CHPL_RT_COMM_OFI_PROVIDER 'psm2'
+  setenv CHPL_COMM ofi
+  setenv CHPL_LAUNCHER mpirun4ofi
+  setenv CHPL_TARGET_CPU native
+  setenv CHPL_LIBFABRIC bundled
+  setenv CHPL_RT_COMM_OFI_PROVIDER psm2
 }
 
