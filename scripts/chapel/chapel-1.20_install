@@ -56,28 +56,20 @@ location=$(whereami)
 
 case $location in
 myriad)
-arch=verbs
+export CHPL_COMM='gasnet'
+export CHPL_LAUNCHER='smp'
+export CHPL_COMM_SUBSTRATE='smp'
+export CHPL_TARGET_CPU='native'
+export CHPL_GASNET_SEGMENT='fast'
 ;;
-kathleen)
-arch=psm2
-;;
-young)
-arch=psm2
-;;
-thomas)
-arch=psm2
-;;
-michael)
-arch=psm2
-;;
-esac
-
+kathleen | young | thomas | michael)
 export CHPL_COMM='ofi'
-export CHPL_LAUNCHER="mpirun4ofi"
-#export CHPL_COMM_SUBSTRATE='psm'
+export CHPL_LAUNCHER='mpirun4ofi'
 export CHPL_TARGET_CPU='native'
 export CHPL_LIBFABRIC='bundled'
-export CHPL_RT_COMM_OFI_PROVIDER="${arch}"
+export CHPL_RT_COMM_OFI_PROVIDER='psm2'
+;;
+esac
 
 make 
 #make check
