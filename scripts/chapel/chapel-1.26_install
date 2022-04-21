@@ -74,7 +74,7 @@ export CHPL_RT_COMM_OFI_PROVIDER='psm2'
 ;;
 esac
 
-make -j20
+make 
 #make check
 chpl -o hello examples/hello.chpl
 ./hello -nl 1
