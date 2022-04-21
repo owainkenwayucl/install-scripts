@@ -52,7 +52,7 @@ cd ${NAME}-${VERSION}
 source util/setchplenv.bash
 
 arch=smp
-export CHPL_LLVM=bundled
+export CHPL_LLVM=none
 
 echo "Detecting location"
 location=$(whereami)
@@ -73,6 +73,8 @@ export CHPL_LIBFABRIC='bundled'
 export CHPL_RT_COMM_OFI_PROVIDER='psm2'
 ;;
 esac
+
+
 
 make 
 #make check
