@@ -52,23 +52,23 @@ arch=smp
 echo "Detecting location"
 location=$(whereami)
 
-case $location in
-myriad)
-arch=ibv
-;;
-kathleen)
-arch=psm
-;;
-young)
-arch=psm
-;;
-thomas)
-arch=psm
-;;
-michael)
-arch=psm
-;;
-esac
+#case $location in
+#myriad)
+#arch=ibv
+#;;
+#kathleen)
+#arch=psm
+#;;
+#young)
+#arch=psm
+#;;
+#thomas)
+#arch=psm
+#;;
+#michael)
+#arch=psm
+#;;
+#esac
 
 export CHPL_COMM='gasnet'
 export CHPL_LAUNCHER="gasnetrun_${arch}"
