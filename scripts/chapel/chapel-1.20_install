@@ -80,6 +80,6 @@ export CHPL_TARGET_CPU='native'
 make 
 #make check
 chpl -o hello examples/hello.chpl
-./hello
+./hello -nl 1
 
 
