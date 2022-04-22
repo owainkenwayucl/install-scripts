@@ -66,6 +66,7 @@ export CHPL_TARGET_CPU='native'
 export CHPL_GASNET_SEGMENT='fast'
 ;;
 kathleen | young | thomas | michael)
+export MPI_DIR=$MPI_HOME
 export CHPL_COMM='ofi'
 export CHPL_LAUNCHER='mpirun4ofi'
 export CHPL_TARGET_CPU='native'
