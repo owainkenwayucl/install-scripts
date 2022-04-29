@@ -67,7 +67,7 @@ export CHPL_GASNET_SEGMENT='fast'
 ;;
 kathleen | young | thomas | michael)
 export MPI_DIR=$MPI_HOME
-export CHPL_COMM='GASNET'
+export CHPL_COMM='gasnet'
 export CHPL_LAUNCHER='gasnetrun_ofi'
 export CHPL_COMM_SUBSTRATE='ofi'
 export CHPL_GASNET_SEGMENT='everything'
