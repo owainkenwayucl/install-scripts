@@ -1,0 +1,14 @@
+#%Module -*- tcl -*-
+##
+
+proc ModulesHelp { } {
+
+  puts stderr {ninja}
+
+}
+
+module-whatis {ninja}
+
+conflict mpm
+
+prepend-path PATH /home/uccaoke/Applications/mpm/live/bin
