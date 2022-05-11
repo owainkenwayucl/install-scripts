@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# MPM as per https://github.com/mathworks-ref-arch/matlab-dockerfile/blob/main/MPM.md
+
+set -e
+
+ln -fs /shared/ucl/apps/build_scripts/includes .
+
+for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
+
+require gcc-libs/4.9.2
+
+NAME=${NAME:-}
+VERSION=${VERSION:-live}
+#INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/$NAME/$VERSION/$COMPILER_TAG}
+INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION}
+SHA256=${SHA256:-11a494cf34dafe3cdd541d52a03dabb5d1658c97a8053dba57bfa3869772fc3b}
+
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://www.mathworks.com/mpm/glnxa64/mpm}
+
+
+mkdir -p /dev/shm/$(whoami)/${NAME}
+
+temp_dir=$(mktemp -d -p /dev/shm/$(whoami)/${NAME})
+
+cd $temp_dir
+
+wget $SRC_ARCHIVE
+archive=$(basename "${SRC_ARCHIVE}")
+
+sha256sum -c <<< "$SHA256 $archive"
+
+rm -rf ${INSTALL_PREFIX}
+mkdir -p ${INSTALL_PREFIX}/bin
+cp ${archive} ${INSTALL_PREFIX}/bin
+chmod +x ${INSTALL_PREFIX}/bin/${archive}
+
+rm -rf $temp_dir
