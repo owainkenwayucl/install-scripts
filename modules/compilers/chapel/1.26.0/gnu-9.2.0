@@ -34,10 +34,11 @@ if [modulefunctions::isCluster Myriad] {
   setenv CHPL_GASNET_SEGMENT fast
 } else {
   setenv MPI_DIR /shared/ucl/apps/openmpi/3.1.5/gnu-9.2.0
-  setenv CHPL_COMM ofi
-  setenv CHPL_LAUNCHER mpirun4ofi
+  setenv CHPL_COMM gasnet
+  setenv CHPL_LAUNCHER gasnetrun_ofi
   setenv CHPL_TARGET_CPU native
-  setenv CHPL_LIBFABRIC bundled
-  setenv CHPL_RT_COMM_OFI_PROVIDER psm2
+  setenv CHPL_GASNET_SEGMENT everything
+  setenv CHPL_COMM_SUBSTRATE ofi
+  setenv GASNET_OFI_SPAWNER ssh
 }
 
