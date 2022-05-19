@@ -67,11 +67,11 @@ export CHPL_GASNET_SEGMENT='fast'
 ;;
 kathleen | young | thomas | michael)
 export MPI_DIR=$MPI_HOME
-export CHPL_COMM='ofi'
-export CHPL_LAUNCHER='mpirun4ofi'
+export CHPL_COMM='gasnet'
+export CHPL_LAUNCHER='gasnetrun_ofi'
+export CHPL_COMM_SUBSTRATE='ofi'
+export CHPL_GASNET_SEGMENT='everything'
 export CHPL_TARGET_CPU='native'
-export CHPL_LIBFABRIC='bundled'
-export CHPL_RT_COMM_OFI_PROVIDER='psm2'
 ;;
 esac
 
