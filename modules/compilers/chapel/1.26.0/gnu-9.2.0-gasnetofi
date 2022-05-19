@@ -38,5 +38,7 @@ if [modulefunctions::isCluster Myriad] {
   setenv CHPL_LAUNCHER gasnetrun_ofi
   setenv CHPL_TARGET_CPU native
   setenv CHPL_GASNET_SEGMENT everything
+  setenv CHPL_COMM_SUBSTRATE ofi
+  setenv GASNET_OFI_SPAWNER ssh
 }
 
