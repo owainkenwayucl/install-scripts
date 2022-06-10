@@ -1,0 +1,8 @@
+#!/bin/bash -l
+
+module purge
+module load gcc-libs/4.9.2 python/3.9.10
+
+source ${HOME}/Applications/jupyterlab/current
+
+jupyter lab --port=3270 --no-browser "$@"
