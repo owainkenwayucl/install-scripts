@@ -1,0 +1,5 @@
+#!/bin/bash -l
+
+source ${HOME}/Applications/quantum_lab/1.0.0/bin/activate
+export IPYTHONDIR=${HOME}/Applications/quantum_lab/1.0.0/ipython_settings
+jupyter lab --no-browser "$@"
