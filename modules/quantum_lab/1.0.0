@@ -1,0 +1,14 @@
+#%Module -*- tcl -*-
+##
+## Test to see if we can get away with loading new GNU on top of old...
+
+proc ModulesHelp { } {
+
+  puts stderr {Quantum Lab.}
+
+}
+
+module-whatis {Quantum Lab.}
+
+prepend-path PATH /home/uccaoke/Applications/quantum_lab/1.0.0/executables
+

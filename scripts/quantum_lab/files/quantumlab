@@ -1,5 +1,8 @@
 #!/bin/bash -l
 
+module purge
+module load gcc-libs/4.9.2 python/3.9.10 imagemagick/7.1.0-23 compilers/gnu/10.2.0
+
 source ${HOME}/Applications/quantum_lab/1.0.0/bin/activate
 export IPYTHONDIR=${HOME}/Applications/quantum_lab/1.0.0/ipython_settings
 jupyter lab --no-browser "$@"
