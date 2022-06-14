@@ -11,8 +11,8 @@ require gcc-libs/4.9.2
 require python/3.9.10
 require compilers/gnu/4.9.2
 
-NAME=${NAME:-qiskit}
-VERSION=${VERSION:-0.36.2}
+NAME=${NAME:-amazon-bracket}
+VERSION=${VERSION:-1.25.0}
 #INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/$NAME/$VERSION}
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION}
 
@@ -23,6 +23,5 @@ source ${INSTALL_PREFIX}/bin/activate
 
 pip3 install --upgrade pip
 pip3 install jupyterlab
-pip3 install qiskit==${VERSION}
-pip3 install qiskit[visualization]==${VERSION}
+pip3 install amazon-braket-sdk==${VERSION}
 
