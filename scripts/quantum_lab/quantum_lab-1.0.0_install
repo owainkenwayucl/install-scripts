@@ -36,6 +36,6 @@ pip3 install qiskit[visualization]==${QISKIT_VERSION}
 pip3 install amazon-braket-sdk==${BRAKET_VERSION}
 pip3 install Wand
 pip3 install myqlm==${MYQLM_VERSION} 
-pip3 install myqlm-interop[qiskit_binder]==${MYQLM_VERSION} 
+#pip3 install myqlm-interop[qiskit_binder]==${MYQLM_VERSION} 
 export IPYTHONDIR=${INSTALL_PREFIX}/ipython_settings
 python3 -m qat.magics.install
