@@ -15,7 +15,7 @@ require python/miniconda3/4.10.3
 source $UCL_CONDA_PATH/etc/profile.d/conda.sh
 
 NAME=${NAME:-quantum_lab}
-VERSION=${VERSION:-1.0.0}
+VERSION=${VERSION:-4.0.0}
 QISKIT_VERSION=${QISKIT_VERSION:-0.37.1}
 MYQLM_VERSION=${MYQLM_VERSION:-1.5.1}
 BRAKET_VERSION=${BRAKET_VERSION:-1.25.0}
