@@ -12,6 +12,8 @@ require imagemagick/7.1.0-23
 require compilers/gnu/10.2.0
 require python/miniconda3/4.10.3
 
+source $UCL_CONDA_PATH/etc/profile.d/conda.sh
+
 NAME=${NAME:-quantum_lab}
 VERSION=${VERSION:-1.0.0}
 QISKIT_VERSION=${QISKIT_VERSION:-0.37.1}
