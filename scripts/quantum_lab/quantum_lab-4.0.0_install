@@ -30,7 +30,8 @@ source activate $INSTALL_PREFIX
 
 mkdir -p ${INSTALL_PREFIX}/ipython_settings
 mkdir -p ${INSTALL_PREFIX}/executables
-cp files/quantumlab ${INSTALL_PREFIX}/executables
+cp files/quantumlab4 ${INSTALL_PREFIX}/executables/quantumlab
+cp files/qshell ${INSTALL_PREFIX}/executables
 
 #conda install conda
 #conda update conda
