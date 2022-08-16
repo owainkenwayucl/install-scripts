@@ -1,10 +1,12 @@
 #!/bin/bash -l
 
 module purge
-module load personal-modules gcc-libs/4.9.2 python/miniconda3/4.10.3 imagemagick/7.1.0-23 compilers/gnu/10.2.0
+module load personal-modules gcc-libs/4.9.2 python/miniconda3/4.10.3 imagemagick/7.1.0-23 compilers/gnu/10.2.0 quantum_lab/4.0.0
 
 source $UCL_CONDA_PATH/etc/profile.d/conda.sh
 
 source activate $HOME/Applications/quantum_lab/4.0.0
+
+export PS1
 export IPYTHONDIR=${HOME}/Applications/quantum_lab/4.0.0/ipython_settings
-bash
+exec bash --norc --noprofile
