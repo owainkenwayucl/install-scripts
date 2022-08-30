@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+set -e
+
+
+ln -fs /shared/ucl/apps/build_scripts/includes .
+
+for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,require}_inc.sh; do . $i; done
+
+require gcc-libs/4.9.2
+require imagemagick/7.1.0-23
+require compilers/gnu/10.2.0
+require python/miniconda3/4.10.3
+
+source $UCL_CONDA_PATH/etc/profile.d/conda.sh
+
+NAME=${NAME:-quantum_lab}
+VERSION=${VERSION:-5.0.0}
+QISKIT_VERSION=${QISKIT_VERSION:-0.37.2}
+MYQLM_VERSION=${MYQLM_VERSION:-1.5.1}
+BRAKET_VERSION=${BRAKET_VERSION:-1.29.2}
+QSHARP_VERSION=${QSHARP_VERSION:-0.25.222597}
+CIRQ_VERSION=${CIRQ_VERSION:-1.0.0}
+QPIC_VERSION=${QPIC_VERSION:-1.0.2}
+#INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/$NAME/$VERSION}
+INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION}
+
+rm -rf ${INSTALL_PREFIX}
+
+conda create  --prefix $INSTALL_PREFIX --no-default-packages python=3.9
+source activate $INSTALL_PREFIX 
+
+mkdir -p ${INSTALL_PREFIX}/ipython_settings
+mkdir -p ${INSTALL_PREFIX}/executables
+cp files/quantumlab4 ${INSTALL_PREFIX}/executables/quantumlab
+cp files/qshell ${INSTALL_PREFIX}/executables
+
+#conda install conda
+#conda update conda
+pip3 install --upgrade pip
+conda install ipython
+conda install jupyter
+conda install notebook
+conda install jupyterlab
+conda install qtconsole
+pip3 install qiskit==${QISKIT_VERSION}
+pip3 install qiskit[visualization]==${QISKIT_VERSION}
+pip3 install amazon-braket-sdk==${BRAKET_VERSION}
+pip3 install Wand
+pip3 install qpic==${QPIC_VERSION}
+pip3 install myqlm==${MYQLM_VERSION}
+pip3 install cirq==${CIRQ_VERSION}
+
+
+#pip3 install myqlm-interop[qiskit_binder]==${MYQLM_VERSION} 
+conda install -c microsoft qsharp=${QSHARP_VERSION}
+export IPYTHONDIR=${INSTALL_PREFIX}/ipython_settings
+python3 -m qat.magics.install
+
+cd ${INSTALL_PREFIX}/bin
+ln -s ${HOME}/Source/quantumutils/build_tools/qc
+cd ${INSTALL_PREFIX}/lib/python3.9/site-packages
+ln -s ${HOME}/Source/quantumutils/build_tools/qc qc.py
+ln -s ${HOME}/Source/quantumutils/qlm_math.py .
+ln -s ${HOME}/Source/quantumutils/qsharp_utils.py .
+ln -s ${HOME}/Source/quantumutils/graphing_tools.py .
+
+
