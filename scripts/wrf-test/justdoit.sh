@@ -4,7 +4,7 @@
 
 set -e
 
-mkdir -P ~/Source/wrf/deps
+mkdir -p ~/Source/wrf/deps
 
 ./build-deps.sh
 
