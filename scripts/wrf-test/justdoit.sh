@@ -5,7 +5,7 @@
 set -e
 
 mkdir -p ~/Source/wrf/deps
-mkdir -p ~/Source/wps
+mkdir -p ~/Source/wps/builds
 
 ./build-deps.sh
 
