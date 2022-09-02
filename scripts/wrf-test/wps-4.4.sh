@@ -23,5 +23,5 @@ cd $VERSION
 git checkout v$VERSION
 
 ./configure
-./compile -j 4
+./compile 
 
