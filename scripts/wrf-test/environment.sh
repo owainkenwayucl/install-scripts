@@ -45,12 +45,18 @@ cd ~/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0
 ncdir=$(ls | grep netcdf-fortran-)
 nccdir=$(ls | grep netcdf-c-)
 jaspdir=$(ls | grep jasper-)
+
+echo "BRAVELY MERGING NETCDF!!!"
+rsync -av "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$nccdir" "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir"
+rsync -av "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir" "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$nccdir"
+echo "MERGE COMPLETE!!"
+
 export NETCDF="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir"
 export NETCDF_classic=1
 export NETCDFF=$NETCDF
 export NETCDFC="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$nccdir"
 export JASPERLIB="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$jaspdir/lib"
 export JASPERINC="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$jaspdir/include"
-export LD_LIBRARY_PATH="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir/lib:$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$nccdir/lib:$LD_LIBRARY_PATH"
+#export LD_LIBRARY_PATH="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir/lib:$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$nccdir/lib:$LD_LIBRARY_PATH"
 
 cd $oldpwd
