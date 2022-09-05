@@ -22,6 +22,6 @@ git clone $SRC_ARCHIVE $VERSION
 cd $VERSION
 git checkout v$VERSION
 
-./configure
+./configure --build-grib2-libs
 ./compile 
 
