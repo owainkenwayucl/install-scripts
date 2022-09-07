@@ -1,0 +1,17 @@
+--- module_check_a_mundo.F.orig 2022-09-07 14:15:47.000000000 +0100
++++ module_check_a_mundo.F      2022-09-07 14:17:40.000000000 +0100
+@@ -2968,9 +2968,11 @@
+             oops = oops + 1
+          END IF
+       ENDDO
+-      IF ( oops .GT. 0 ) THEN
+-         count_fatal_error = count_fatal_error + 1
+-      END IF
++! Disable this check killing the program so we can use an unsuitable
++! decompostions.
++!      IF ( oops .GT. 0 ) THEN
++!         count_fatal_error = count_fatal_error + 1
++!      END IF
+ #endif
+ 
+ 
