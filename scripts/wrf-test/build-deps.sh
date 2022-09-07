@@ -19,3 +19,14 @@ git clone https://github.com/spack/spack
 cd spack
 bin/spack install wrf@4.2
 
+
+cd ~/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0
+ncdir=$(ls | grep netcdf-fortran-)
+nccdir=$(ls | grep netcdf-c-)
+
+echo "BRAVELY MERGING NETCDF!!!"
+rsync -av "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$nccdir/" "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir/"
+rsync -av "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir/" "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$nccdir/"
+echo "MERGE COMPLETE!!"
+
+

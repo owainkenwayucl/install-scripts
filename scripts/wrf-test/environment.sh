@@ -49,10 +49,10 @@ nccdir=$(ls | grep netcdf-c-)
 jaspdir=$(ls | grep jasper-)
 jpegdir=$(ls | grep libjpeg-)
 
-echo "BRAVELY MERGING NETCDF!!!"
-rsync -av "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$nccdir/" "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir/"
-rsync -av "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir/" "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$nccdir/"
-echo "MERGE COMPLETE!!"
+#echo "BRAVELY MERGING NETCDF!!!"
+#rsync -av "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$nccdir/" "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir/"
+#rsync -av "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir/" "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$nccdir/"
+#echo "MERGE COMPLETE!!"
 
 export NETCDF="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir"
 export NETCDF_classic=1
