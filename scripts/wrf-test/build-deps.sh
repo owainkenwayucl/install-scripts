@@ -19,6 +19,9 @@ git clone https://github.com/spack/spack
 cd spack
 bin/spack install wrf@4.2
 
+oldpwd=$(pwd)
+cd ~/Source/wrf/deps/spack/share/spack/modules
+spackarch=$(ls | grep linux-rhel)
 
 cd ~/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0
 ncdir=$(ls | grep netcdf-fortran-)
