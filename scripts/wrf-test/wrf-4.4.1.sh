@@ -29,7 +29,9 @@ if [ "${GIT_BUILD^^}" == "YES" ]; then
    git checkout v$VERSION
 
 else
-   wget $SOURCE_ARCHIVE
+   if [ ! -f "v${VERSION}.tar.gz" ]; then
+      wget $SOURCE_ARCHIVE
+   fi
    # Note we are https:ing this from the same location as the git repo so no
    # need to checksum.
    tar xvf v${VERSION}.tar.gz
