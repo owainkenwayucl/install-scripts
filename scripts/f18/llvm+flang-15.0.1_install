@@ -14,7 +14,7 @@ require beta-modules
 require personal-modules
 require gcc-libs/10.2.0
 #require testing-modules
-require compilers/gnu/7.3.0
+require compilers/gnu/10.2.0
 require cmake/3.21.1
 require python/3.9.10
 require ninja
