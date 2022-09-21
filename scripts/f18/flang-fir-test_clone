@@ -33,7 +33,8 @@ temp_dir=$(mktemp -d -p /dev/shm/$(whoami)/${NAME})
 
 cd $temp_dir
 
-git clone -b fir-dev --single-branch --recursive $SRC_ARCHIVE
+#git clone -b fir-dev --single-branch --recursive $SRC_ARCHIVE
+git clone --recursive $SRC_ARCHIVE
 #cd f18-llvm-project
 #git checkout fir-dev -b fir-dev || echo exists
 #git branch --set-upstream-to=origin/fir-dev fir-dev || echo dunno
