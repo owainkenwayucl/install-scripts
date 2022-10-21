@@ -34,16 +34,16 @@ archive=$(basename "${SRC_ARCHIVE}")
 
 sha256sum -c <<< "$SHA256 $archive"
 
-head -n +20 $archive > script
-tail -n +21 $archive > zip
+#head -n +20 $archive > script
+#tail -n +21 $archive > zip
 
 # This file is not included in the archive as it contains some matlab IP.
-patch < script.patch
+#patch < script.patch
 
-rm $archive
+#rm $archive
 
-cp script mpm
-cat zip >> mpm
+#cp script mpm
+#cat zip >> mpm
 
 rm -rf ${INSTALL_PREFIX}
 mkdir -p ${INSTALL_PREFIX}/bin
