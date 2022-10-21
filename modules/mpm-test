@@ -3,11 +3,11 @@
 
 proc ModulesHelp { } {
 
-  puts stderr {ninja}
+  puts stderr {mpm}
 
 }
 
-module-whatis {ninja}
+module-whatis {mpm}
 
 conflict mpm
 
