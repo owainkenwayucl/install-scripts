@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+###############################################
+# Installing Python
+#
+
+package_name="python"
+package_version="3.11.0"
+SHA256=${SHA256:-a57dc82d77358617ba65b9841cee1e3b441f386c3789ddc0676eca077f2951c3}
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://www.python.org/ftp/python/${package_version}/Python-${package_version}.tar.xz}
+
+set -e
+
+source includes/source_includes.sh
+ 
+module purge
+require  gcc-libs
+require  personal-modules
+require  compilers/gnu/4.9.2
+
+make_build_env
+
+install_prefix=${HOME}/Applications/python-${package_version}-gnu10
+
+export PATH="$install_prefix/bin:$PATH"
+export LD_LIBRARY_PATH="$install_prefix/lib:$LD_LIBRARY_PATH"
+
+cd "$build_dir"
+
+wget "$SRC_ARCHIVE"
+
+manifest \
+    "sha256:$SHA256" "Python-${package_version}.tar.xz" 
+
+tar -xf "Python-${package_version}.tar.xz"
+
+cd "Python-${package_version}"
+./configure --prefix="$install_prefix" \
+            --enable-shared \
+            --with-threads \
+            --enable-ipv6 \
+            --with-ensurepip
+
+make -l "$(nproc)" -j && make install
+pip3 install --upgrade pip
+pip3 install virtualenv
+
