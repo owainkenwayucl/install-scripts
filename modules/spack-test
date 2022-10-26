@@ -9,5 +9,5 @@ module-whatis "Adds flang modules to your environment."
 
 set myusername $::tcl_platform(user)
 
-module           use --append /home/${myusername}/Applications/flang/spack/share/spack/modules/ucl-linux
+module           use --append /home/${myusername}/Applications/spack/share/spack/modules/ucl-linux
 
