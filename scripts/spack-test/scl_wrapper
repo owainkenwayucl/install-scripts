@@ -1,0 +1,4 @@
+#!/bin/bash -l
+
+scl enable rh-python38 devtoolset-11 $1
+
