@@ -1,4 +1,4 @@
-#/usr/bin/scl enable rh-python38 devtoolset-11 bash
+#!/bin/bash
 
 set -e
 source /etc/profile.d/modules.sh
