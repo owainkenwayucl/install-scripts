@@ -5,7 +5,7 @@ set -e
 module purge
 module load gcc-libs/4.9.2
 module load compilers/gnu/4.9.2
-modile load python/3.9.10
+module load python/3.9.10
 
 cd ~/Applications
 rm -Rf ~/Applications/spack
