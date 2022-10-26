@@ -37,7 +37,7 @@ manifest \
 tar -xf "Python-${package_version}.tar.xz"
 
 cd "Python-${package_version}"
-export PKG_CONFIG_PATH=$(pwd)/Misc/rhel7
+export PKG_CONFIG_PATH=$(pwd)/Misc/rhel7:$PKG_CONFIG_PATH
 ./configure --prefix="$install_prefix" \
             --enable-shared \
             --with-threads \
