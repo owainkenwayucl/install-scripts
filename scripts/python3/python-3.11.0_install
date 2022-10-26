@@ -3,13 +3,15 @@
 ###############################################
 # Installing Python
 #
+set -e
+
+ln -fs /shared/ucl/apps/build_scripts/includes .
 
 package_name="python"
 package_version="3.11.0"
 SHA256=${SHA256:-a57dc82d77358617ba65b9841cee1e3b441f386c3789ddc0676eca077f2951c3}
 SRC_ARCHIVE=${SRC_ARCHIVE:-https://www.python.org/ftp/python/${package_version}/Python-${package_version}.tar.xz}
 
-set -e
 
 source includes/source_includes.sh
  
