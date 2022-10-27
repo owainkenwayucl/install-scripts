@@ -4,6 +4,8 @@ set -e
 source /etc/profile.d/modules.sh
 module purge
 
+source scl_source enable rh-python38 devtoolset-11
+
 cd ~/Applications
 rm -Rf ~/Applications/spack
 rm -Rf ~/.spack
