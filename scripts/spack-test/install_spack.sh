@@ -25,6 +25,6 @@ git clone https://github.com/spack/spack
 cd spack
 bin/spack install python@3.10.7
 
-arch=`ls share/spack/modules/linux-rhel7*`
+arch=`ls share/spack/modules| grep linux-rhel`
 
-ln -s `pwd`/$arch `pwd`/share/spack/modules/ucl-linux
+ln -s `pwd`/share/spack/modules/${arch} `pwd`/share/spack/modules/ucl-linux
