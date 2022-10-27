@@ -14,4 +14,4 @@ bin/spack install python@3.10.7
 
 arch=`ls share/spack/modules/linux-rhel7*`
 
-ln -s `pwd`/$arch share/spack/modules/ucl-linux
+ln -s `pwd`/$arch `pwd`/share/spack/modules/ucl-linux
