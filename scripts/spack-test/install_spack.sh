@@ -11,7 +11,7 @@ UCL_SCLS="rh-python38 devtoolset-11"
 
 for a in ${UCL_SCLS}
 do
-   source /opt/${a}/enable
+   source /opt/rh/${a}/enable
 done
 export X_SCLS="${UCL_SCLS} ${X_SCLS}"
 
