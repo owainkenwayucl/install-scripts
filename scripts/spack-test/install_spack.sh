@@ -15,7 +15,7 @@ do
 done
 export X_SCLS="${UCL_SCLS} ${X_SCLS}"
 
-
+export TMP=${HOME}/Scratch
 
 cd ~/Applications
 rm -Rf ~/Applications/spack
