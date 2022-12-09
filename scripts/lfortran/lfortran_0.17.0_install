@@ -11,13 +11,13 @@ ln -fs /shared/ucl/apps/build_scripts/includes .
 NAME=${NAME:-lfortran}
 VERSION=${VERSION:-0.17.0}
 PYVER=${PYVER:-3.9.6}
-ZLVER=${ZLVER:-1.2.11}
+ZLVER=${ZLVER:-1.2.13}
 
 package_name=${NAME}
 package_version=${VERSION}
 MD5=${MD5:-ecc29a7688f86e550d29dba2ee66cf80}
 LFHASH=${LFHASH:-78eb39388bcdb73fb6d0b6ab90586048b3ace846688e89abcf71e80c0cf5c1da0e593500806e61752248a89785f2a0bb01ae6}
-ZLHASH=${ZLHASH:-4ff941449631ace0d4d203e3483be9dbc9da454084111f97ea0a2114e19bf066}
+ZLHASH=${ZLHASH:-b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30}
 SRC_ARCHIVE=${SRC_ARCHIVE:-https://www.python.org/ftp/python/${PYVER}/Python-${PYVER}.tar.xz}
 LF_ARCHIVE=${LF_ARCHIVE:-https://lfortran.github.io/tarballs/release/lfortran-${VERSION}.tar.gz}
 ZL_ARCHIVE=${ZL_ARCHIVE:-https://www.zlib.net/zlib-${ZLVER}.tar.xz}
