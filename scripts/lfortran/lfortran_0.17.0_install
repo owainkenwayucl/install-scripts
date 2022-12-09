@@ -20,7 +20,7 @@ LFHASH=${LFHASH:-78eb39388bcdb73fb6d0b6ab90586048b3ace846688e89abcf71e80c0cf5c1d
 ZLHASH=${ZLHASH:-b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30}
 SRC_ARCHIVE=${SRC_ARCHIVE:-https://www.python.org/ftp/python/${PYVER}/Python-${PYVER}.tar.xz}
 LF_ARCHIVE=${LF_ARCHIVE:-https://lfortran.github.io/tarballs/release/lfortran-${VERSION}.tar.gz}
-ZL_ARCHIVE=${ZL_ARCHIVE:-https://www.zlib.net/zlib-${ZLVER}.tar.xz}
+ZL_ARCHIVE=${ZL_ARCHIVE:-https://www.zlib.net/zlib-${ZLVER}.tar.gz}
 
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION}
 
