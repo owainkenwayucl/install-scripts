@@ -4,18 +4,18 @@
 
 proc ModulesHelp { } {
 
-  puts stderr {GnuCOBOL 3.1.2}
+  puts stderr {GnuCOBOL 3.2-rc1}
 
 }
 
-module-whatis {GnuCOBOL 3.1.2}
+module-whatis {GnuCOBOL 3.2-rc1}
 
 conflict compilers/gnucobol
 
 prereq gcc-libs/4.9.2
 
 
-set              prefix               /home/uccaoke/Applications/gnucobol/3.1.2
+set              prefix               /home/uccaoke/Applications/gnucobol/3.2-rc1
 
 
 prepend-path        CMAKE_PREFIX_PATH    $prefix

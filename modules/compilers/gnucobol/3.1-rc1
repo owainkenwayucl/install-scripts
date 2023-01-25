@@ -10,7 +10,7 @@ proc ModulesHelp { } {
 
 module-whatis {GnuCOBOL 3.1-rc1}
 
-conflict compilers/freepascal
+conflict compilers/gnucobol
 
 prereq gcc-libs/4.9.2
 
