@@ -24,6 +24,14 @@ git clone https://github.com/spack/spack
 
 cd spack
 bin/spack install python@3.10.7 py-pip py-virtualenv py-numpy py-scipy py-pytest py-hypothesis py-numba
+bin/spack install gromacs@2023
+bin/spack install gromacs@2022
+bin/spack install gromacs@2021
+bin/spack install gromacs@2020
+bin/spack install gromacs@2019
+bin/spack install gromacs@2018
+
+
 
 arch=`ls share/spack/modules| grep linux-rhel`
 
