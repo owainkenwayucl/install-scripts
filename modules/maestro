@@ -13,5 +13,5 @@ conflict maestro
 prereq xorg-utils
 prereq libxkbcommon
 prereq xcb-util
-setenv SCHRODINGER /home/uccaoke/Applications/maestro
-prepend-path PATH /home/uccaoke/Applications/maestro
+setenv SCHRODINGER /home/uccaoke/Applications/Maestro
+prepend-path PATH /home/uccaoke/Applications/Maestro
