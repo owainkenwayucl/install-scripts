@@ -1,0 +1,15 @@
+#%Module -*- tcl -*-
+##
+
+proc ModulesHelp { } {
+
+  puts stderr {maestro}
+
+}
+
+module-whatis {maestro}
+
+conflict maestro
+
+setenv SCHRODINGER /home/uccaoke/Applications/maestro
+prepend-path PATH /home/uccaoke/Applications/maestro
