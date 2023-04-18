@@ -10,6 +10,8 @@ proc ModulesHelp { } {
 module-whatis {maestro}
 
 conflict maestro
-
+depend xorg-utils
+depend libxkbcommon
+depend xcb-util
 setenv SCHRODINGER /home/uccaoke/Applications/maestro
 prepend-path PATH /home/uccaoke/Applications/maestro
