@@ -13,7 +13,7 @@ NAME=${NAME:-xcb-util}
 VERSION=${VERSION:-0.4.0}
 #INSTALL_PREFIX=${INSTALL_PREFIX:-/shared/ucl/apps/$NAME/$VERSION/$COMPILER_TAG}
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION}
-UTIL_PACKAGES=${UTIL_PACKAGES:-renderutil wm image keysyms}
+#UTIL_PACKAGES=${UTIL_PACKAGES:-renderutil wm image keysyms}
 
 VERSION_renderutil=${VERSION_renderutil:-0.3.9}
 VERSION_wm=${VERSION_wm:-${VERSION}}
@@ -51,17 +51,36 @@ make install
 
 export PKG_CONFIG_PATH=${INSTALL_PREFIX}/lib/pkgconfig
 
-for a in $UTIL_PACKAGES
-do
-   wget --no-check-certificate $SRC_ARCHIVE/xcb-util-${a}-${VERSION_${a}}.tar.bz2
-   archive=$(basename "${SRC_ARCHIVE}/xcb-util-${a}-${VERSION_${a}}.tar.bz2")
-   
-   sha512sum -c <<< "${SHA512_${a}} $archive"
+wget --no-check-certificate $SRC_ARCHIVE/xcb-util-renderutil-${VERSION_renderutil}.tar.bz2
+archive=$(basename "${SRC_ARCHIVE}/xcb-util-renderutil-${VERSION_renderutil}.tar.bz2")
+sha512sum -c <<< "${SHA512_${a}} $archive"
+tar -xvf $archive
+./configure --prefix=$INSTALL_PREFIX
+make 
+make install
 
-   tar -xvf $archive
-   ./configure --prefix=$INSTALL_PREFIX
-   make 
-   make install
-done
+wget --no-check-certificate $SRC_ARCHIVE/xcb-util-wm-${VERSION_wm}.tar.bz2
+archive=$(basename "${SRC_ARCHIVE}/xcb-util-wm-${VERSION_wm}.tar.bz2")
+sha512sum -c <<< "${SHA512_${a}} $archive"
+tar -xvf $archive
+./configure --prefix=$INSTALL_PREFIX
+make 
+make install
+
+wget --no-check-certificate $SRC_ARCHIVE/xcb-util-image-${VERSION_image}.tar.bz2
+archive=$(basename "${SRC_ARCHIVE}/xcb-util-image-${VERSION_image}.tar.bz2")
+sha512sum -c <<< "${SHA512_${a}} $archive"
+tar -xvf $archive
+./configure --prefix=$INSTALL_PREFIX
+make 
+make install
+
+wget --no-check-certificate $SRC_ARCHIVE/xcb-util-keysyms-${VERSION_keysyms}.tar.bz2
+archive=$(basename "${SRC_ARCHIVE}/xcb-util-keysyms-${VERSION_keysyms}.tar.bz2")
+sha512sum -c <<< "${SHA512_${a}} $archive"
+tar -xvf $archive
+./configure --prefix=$INSTALL_PREFIX
+make 
+make install
 
 rm -rf $temp_dir
