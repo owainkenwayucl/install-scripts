@@ -10,6 +10,7 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 require gcc-libs/4.9.2 
 require python/3.9.10
 require ninja
+require bison
 
 NAME=${NAME:-libxkbcommon}
 VERSION=${VERSION:-1.5.0}
