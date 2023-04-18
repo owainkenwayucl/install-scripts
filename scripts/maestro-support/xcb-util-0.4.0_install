@@ -55,6 +55,7 @@ wget --no-check-certificate $SRC_ARCHIVE/xcb-util-renderutil-${VERSION_renderuti
 archive=$(basename "${SRC_ARCHIVE}/xcb-util-renderutil-${VERSION_renderutil}.tar.bz2")
 sha512sum -c <<< "${SHA512_renderutil} $archive"
 tar -xvf $archive
+cd xcb-util-renderutil-${VERSION_renderutil}
 ./configure --prefix=$INSTALL_PREFIX
 make 
 make install
@@ -63,6 +64,7 @@ wget --no-check-certificate $SRC_ARCHIVE/xcb-util-wm-${VERSION_wm}.tar.bz2
 archive=$(basename "${SRC_ARCHIVE}/xcb-util-wm-${VERSION_wm}.tar.bz2")
 sha512sum -c <<< "${SHA512_wm} $archive"
 tar -xvf $archive
+cd xcb-util-wm-${VERSION_wm}
 ./configure --prefix=$INSTALL_PREFIX
 make 
 make install
@@ -71,6 +73,7 @@ wget --no-check-certificate $SRC_ARCHIVE/xcb-util-image-${VERSION_image}.tar.bz2
 archive=$(basename "${SRC_ARCHIVE}/xcb-util-image-${VERSION_image}.tar.bz2")
 sha512sum -c <<< "${SHA512_image} $archive"
 tar -xvf $archive
+cd xcb-util-image-${VERSION_image}
 ./configure --prefix=$INSTALL_PREFIX
 make 
 make install
@@ -79,6 +82,7 @@ wget --no-check-certificate $SRC_ARCHIVE/xcb-util-keysyms-${VERSION_keysyms}.tar
 archive=$(basename "${SRC_ARCHIVE}/xcb-util-keysyms-${VERSION_keysyms}.tar.bz2")
 sha512sum -c <<< "${SHA512_keysyms} $archive"
 tar -xvf $archive
+cd xcb-util-keysyms-${VERSION_keysyms}
 ./configure --prefix=$INSTALL_PREFIX
 make 
 make install
