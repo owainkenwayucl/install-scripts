@@ -27,7 +27,7 @@ SHA512_wm=${SHA512_wm:-b0b209ca75b022bb2475f7fbc5cddbeb8a07b0e42b7cd9b302b8456e2
 SHA512_image=${SHA512_image:-9b7202c054e1160f9ca97a86be1210d9fb47f2119f89ca85f15f20909cca884bfe0cb88e3e71c75b65e1a0a72b980066ccac810e41a91db895c74dde77440d4f}
 SHA512_keysyms=${SHA512_keysyms:-b14b3100c3ae2379f9df799c0780a1ee39267101e58e4c1c6f390f039348ca2b370bb1df203b9bc68a170d664188d9c73e3553a7ba24d98abea3ed353e8dc0c4}
 
-SRC_ARCHIVE=${SRC_ARCHIVE:-https://xcb.freedesktop.org/dist/}
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://xcb.freedesktop.org/dist}
 
 
 mkdir -p /dev/shm/$(whoami)/${NAME}
@@ -53,8 +53,8 @@ export PKG_CONFIG_PATH=${INSTALL_PREFIX}/lib/pkgconfig
 
 for a in $UTIL_PACKAGES
 do
-   wget --no-check-certificate $SRC_ARCHIVE/xcb-util-${a}-${VERSION}.tar.bz2
-   archive=$(basename "${SRC_ARCHIVE}/xcb-util-${a}-${VERSION}.tar.bz2")
+   wget --no-check-certificate $SRC_ARCHIVE/xcb-util-${a}-${VERSION_${a}}.tar.bz2
+   archive=$(basename "${SRC_ARCHIVE}/xcb-util-${a}-${VERSION_${a}}.tar.bz2")
    
    sha512sum -c <<< "${SHA512_${a}} $archive"
 
