@@ -10,7 +10,7 @@ proc ModulesHelp { } {
 module-whatis {Microsoft .NET SDK}
 
 conflict mono
-conflict dotnet-sdka
+conflict dotnet-sdk
 setenv DOTNET_ROOT /home/uccaoke/Applications/dotnet-sdk/7.0.203
 append-path PATH /home/uccaoke/Applications/dotnet-sdk/7.0.203
 append-path PATH /home/uccaoke/Applications/dotnet-sdk/7.0.203/tools
