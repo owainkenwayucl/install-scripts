@@ -7,7 +7,7 @@
 package_name="python"
 package_version="3.9.16"
 SHA256=${SHA256:-1ad539e9dbd2b42df714b69726e0693bc6b9d2d2c8e91c2e43204026605140c5}
-SRC_ARCHIVE=${SRC_ARCHIVE:-https://www.python.org/ftp/python/${package_version}/Python-${package_version}.tar.xz}
+SRC_ARCHIVE=${SRC_ARCHIVE:-https://www.python.org/ftp/python/${package_version}/Python-${package_version}.tgz}
 
 set -e
 
