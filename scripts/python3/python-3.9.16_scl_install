@@ -31,9 +31,9 @@ cd "$build_dir"
 wget "$SRC_ARCHIVE"
 
 manifest \
-    "sha256:$SHA256" "Python-${package_version}.tar.xz" 
+    "sha256:$SHA256" "Python-${package_version}.tgz" 
 
-tar -xf "Python-${package_version}.tar.xz"
+tar -xf "Python-${package_version}.tgz"
 
 cd "Python-${package_version}"
 ./configure --prefix="$install_prefix" \
