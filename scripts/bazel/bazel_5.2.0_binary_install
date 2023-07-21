@@ -13,7 +13,7 @@ for i in ${includes_dir:=$(dirname $0 2>/dev/null)/includes}/{module_maker,requi
 NAME=${NAME:-bazel}
 VERSION=${VERSION:-5.2.0}
 INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/bazel-${VERSION}}
-SHA256=${SHA256:-820a94dbb14071ed6d8c266cf0c080ecb265a5eea65307579489c4662c2d582a}
+SHA256=${SHA256:-7d9ef51beab5726c55725fb36675c6fed0518576d3ba51fb4067580ddf7627c4}
 
 SRC_ARCHIVE=${SRC_ARCHIVE:-https://github.com/bazelbuild/bazel/releases/download/${VERSION}/bazel-${VERSION}-installer-linux-x86_64.sh}
 
