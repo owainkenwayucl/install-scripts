@@ -23,3 +23,5 @@ setenv SINGULARITY_LOCALCACHEDIR $slocation/localcache
 setenv SINGULARITY_PULLFOLDER $slocation/pull
 
 setenv SINGULARITY_BINDPATH /scratch/scratch/uccaoke,/tmpdir
+
+set alias singularity "singularity -C"
