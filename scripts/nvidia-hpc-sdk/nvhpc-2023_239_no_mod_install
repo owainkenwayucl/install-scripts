@@ -12,7 +12,7 @@ RELEASE=${RELEASE:-23.9}
 RELEASE_=$(echo $RELEASE | sed 's|\.||g')
 NAME=${NAME:-nvhpc}
 VERSION=${VERSION:-${YEAR}_${RELEASE_}}
-INSTALL_PREFIX=${INSTALL_PREFIX:-${HOME}/Applications/$NAME/$VERSION/$COMPILER_TAG}
+INSTALL_PREFIX=${INSTALL_PREFIX:-/data/autobentham/Applications/$NAME/$VERSION/$COMPILER_TAG}
 SHA256=${SHA256:-ecf343ecad2398e21c8d7f24a580b2932348017dfd8ea38c1ef31b37114b2d4b}
 
 SRC_ARCHIVE=${SRC_ARCHIVE:-https://developer.download.nvidia.com/hpc-sdk/${RELEASE}/${NAME}_${VERSION}_Linux_x86_64_cuda_multi.tar.gz}
