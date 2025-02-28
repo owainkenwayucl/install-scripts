@@ -1,0 +1,16 @@
+#%Module -*- tcl -*-
+##
+## Test to see if we can get away with loading new GNU on top of old...
+
+proc ModulesHelp { } {
+
+  puts stderr {zstd}
+
+}
+
+module-whatis {zstd}
+
+conflict zstd
+
+prepend-path PATH /home/uccaoke/Applications/zstd/1.5.7/bin
+prepend-path LD_LIBRARY_PATH /home/uccaoke/Applications/zstd/1.5.7/lib64
