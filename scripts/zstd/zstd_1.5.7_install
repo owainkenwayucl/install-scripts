@@ -34,9 +34,7 @@ tar -xvf $archive
 
 cd ${NAME}-${VERSION}
 
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX ..
+cmake -S build/cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX -B build
 make 
 make install
 
