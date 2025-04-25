@@ -21,7 +21,7 @@ bin/spack install wrf@4.2
 
 oldpwd=$(pwd)
 cd ~/Source/wrf/deps/spack/share/spack/modules
-spackarch=$(ls | grep linux-rhel)
+spackarch=$(ls | grep linux-)
 
 cd ~/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0
 ncdir=$(ls | grep netcdf-fortran-)
