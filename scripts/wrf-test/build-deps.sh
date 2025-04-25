@@ -17,7 +17,10 @@ git clone https://github.com/spack/spack
 
 
 cd spack
+
+bin/spack config add "modules:default:enable:[tcl]"
 bin/spack install wrf@4.2
+
 
 oldpwd=$(pwd)
 cd ~/Source/wrf/deps/spack/share/spack/modules
