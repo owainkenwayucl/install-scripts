@@ -10,7 +10,7 @@ module load cmake
 
 oldpwd=$(pwd)
 cd ~/Source/wrf/deps/spack/share/spack/modules
-spackarch=$(ls | grep linux-rhel)
+spackarch=$(ls | grep linux-)
 cd $spackarch
 
 modopenmpi=$(ls | grep openmpi)
