@@ -7,6 +7,7 @@ module load beta-modules
 module load gcc-libs/9.2.0
 module load python/3.9.10
 module load compilers/gnu/9.2.0
+module load git
 
 rm -Rf ~/Source/wrf/deps
 mkdir -p ~/Source/wrf/deps
@@ -17,9 +18,10 @@ git clone https://github.com/spack/spack
 
 
 cd spack
+git checkout v0.23.1
 
 bin/spack config add "modules:default:enable:[tcl]"
-bin/spack install wrf@4.2
+bin/spack install wrf@4.2 openmpi@4
 
 
 oldpwd=$(pwd)
