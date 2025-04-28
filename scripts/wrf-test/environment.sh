@@ -19,12 +19,12 @@ modnetcdfc=$(ls netcdf-c/* | tail -n 1)
 modnetcdff=$(ls netcdf-fortran/* | tail -n 1)
 modjasp=$(ls jasper/* | tail -n 1)
 modpng=$(ls libpng/* | tail -n 1)
-modz=$(ls zlib/* | tail -n 1)
+modz=$(ls zlib-ng/* | tail -n 1)
 modperl=$(ls perl/* | tail -n 1)
 modhdf=$(ls hdf5/* | tail -n 1)
 modm4=$(ls m4/* | tail -n 1)
 modlt=$(ls libtool/* | tail -n 1)
-modjpeg=$(ls libjpeg/* | tail -n 1)
+modjpeg=$(ls libjpeg-turbo/* | tail -n 1)
 
 echo "OpenMPI module:         $modopenmpi"
 echo "NetCDF parallel module: $modnetcdfp"
