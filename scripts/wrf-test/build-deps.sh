@@ -6,6 +6,7 @@ set -e
 gccver=${gccver:-9.2.0}
 wrfver=${wrfver:-4.2}
 ompiver=${ompiver:-4}
+spackver=${spackver:-0.23.1}
 module purge
 module load beta-modules
 module load gcc-libs/${gccver}
@@ -22,7 +23,7 @@ git clone https://github.com/spack/spack
 
 
 cd spack
-git checkout v0.23.1
+git checkout v${spackver}
 
 bin/spack config add "modules:default:enable:[tcl]"
 bin/spack install wrf@${wrfver} openmpi@${ompiver}
