@@ -43,7 +43,9 @@ module use --append ~/Source/wrf/deps/spack/share/spack/modules/$spackarch
 
 module load $modopenmpi $modnetcdfp $modnetcdfc $modnetcdff $modjasp $modpng $modz $modperl $modhdf $modm4 $modlt $modjpeg
 
-cd ~/Source/wrf/deps/spack/opt/spack/$spackarch
+cd ~/Source/wrf/deps/spack/opt/spack/
+spackarch2=$(ls | grep linux-)
+cd ~/Source/wrf/deps/spack/opt/spack/$spackarch2
 ncdir=$(ls | grep netcdf-fortran-)
 nccdir=$(ls | grep netcdf-c-)
 jaspdir=$(ls | grep jasper-)
@@ -57,9 +59,9 @@ jpegdir=$(ls | grep libjpeg-)
 export NETCDF="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/$ncdir"
 export NETCDF_classic=1
 export NETCDFF=$NETCDF
-export NETCDFC="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/$nccdir"
-export JASPERLIB="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/$jaspdir/lib64"
-export JASPERINC="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/$jaspdir/include"
-export LD_LIBRARY_PATH="$JASPERLIB:$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/$jpegdir/lib64:$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/$ncdir/lib:$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/$nccdir/lib:$LD_LIBRARY_PATH"
+export NETCDFC="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch2/$nccdir"
+export JASPERLIB="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch2/$jaspdir/lib64"
+export JASPERINC="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch2/$jaspdir/include"
+export LD_LIBRARY_PATH="$JASPERLIB:$HOME/Source/wrf/deps/spack/opt/spack/$spackarch2/$jpegdir/lib64:$HOME/Source/wrf/deps/spack/opt/spack/$spackarch2/$ncdir/lib:$HOME/Source/wrf/deps/spack/opt/spack/$spackarch2/$nccdir/lib:$LD_LIBRARY_PATH"
 
 cd $oldpwd

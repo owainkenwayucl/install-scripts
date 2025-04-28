@@ -23,10 +23,9 @@ bin/spack install wrf@4.2
 
 
 oldpwd=$(pwd)
-cd ~/Source/wrf/deps/spack/share/spack/modules
+cd ~/Source/wrf/deps/spack/opt/spack/
 spackarch=$(ls | grep linux-)
-
-cd ~/Source/wrf/deps/spack/opt/spack/$spackarch
+cd $spackarch
 ncdir=$(ls | grep netcdf-fortran-)
 nccdir=$(ls | grep netcdf-c-)
 
@@ -34,5 +33,3 @@ echo "BRAVELY MERGING NETCDF!!!"
 rsync -av "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/$nccdir/" "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/$ncdir/"
 rsync -av "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/$ncdir/" "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/$nccdir/"
 echo "MERGE COMPLETE!!"
-
-
