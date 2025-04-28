@@ -46,6 +46,12 @@ module load $modopenmpi $modnetcdfp $modnetcdfc $modnetcdff $modjasp $modpng $mo
 cd ~/Source/wrf/deps/spack/opt/spack/
 spackarch2=$(ls | grep linux-)
 cd ~/Source/wrf/deps/spack/opt/spack/$spackarch2
+# work out if we are using a spack that inserts the GCC verison.
+if [ -d "gcc-${gccver}" ]; then
+   spackarch2="${spackarch2}/gcc-${gccver}"
+fi
+cd gcc-${gccver}
+
 ncdir=$(ls | grep netcdf-fortran-)
 nccdir=$(ls | grep netcdf-c-)
 jaspdir=$(ls | grep jasper-)
