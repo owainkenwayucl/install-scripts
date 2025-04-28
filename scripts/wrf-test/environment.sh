@@ -13,18 +13,18 @@ cd ~/Source/wrf/deps/spack/share/spack/modules
 spackarch=$(ls | grep linux-)
 cd $spackarch
 
-modopenmpi=$(ls | grep openmpi)
-modnetcdfp=$(ls | grep parallel-netcdf)
-modnetcdfc=$(ls | grep netcdf-c)
-modnetcdff=$(ls | grep netcdf-fortran)
-modjasp=$(ls | grep jasper)
-modpng=$(ls | grep libpng)
-modz=$(ls | grep zlib)
-modperl=$(ls | grep perl)
-modhdf=$(ls | grep hdf5)
-modm4=$(ls | grep m4)
-modlt=$(ls | grep libtool)
-modjpeg=$(ls | grep libjpeg)
+modopenmpi=$(ls openmpi/* | tail -n 1)
+modnetcdfp=$(ls parallel-netcdf/* | tail -n 1)
+modnetcdfc=$(ls netcdf-c/* | tail -n 1)
+modnetcdff=$(ls netcdf-fortran/* | tail -n 1)
+modjasp=$(ls jasper/* | tail -n 1)
+modpng=$(ls libpng/* | tail -n 1)
+modz=$(ls zlib/* | tail -n 1)
+modperl=$(ls perl/* | tail -n 1)
+modhdf=$(ls hdf5/* | tail -n 1)
+modm4=$(ls m4/* | tail -n 1)
+modlt=$(ls libtool/* | tail -n 1)
+modjpeg=$(ls libjpeg/* | tail -n 1)
 
 echo "OpenMPI module:         $modopenmpi"
 echo "NetCDF parallel module: $modnetcdfp"
