@@ -56,7 +56,7 @@ jpegdir=$(ls | grep libjpeg-)
 #rsync -av "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$ncdir/" "$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/gcc-9.2.0/$nccdir/"
 #echo "MERGE COMPLETE!!"
 
-export NETCDF="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch/$ncdir"
+export NETCDF="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch2/$ncdir"
 export NETCDF_classic=1
 export NETCDFF=$NETCDF
 export NETCDFC="$HOME/Source/wrf/deps/spack/opt/spack/$spackarch2/$nccdir"
