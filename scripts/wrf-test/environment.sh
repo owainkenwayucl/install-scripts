@@ -4,7 +4,7 @@ module purge
 module load beta-modules
 module load gcc-libs/9.2.0
 module load compilers/gnu/9.2.0
-module load python/3.8.6
+module load python/3.11.4
 module load git
 module load cmake
 
